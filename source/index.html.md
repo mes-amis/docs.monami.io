@@ -3,8 +3,6 @@ title: Mon Ami REST API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - javascript
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -30,26 +28,33 @@ We have examples in an assortment of languages! You can view code examples in th
 
 # Authentication
 
+```shell
+curl "https://app.monami.io/api/clients" \
+  -H "Authorization: Basic BASE_64_ENCODED_CREDENTIAL"
+```
+
 Mon Ami uses API keys to allow access to the API. You can register a new Mon Ami REST API key at our [developer portal](https://example.com/developers).
 
 Mon Ami expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: Basic base64(“#{uid}:#{secret}”)`
+`Authorization: Basic BASE_64_ENCODED_CREDENTIAL`
 
 <aside class="notice">
-You must replace <code>uid</code> and <code>secret</code> with your API key values.
+ <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization#basic_authentication">Example on MDN Web Docs</a>
 </aside>
 
 # Clients
 
 ## Get All clients
 
+This endpoint returns a paginated list of clients as well as pagination links and meta information.
+
 ```shell
 curl "https://app.monami.io/api/clients" \
-  -H "Authorization: Basic ...."
+  -H "Authorization: Basic BASE_64_ENCODED_CREDENTIAL"
 ```
 
-> The above command returns JSON structured like this:
+> A sucessful request returns JSON structured like this:
 
 ```json
 {
@@ -92,7 +97,13 @@ curl "https://app.monami.io/api/clients" \
 }
 ```
 
-This endpoint retrieves a paginated list of clients as well as pagination links and meta information.
+### Response Parameters
+
+| Parameter | Description                                             |
+| --------- | ------------------------------------------------------- |
+| clients   | The collection of results .                             |
+| links     | Pagination links to access all the pages of the results |
+| meta      | Helpful response metadata                               |
 
 ### HTTP Request
 
@@ -105,9 +116,9 @@ This endpoint retrieves a paginated list of clients as well as pagination links 
 | page      | 1       | Select the page of results. |
 | per_page  | 25      | How many results per page.  |
 
-<aside class="success">
+<!-- <aside class="success">
 Remember — the info!
-</aside>
+</aside> -->
 
 ## Get a Specific Client
 
@@ -116,7 +127,7 @@ curl "https://app.monami.io/api/clients/1" \
   -H "Authorization: Basic ..."
 ```
 
-> The above command returns JSON structured like this:
+> A sucessful request returns JSON structured like this:
 
 ```json
 {
@@ -131,7 +142,7 @@ curl "https://app.monami.io/api/clients/1" \
 
 This endpoint retrieves a specific client.
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
 
 ### HTTP Request
 
