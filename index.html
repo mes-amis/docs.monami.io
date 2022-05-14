@@ -330,6 +330,17 @@
               </ul>
           </li>
           <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-webhooks-for-a-given-credential" class="toc-h2 toc-link" data-title="Get all webhooks for a given Credential">Get all webhooks for a given Credential</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-new-webhook-subscription" class="toc-h2 toc-link" data-title="Create a new webhook subscription">Create a new webhook subscription</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -480,6 +491,86 @@ Remember — the info!
 <td>The ID of the client to retrieve</td>
 </tr>
 </tbody></table>
+<h1 id='webhooks'>Webhooks</h1>
+<p>Webhooks can be used to integrate apps without polling. You can setup subscriptions to events in Mon Ami and get JSON
+notifications sent to the URL of your choice. You can use your API credential secret to verify the messages send from Mon Ami to provide
+a secure and reliable system integration.</p>
+<h2 id='get-all-webhooks-for-a-given-credential'>Get all webhooks for a given Credential</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.monami.io/api/webhooks"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Basic BASE_64_ENCODED_CREDENTIAL"</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"webhook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.monami.io/api/webhooks/test"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-13T00:34:45.851Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.monami.io/api/webhooks?page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.monami.io/api/webhooks?page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.monami.io/api/webhooks?page=1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the webhook.</td>
+</tr>
+<tr>
+<td>topic</td>
+<td>The name of the topic or topics to be notified for. Allows wildcards. Ex <code>client.*</code> will receive all client events</td>
+</tr>
+<tr>
+<td>webhook_url</td>
+<td>The URL you want the webhook notification sent to.</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-new-webhook-subscription'>Create a new webhook subscription</h2>
+<p>You can create a subscription with the topic of <code>*</code> to get all webhook events or you can subscribe to individual topics,
+or wildcard topics, ex: <code>client.*</code>.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-d</span> <span class="s1">'{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }'</span> <span class="s2">"https://app.monami.io/api/webhooks"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Basic BASE_64_ENCODED_CREDENTIAL"</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns HTTP Status 201 Created and a JSON object representing the webhook:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"client.created"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"webhook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.monami.io/api/webhooks/test"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-14T01:21:30.998Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>topic</td>
+<td>The name of the topic or topics to be notified for. Allows wildcards. Ex <code>client.*</code> will receive all client events</td>
+</tr>
+<tr>
+<td>webhook_url</td>
+<td>The URL you want the webhook notification sent to.</td>
+</tr>
+</tbody></table>
 <h1 id='errors'>Errors</h1>
 <p>Errors will be returned a JSON with the following format.</p>
 
@@ -504,49 +595,60 @@ The errors will sometimes have links with more details that will be helpful when
 
 <table><thead>
 <tr>
-<th>Error Code</th>
+<th>Status Code</th>
 <th>Meaning</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>Bad Request</td>
+<td>Your request is invalid.</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>Unauthorized</td>
+<td>Your API key is wrong.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified record could not be found.</td>
+<td>Not Found</td>
+<td>The specified record could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a record with an invalid method.</td>
+<td>Method Not Allowed</td>
+<td>You tried to access a record with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+<td>Not Acceptable</td>
+<td>You requested a format that isn&#39;t json.</td>
 </tr>
 <tr>
 <td>410</td>
-<td>Gone -- The record requested has been removed from our servers.</td>
+<td>Gone</td>
+<td>The record requested has been removed from our servers.</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td>422</td>
+<td>Unprocessable Entity</td>
+<td>The request has invalid parameters. See the error messages in the respoonse.</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many records! Slow down!</td>
+<td>Too Many Requests</td>
+<td>You&#39;re requesting too many records! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>Internal Server Error</td>
+<td>We had a problem with our server. Try again later.</td>
 </tr>
 <tr>
 <td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>Service Unavailable</td>
+<td>We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
 
