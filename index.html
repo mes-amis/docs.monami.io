@@ -359,10 +359,10 @@
 <p>We have examples in an assortment of languages! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 <h1 id='authentication'>Authentication</h1>
 <p>A Mon Ami API credential has a <code>uid</code> and a <code>secret</code> that you will need to use to create Authentication headers and verify webhook signatures. Each of these examples will assume that these are available as environment variables <code>MONAMI_UID</code> and <code>MONAMI_SECRET</code>.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.tofu.monami.io/api/clients
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/clients
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">uid</span><span class="p">,</span> <span class="n">secret</span> <span class="o">=</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'MONAMI_UID'</span><span class="p">],</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'MONAMI_SECRET'</span><span class="p">]</span>
   <span class="n">base64_encoded_credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="p">[</span><span class="n">uid</span><span class="p">,</span> <span class="n">secret</span><span class="p">].</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
-  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.tofu.monami.io/api/clients'</span><span class="p">,</span>
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/clients'</span><span class="p">,</span>
     <span class="ss">headers: </span><span class="p">{</span>
       <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
       <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">base64_encoded_credential</span><span class="si">}</span><span class="s2">"</span>
@@ -381,8 +381,7 @@
 </aside>
 <h1 id='clients'>Clients</h1><h2 id='get-all-clients'>Get All clients</h2>
 <p>This endpoint returns a paginated list of clients as well as pagination links and meta information.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.monami.io/api/clients"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Basic BASE_64_ENCODED_CREDENTIAL"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/clients
 </code></pre></div>
 <blockquote>
 <p>A sucessful request returns JSON structured like this:</p>
@@ -506,8 +505,7 @@ Remember — the info!
 <p>Webhooks can be used to integrate apps without polling. You can setup subscriptions to events in Mon Ami and get JSON
 notifications sent to the URL of your choice. You can use your API credential secret to verify the messages send from Mon Ami to provide
 a secure and reliable system integration.</p>
-<h2 id='get-all-webhooks-for-a-given-credential'>Get all webhooks for a given Credential</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.monami.io/api/webhooks"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Basic BASE_64_ENCODED_CREDENTIAL"</span>
+<h2 id='get-all-webhooks-for-a-given-credential'>Get all webhooks for a given Credential</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/webhooks
 </code></pre></div>
 <blockquote>
 <p>A sucessful request returns JSON structured like this:</p>
@@ -554,8 +552,7 @@ a secure and reliable system integration.</p>
 <h2 id='create-a-new-webhook-subscription'>Create a new webhook subscription</h2>
 <p>You can create a subscription with the topic of <code>*</code> to get all webhook events or you can subscribe to individual topics,
 or wildcard topics, ex: <code>client.*</code>.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-d</span> <span class="s1">'{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }'</span> <span class="s2">"https://app.monami.io/api/webhooks"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Basic BASE_64_ENCODED_CREDENTIAL"</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-d</span> <span class="s1">'{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }'</span> <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> https://app.monami.io/api/webhooks
 </code></pre></div>
 <blockquote>
 <p>A sucessful request returns HTTP Status 201 Created and a JSON object representing the webhook:</p>
