@@ -48,7 +48,7 @@ You can create a subscription with the topic of `*` to get all webhook events or
 or wildcard topics, ex: `client.*`.
 
 ```shell
-curl -d '{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }' -i -u $MONAMI_UID:$MONAMI_SECRET -H 'Content-Type: application/json' https://app.tofu.monami.io/api/webhooks
+curl -d '{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }' -i -u $MONAMI_UID:$MONAMI_SECRET -H 'Content-Type: application/json' https://app.monami.io/api/webhooks
 ```
 
 > A sucessful request returns HTTP Status 201 Created and a JSON object representing the webhook:

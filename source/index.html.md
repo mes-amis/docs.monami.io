@@ -34,13 +34,13 @@ We have examples in an assortment of languages! You can view code examples in th
 A Mon Ami API credential has a `uid` and a `secret` that you will need to use to create Authentication headers and verify webhook signatures. Each of these examples will assume that these are available as environment variables `MONAMI_UID` and `MONAMI_SECRET`.
 
 ```shell
-curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.tofu.monami.io/api/clients
+curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients
 ```
 
 ```ruby
   uid, secret = ENV['MONAMI_UID'], ENV['MONAMI_SECRET']
   base64_encoded_credential = Base64.strict_encode64 [uid, secret].join(':')
-  response = Excon.get('https://app.tofu.monami.io/api/clients',
+  response = Excon.get('https://app.monami.io/api/clients',
     headers: {
       'Content-Type' => 'application/json',
       'Authorization' => "Basic #{base64_encoded_credential}"
