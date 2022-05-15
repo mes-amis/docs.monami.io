@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mes-amis/docs.monami.io/main/source/images/logo.svg" alt="Mon Ami API Documentation" width="226">
+  <img src="https://raw.githubusercontent.com/mes-amis/docs.monami.io/main/source/images/logo.svg" alt="Mon Ami API Documentation" width="226" style="filter: invert(0.7);">
   <br>
   <a href="https://github.com/mes-amis/docs.monami.io/actions?query=workflow%3ABuild+branch%3Amain"><img src="https://github.com/mes-amis/docs.monami.io/workflows/Build/badge.svg?branch=main" alt="Build Status"></a>
 </p>
