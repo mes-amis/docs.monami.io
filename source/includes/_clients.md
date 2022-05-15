@@ -5,8 +5,7 @@
 This endpoint returns a paginated list of clients as well as pagination links and meta information.
 
 ```shell
-curl "https://app.monami.io/api/clients" \
-  -H "Authorization: Basic BASE_64_ENCODED_CREDENTIAL"
+curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients
 ```
 
 > A sucessful request returns JSON structured like this:

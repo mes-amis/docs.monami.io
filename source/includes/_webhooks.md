@@ -7,8 +7,7 @@ a secure and reliable system integration.
 ## Get all webhooks for a given Credential
 
 ```shell
-curl "https://app.monami.io/api/webhooks" \
-  -H "Authorization: Basic BASE_64_ENCODED_CREDENTIAL"
+curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/webhooks
 ```
 
 > A sucessful request returns JSON structured like this:
@@ -49,8 +48,7 @@ You can create a subscription with the topic of `*` to get all webhook events or
 or wildcard topics, ex: `client.*`.
 
 ```shell
-curl -d '{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }' "https://app.monami.io/api/webhooks" \
-  -H "Authorization: Basic BASE_64_ENCODED_CREDENTIAL" -H 'Content-Type: application/json'
+curl -d '{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }' -i -u $MONAMI_UID:$MONAMI_SECRET -H 'Content-Type: application/json' https://app.tofu.monami.io/api/webhooks
 ```
 
 > A sucessful request returns HTTP Status 201 Created and a JSON object representing the webhook:
