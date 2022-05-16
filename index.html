@@ -358,7 +358,7 @@
 
 <p><strong>To setup API access <a href="https://calendly.com/mon-ami-consultation/30min">contact us</a> to get started.</strong></p>
 
-<p>We have examples in an assortment of languages! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right. If you would like examples in a specific programming language, send a pull request or <a href="https://github.com/mes-amis/docs.monami.io/issues">open an issue</a></p>
+<p>We have examples in an assortment of languages! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right. If you would like examples in a specific programming language, <a href="https://github.com/mes-amis/docs.monami.io/pulls">send a pull request</a> or <a href="https://github.com/mes-amis/docs.monami.io/issues">open an issue</a></p>
 <h1 id='authentication'>Authentication</h1>
 <p>A Mon Ami API credential consists of a <code>uid</code> and a <code>secret</code>. You will need to use these to create Authorization headers and verify webhook signatures. Each of these examples will assume that these values are available as the environment variables <code>MONAMI_UID</code> and <code>MONAMI_SECRET</code>.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/clients
