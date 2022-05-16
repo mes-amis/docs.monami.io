@@ -368,8 +368,6 @@
       <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
     <span class="p">}</span>
   <span class="p">)</span>
-
-  <span class="no">JSON</span><span class="p">.</span><span class="nf">load</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre></div>
 <p>Mon Ami uses API keys to allow access to the API. You can register a new Mon Ami REST API key at our <a href="https://example.com/developers">developer portal</a>.</p>
 
@@ -383,6 +381,14 @@
 <h1 id='clients'>Clients</h1><h2 id='get-all-clients'>Get All clients</h2>
 <p>This endpoint returns a paginated list of clients as well as pagination links and meta information.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/clients
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/clients'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>A sucessful request returns JSON structured like this:</p>
@@ -470,8 +476,15 @@
 <!-- <aside class="success">
 Remember — the info!
 </aside> -->
-<h2 id='get-a-specific-client'>Get a Specific Client</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.monami.io/api/clients/1"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Basic ..."</span>
+<h2 id='get-a-specific-client'>Get a Specific Client</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/clients/1
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/clients/1'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>A sucessful request returns JSON structured like this:</p>
@@ -507,6 +520,14 @@ Remember — the info!
 notifications sent to the URL of your choice. You can use your API credential secret to verify the messages send from Mon Ami to provide
 a secure and reliable system integration.</p>
 <h2 id='get-all-webhooks-for-a-given-credential'>Get all webhooks for a given Credential</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/webhooks
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/webhooks'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>A sucessful request returns JSON structured like this:</p>
@@ -553,7 +574,16 @@ a secure and reliable system integration.</p>
 <h2 id='create-a-new-webhook-subscription'>Create a new webhook subscription</h2>
 <p>You can create a subscription with the topic of <code>*</code> to get all webhook events or you can subscribe to individual topics,
 or wildcard topics, ex: <code>client.*</code>.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-d</span> <span class="s1">'{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }'</span> <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> https://app.monami.io/api/webhooks
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="nt">-d</span> <span class="s1">'{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }'</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> https://app.monami.io/api/webhooks
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/webhooks/test'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">},</span>
+    <span class="ss">body: </span><span class="s1">'{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }'</span>
+  <span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>A sucessful request returns HTTP Status 201 Created and a JSON object representing the webhook:</p>
