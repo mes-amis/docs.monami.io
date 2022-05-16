@@ -28,4 +28,4 @@ meta:
 
 Welcome to the Mon Ami REST API! You can use our API to access Mon Ami REST API endpoints, which can get information on clients from our database, or setup webhooks so you get live notifications when things happen within the Mon Ami platform.
 
-We have examples in an assortment of languages! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have examples in an assortment of languages! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right. If you would like examples in a specific programming language, send a pull request or open an issue at https://github.com/mes-amis/docs.monami.io/issues
