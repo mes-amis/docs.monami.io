@@ -6,8 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - ruby
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+  - <a href='https://calendly.com/mon-ami-consultation/30min'>Sign Up for a Developer Key</a>
 
 includes:
   - authentication
