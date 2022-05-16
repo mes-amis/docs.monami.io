@@ -11,9 +11,9 @@ toc_footers:
 
 includes:
   - authentication
+  - errors
   - clients
   - webhooks
-  - errors
 
 search: true
 
