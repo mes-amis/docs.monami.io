@@ -17,12 +17,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients
   )
 ```
 
-Mon Ami uses API keys to allow access to the API. You can register a new Mon Ami REST API key at our [developer portal](https://example.com/developers).
-
-Mon Ami expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: Basic BASE_64_ENCODED_CREDENTIAL`
-
 <aside class="notice">
  <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization#basic_authentication">Example on MDN Web Docs</a>
 </aside>
