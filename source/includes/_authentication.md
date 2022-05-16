@@ -15,8 +15,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients
       'Authorization' => "Basic #{credential}"
     }
   )
-
-  JSON.load response.body
 ```
 
 Mon Ami uses API keys to allow access to the API. You can register a new Mon Ami REST API key at our [developer portal](https://example.com/developers).

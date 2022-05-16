@@ -8,6 +8,17 @@ This endpoint returns a paginated list of clients as well as pagination links an
 curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients
 ```
 
+```ruby
+  credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
+
+  response = Excon.get('https://app.monami.io/api/clients',
+    headers: {
+      'Content-Type' => 'application/json',
+      'Authorization' => "Basic #{credential}"
+    }
+  )
+```
+
 > A sucessful request returns JSON structured like this:
 
 ```json
@@ -77,8 +88,18 @@ Remember — the info!
 ## Get a Specific Client
 
 ```shell
-curl "https://app.monami.io/api/clients/1" \
-  -H "Authorization: Basic ..."
+curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients/1
+```
+
+```ruby
+  credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
+
+  Excon.get('https://app.monami.io/api/clients/1',
+    headers: {
+      'Content-Type' => 'application/json',
+      'Authorization' => "Basic #{credential}"
+    }
+  )
 ```
 
 > A sucessful request returns JSON structured like this:

@@ -10,6 +10,17 @@ a secure and reliable system integration.
 curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/webhooks
 ```
 
+```ruby
+  credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
+
+  response = Excon.get('https://app.monami.io/api/webhooks',
+    headers: {
+      'Content-Type' => 'application/json',
+      'Authorization' => "Basic #{credential}"
+    }
+  )
+```
+
 > A sucessful request returns JSON structured like this:
 
 ```json
@@ -48,7 +59,19 @@ You can create a subscription with the topic of `*` to get all webhook events or
 or wildcard topics, ex: `client.*`.
 
 ```shell
-curl -d '{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }' -i -u $MONAMI_UID:$MONAMI_SECRET -H 'Content-Type: application/json' https://app.monami.io/api/webhooks
+curl -i -u $MONAMI_UID:$MONAMI_SECRET -d '{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }' -H 'Content-Type: application/json' https://app.monami.io/api/webhooks
+```
+
+```ruby
+  credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
+
+  response = Excon.post('https://app.monami.io/api/webhooks/test',
+    headers: {
+      'Content-Type' => 'application/json',
+      'Authorization' => "Basic #{credential}"
+    },
+    body: '{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }'
+  )
 ```
 
 > A sucessful request returns HTTP Status 201 Created and a JSON object representing the webhook:
