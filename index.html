@@ -320,6 +320,9 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
             <a href="#clients" class="toc-h1 toc-link" data-title="Clients">Clients</a>
               <ul class="toc-list-h2">
                   <li>
@@ -340,9 +343,6 @@
                     <a href="#create-a-new-webhook-subscription" class="toc-h2 toc-link" data-title="Create a new webhook subscription">Create a new webhook subscription</a>
                   </li>
               </ul>
-          </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -378,6 +378,86 @@
 <aside class="notice">
  <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization#basic_authentication">Example on MDN Web Docs</a>
 </aside>
+<h1 id='errors'>Errors</h1>
+<p>Errors will be returned a JSON with the following format.</p>
+
+<aside class="notice">
+The errors will sometimes have links with more details that will be helpful when debugging.
+</aside>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Authorization header is invalid."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name must be provided"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last_name must be provided"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The Mon Ami API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Status Code</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>Your API key is wrong.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>The specified record could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed</td>
+<td>You tried to access a record with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone</td>
+<td>The record requested has been removed from our servers.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Unprocessable Entity</td>
+<td>The request has invalid parameters. See the error messages in the respoonse.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests</td>
+<td>You&#39;re requesting too many records! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable</td>
+<td>We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
 <h1 id='clients'>Clients</h1><h2 id='get-all-clients'>Get All clients</h2>
 <p>This endpoint returns a paginated list of clients as well as pagination links and meta information.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/clients
@@ -608,86 +688,6 @@ or wildcard topics, ex: <code>client.*</code>.</p>
 <tr>
 <td>webhook_url</td>
 <td>The URL you want the webhook notification sent to.</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<p>Errors will be returned a JSON with the following format.</p>
-
-<aside class="notice">
-The errors will sometimes have links with more details that will be helpful when debugging.
-</aside>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Authorization header is invalid."</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name must be provided"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last_name must be provided"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>The Mon Ami API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-<td>Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized</td>
-<td>Your API key is wrong.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found</td>
-<td>The specified record could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed</td>
-<td>You tried to access a record with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable</td>
-<td>You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone</td>
-<td>The record requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>422</td>
-<td>Unprocessable Entity</td>
-<td>The request has invalid parameters. See the error messages in the respoonse.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests</td>
-<td>You&#39;re requesting too many records! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-<td>We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable</td>
-<td>We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
 
