@@ -4,14 +4,16 @@
 
 This endpoint returns a paginated list of clients as well as pagination links and meta information.
 
+> GET /api/clients
+
 ```shell
-curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients
+curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&per_page=3"
 ```
 
 ```ruby
   credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
 
-  response = Excon.get('https://app.monami.io/api/clients',
+  response = Excon.get('https://app.monami.io/api/clients?page=1&per_page=3',
     headers: {
       'Content-Type' => 'application/json',
       'Authorization' => "Basic #{credential}"
@@ -70,10 +72,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients
 | links     | Pagination links to access all the pages of the results |
 | meta      | Helpful response metadata                               |
 
-### HTTP Request
-
-`GET https://app.monami.io/api/clients`
-
 ### Query Parameters
 
 | Parameter | Default | Description                 |
@@ -86,6 +84,8 @@ Remember — the info!
 </aside> -->
 
 ## Get a Specific Client
+
+> GET /api/clients/:id
 
 ```shell
 curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients/1
@@ -119,12 +119,8 @@ This endpoint retrieves a specific client.
 
 <!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
 
-### HTTP Request
-
-`GET https://app.monami.io/clients/<ID>`
-
 ### URL Parameters
 
 | Parameter | Description                      |
 | --------- | -------------------------------- |
-| ID        | The ID of the client to retrieve |
+| id        | The id of the client to retrieve |
