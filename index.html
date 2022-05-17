@@ -342,6 +342,12 @@
                   <li>
                     <a href="#create-a-new-webhook-subscription" class="toc-h2 toc-link" data-title="Create a new webhook subscription">Create a new webhook subscription</a>
                   </li>
+                  <li>
+                    <a href="#delete-a-webhook-subscription" class="toc-h2 toc-link" data-title="Delete a webhook subscription">Delete a webhook subscription</a>
+                  </li>
+                  <li>
+                    <a href="#implementing-an-http-handler-for-the-webhook" class="toc-h2 toc-link" data-title="Implementing an HTTP Handler for the webhook">Implementing an HTTP Handler for the webhook</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -455,10 +461,14 @@ The errors will sometimes have links with more details that will be helpful when
 </tbody></table>
 <h1 id='clients'>Clients</h1><h2 id='get-all-clients'>Get All clients</h2>
 <p>This endpoint returns a paginated list of clients as well as pagination links and meta information.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/clients
+
+<blockquote>
+<p>GET /api/clients</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="s2">"https://app.monami.io/api/clients?page=1&amp;per_page=3"</span>
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
 
-  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/clients'</span><span class="p">,</span>
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/clients?page=1&amp;per_page=3'</span><span class="p">,</span>
     <span class="ss">headers: </span><span class="p">{</span>
       <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
       <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
@@ -526,8 +536,6 @@ The errors will sometimes have links with more details that will be helpful when
 <td>Helpful response metadata</td>
 </tr>
 </tbody></table>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://app.monami.io/api/clients</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -551,7 +559,11 @@ The errors will sometimes have links with more details that will be helpful when
 <!-- <aside class="success">
 Remember — the info!
 </aside> -->
-<h2 id='get-a-specific-client'>Get a Specific Client</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/clients/1
+<h2 id='get-a-specific-client'>Get a Specific Client</h2>
+<blockquote>
+<p>GET /api/clients/:id</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/clients/1
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
 
   <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/clients/1'</span><span class="p">,</span>
@@ -576,8 +588,6 @@ Remember — the info!
 <p>This endpoint retrieves a specific client.</p>
 
 <!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.monami.io/clients/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -586,15 +596,21 @@ Remember — the info!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the client to retrieve</td>
+<td>id</td>
+<td>The id of the client to retrieve</td>
 </tr>
 </tbody></table>
 <h1 id='webhooks'>Webhooks</h1>
 <p>Webhooks can be used to integrate apps without polling. You can setup subscriptions to events in Mon Ami and get JSON
 notifications sent to the URL of your choice. You can use your API credential secret to verify the messages send from Mon Ami to provide
 a secure and reliable system integration.</p>
-<h2 id='get-all-webhooks-for-a-given-credential'>Get all webhooks for a given Credential</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/webhooks
+<h2 id='get-all-webhooks-for-a-given-credential'>Get all webhooks for a given Credential</h2>
+<p>To manage your webhook subscriptions there is an <code>/api/webhooks</code> resource that lists the webhooks created for a given credential.</p>
+
+<blockquote>
+<p>GET /api/webhooks</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/webhooks
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
 
   <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/webhooks'</span><span class="p">,</span>
@@ -643,12 +659,16 @@ a secure and reliable system integration.</p>
 </tr>
 <tr>
 <td>webhook_url</td>
-<td>The URL you want the webhook notification sent to.</td>
+<td>The URL you want the webhook notification to POST to.</td>
 </tr>
 </tbody></table>
 <h2 id='create-a-new-webhook-subscription'>Create a new webhook subscription</h2>
 <p>You can create a subscription with the topic of <code>*</code> to get all webhook events or you can subscribe to individual topics,
 or wildcard topics, ex: <code>client.*</code>.</p>
+
+<blockquote>
+<p>POST /api/webhooks</p>
+</blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="nt">-d</span> <span class="s1">'{ "topic": "client.created", "webhook_url": "https://app.monami.io/api/webhooks/test" }'</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> https://app.monami.io/api/webhooks
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
 
@@ -661,7 +681,7 @@ or wildcard topics, ex: <code>client.*</code>.</p>
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns HTTP Status 201 Created and a JSON object representing the webhook:</p>
+<p>A sucessful request returns HTTP Status <code>201 Created</code> and a JSON object representing the webhook:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
@@ -682,10 +702,85 @@ or wildcard topics, ex: <code>client.*</code>.</p>
 </tr>
 <tr>
 <td>webhook_url</td>
-<td>The URL you want the webhook notification sent to.</td>
+<td>The URL you want the webhook notification to POST to.</td>
 </tr>
 </tbody></table>
+<h2 id='delete-a-webhook-subscription'>Delete a webhook subscription</h2>
+<p>If you&#39;re no longer interested in getting webhook notifications, you can destroy a webhook.</p>
 
+<blockquote>
+<p>DELETE /api/webhooks/:id</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span>  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-X</span> <span class="s1">'DELETE'</span> https://app.monami.io/api/webhooks/1
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/webhooks/1'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns HTTP Status <code>204 No Content</code>:</p>
+</blockquote>
+<h2 id='implementing-an-http-handler-for-the-webhook'>Implementing an HTTP Handler for the webhook</h2>
+<blockquote>
+<p>Example Webhook JSON.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"client.created"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-16T16:51:42.382-07:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-16T16:51:42.382-07:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"client.name@example.monami.io"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Fake Street"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Mateo"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94402"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='verification'>Verification</h3>
+<p>To verify the webhook, you need to verify the signature, by securely comparing the <code>Hmac-SHA256</code> request header with an HMAC of the request POST body.</p>
+
+<blockquote>
+<p>A Ruby on Rails example that verifies the request and calls a handler.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># I'm not sure how to handle an HTTP request in a shell.</span>
+<span class="c"># Have a look at the Ruby example.</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="k">class</span> <span class="nc">WebhooksController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+    <span class="n">before_action</span> <span class="ss">:verify_request!</span>
+
+    <span class="k">def</span> <span class="nf">create</span>
+      <span class="no">WebhookHandler</span><span class="p">.</span><span class="nf">call</span> <span class="n">request</span><span class="p">.</span><span class="nf">params</span>
+    <span class="k">end</span>
+
+    <span class="kp">protected</span>
+
+    <span class="k">def</span> <span class="nf">verify_request!</span>
+      <span class="k">unless</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">SecurityUtils</span><span class="o">::</span><span class="n">secure_compare</span><span class="p">(</span><span class="n">verified_signature</span><span class="p">,</span> <span class="n">signature_header</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="s2">"HMAC verification failed. Make sure it's not malicious and check hmac config."</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">signature_header</span>
+      <span class="n">request</span><span class="p">.</span><span class="nf">headers</span><span class="p">[</span><span class="s1">'Hmac-SHA256'</span><span class="p">].</span><span class="nf">chomp</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">verified_signature</span>
+      <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span><span class="p">(</span><span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">digest</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">,</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'MONAMI_SECRET'</span><span class="p">],</span> <span class="n">request</span><span class="p">.</span><span class="nf">raw_post</span><span class="p">)).</span><span class="nf">chomp</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre></div>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
