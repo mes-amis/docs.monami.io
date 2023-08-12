@@ -334,6 +334,23 @@
               </ul>
           </li>
           <li>
+            <a href="#service-records" class="toc-h1 toc-link" data-title="Service Records">Service Records</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-service-records" class="toc-h2 toc-link" data-title="Get All service records">Get All service records</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-service-record" class="toc-h2 toc-link" data-title="Get a Specific Service Record">Get a Specific Service Record</a>
+                  </li>
+                  <li>
+                    <a href="#get-service-records-by-date-delivered-on" class="toc-h2 toc-link" data-title="Get Service Records by Date Delivered On">Get Service Records by Date Delivered On</a>
+                  </li>
+                  <li>
+                    <a href="#get-service-records-by-status" class="toc-h2 toc-link" data-title="Get Service Records by Status">Get Service Records by Status</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
               <ul class="toc-list-h2">
                   <li>
@@ -598,6 +615,419 @@ Remember — the info!
 <tr>
 <td>id</td>
 <td>The id of the client to retrieve</td>
+</tr>
+</tbody></table>
+<h1 id='service-records'>Service Records</h1><h2 id='get-all-service-records'>Get All service records</h2>
+<p>This endpoint returns a paginated list of service records as well as pagination links and meta information.</p>
+
+<blockquote>
+<p>GET /api/service_records</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="s2">"https://app.monami.io/api/clients?page=1&amp;per_page=3"</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/serivce_records?page=1&amp;per_page=3'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="p">:</span>  <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="p">:</span>  <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"service_records"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit_count"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"each"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"recipient_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_delivered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-05"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyString"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"program_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"provider_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_definition_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_funding_source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"per_unit_expenditure_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"recipient_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"recipient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-e0852a7e"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volunteer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"recipient_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients/ami-e0852a7e"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit_count"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"each"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"recipient_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_delivered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-05"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AnotherString"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"program_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"provider_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_definition_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_funding_source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"per_unit_expenditure_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"recipient_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"recipient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-6969e283"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volunteer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"recipient_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients/ami-6969e283"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit_count"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"each"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"recipient_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_delivered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-05"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OneMoreString"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"program_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"provider_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_definition_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_funding_source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"per_unit_expenditure_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"recipient_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"recipient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-dfcabdc4"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volunteer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"recipient_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients/ami-dfcabdc4"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/service_records?page=1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/service_records?page=1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/service_records?page=1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>service_records</td>
+<td>The collection of results.</td>
+</tr>
+<tr>
+<td>links</td>
+<td>Pagination links to access all the pages of the results</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>Helpful response metadata</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>Select the page of results.</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>25</td>
+<td>How many results per page.</td>
+</tr>
+</tbody></table>
+
+<!-- <aside class="success">
+Remember — the info!
+</aside> -->
+<h2 id='get-a-specific-service-record'>Get a Specific Service Record</h2>
+<blockquote>
+<p>GET /api/service_records/:id</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/service_records/1
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/service_records/1'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="p">:</span>  <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="p">:</span>  <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unit_count"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"each"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recipient_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"service_delivered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-05"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"service_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyString"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"program_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"service_definition_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"service_funding_source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"service_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"per_unit_expenditure_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"activity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recipient_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recipient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-2b2e2f7d"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"volunteer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"recipient_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients/ami-2b2e2f7d"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>This endpoint retrieves a specific service record.</p>
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the service record to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='get-service-records-by-date-delivered-on'>Get Service Records by Date Delivered On</h2>
+<blockquote>
+<p>GET /api/service_records/?q[date_from]=:date_from&amp;q[date_to]=:date_to</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/service_records?q[date_from]<span class="o">=</span>8/05/2014&amp;q[date_to]<span class="o">=</span>8/05/2023
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/service_records?q[date_from]=8/05/2014&amp;q[date_to]=8/05/2023'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="p">:</span>  <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="p">:</span>  <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"service_records"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unit_count"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"each"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_delivered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyString"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"program_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_definition_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_funding_source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"per_unit_expenditure_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"activity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-fbfa7c51"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volunteer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"recipient_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients/ami-fbfa7c51"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unit_count"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"each"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_delivered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyString"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"program_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_definition_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_funding_source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"per_unit_expenditure_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"activity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-f5ab6afa"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volunteer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"recipient_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients/ami-f5ab6afa"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/service_records?page=1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/service_records?page=1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/service_records?page=1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint filters based on service record delivery date.</p>
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>date_from</td>
+<td>The first date a service record could be delivered on in the given range</td>
+</tr>
+<tr>
+<td>date_to</td>
+<td>The last date a service record could be delivered on in the given range</td>
+</tr>
+</tbody></table>
+<h2 id='get-service-records-by-status'>Get Service Records by Status</h2>
+<blockquote>
+<p>GET /api/service_records?q[with_status]=:pending</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> http://app.monami.test/api/service_records?q[with_status]<span class="o">=</span>:status
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/api/service_records?q[with_status]=:status
+    headers: {
+      '</span><span class="no">Content</span><span class="o">-</span><span class="no">Type</span><span class="s1">' :  '</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="s1">',
+      '</span><span class="no">Authorization</span><span class="err">'</span> <span class="p">:</span>  <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"service_records"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unit_count"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"each"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_delivered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyString"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"program_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_definition_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_funding_source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"per_unit_expenditure_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"activity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-fc970dcb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volunteer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"recipient_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients.ami-fc970dcb"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unit_count"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"each"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_delivered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyString"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"program_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_definition_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_funding_source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"per_unit_expenditure_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"activity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-d311dce8"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volunteer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"recipient_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients.ami-d311dce8"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unit_count"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"each"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_delivered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-02"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyString"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"program_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_definition_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_funding_source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"per_unit_expenditure_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"activity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"activity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-ff0a7ac4"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volunteer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"recipient_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients.ami-ff0a7ac4"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/service_records?page=1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/service_records?page=1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/service_records?page=1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint filters based on service record status.</p>
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>The status of the service record</td>
 </tr>
 </tbody></table>
 <h1 id='webhooks'>Webhooks</h1>
