@@ -12,6 +12,7 @@ includes:
   - authentication
   - errors
   - clients
+  - service_records
   - webhooks
 
 search: true
