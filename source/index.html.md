@@ -13,6 +13,7 @@ includes:
   - errors
   - clients
   - service_records
+  - visits
   - webhooks
 
 search: true
