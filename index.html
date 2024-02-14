@@ -351,6 +351,20 @@
               </ul>
           </li>
           <li>
+            <a href="#visits" class="toc-h1 toc-link" data-title="Visits">Visits</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-visits" class="toc-h2 toc-link" data-title="Get All visits">Get All visits</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-visit" class="toc-h2 toc-link" data-title="Get a Specific Visit">Get a Specific Visit</a>
+                  </li>
+                  <li>
+                    <a href="#get-visits-by-start-at-date" class="toc-h2 toc-link" data-title="Get Visits by Start At Date">Get Visits by Start At Date</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1028,6 +1042,392 @@ Remember — the info!
 <tr>
 <td>status</td>
 <td>The status of the service record</td>
+</tr>
+</tbody></table>
+<h1 id='visits'>Visits</h1><h2 id='get-all-visits'>Get All visits</h2>
+<p>This endpoint returns a paginated list of visits as well as pagination links and meta information.</p>
+
+<blockquote>
+<p>GET /api/visits</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="s2">"https://app.monami.io/api/visits?page=1&amp;per_page=1"</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/serivce_records?page=1&amp;per_page=3'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="p">:</span>  <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="p">:</span>  <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"visits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">157</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tentative"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"visit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"schedule_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"scheduled_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"scheduled_start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-15T17:15:00.000-08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:06:11.059-08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:09:17.922-08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-15T17:15:00.000-08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-15T19:15:00.000-08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Services"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:05:55.578Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.201Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"reporting_framework"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oaa"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"community_services"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"funding_source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"III-B"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.081Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.081Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iii_b"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"service_definition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.213Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.213Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"default_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Personal Care"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal_care_2"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:05:58.520-08:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:09:17.324-08:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-1193ec7f"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alden"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Retta"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Connelly"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"volunteer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:05:58.029-08:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:05:58.140-08:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kendal-g-et-culpa-doloremque"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hosea"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kendal"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goyette"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"visit_coding"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=2&amp;per_page=1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=240&amp;per_page=1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>visits</td>
+<td>The collection of results.</td>
+</tr>
+<tr>
+<td>links</td>
+<td>Pagination links to access all the pages of the results</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>Helpful response metadata</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>Select the page of results.</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>25</td>
+<td>How many results per page.</td>
+</tr>
+</tbody></table>
+
+<!-- <aside class="success">
+Remember — the info!
+</aside> -->
+<h2 id='get-a-specific-visit'>Get a Specific Visit</h2>
+<blockquote>
+<p>GET /api/visits/:id</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/visits/157
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/visits/1'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="p">:</span>  <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="p">:</span>  <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">157</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tentative"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"visit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"schedule_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scheduled_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scheduled_start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-15T17:15:00.000-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:06:11.059-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:09:17.922-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-15T17:15:00.000-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-15T19:15:00.000-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Services"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:05:55.578Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.201Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reporting_framework"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oaa"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"community_services"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"funding_source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"III-B"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.081Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.081Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iii_b"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"service_definition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.213Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.213Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Personal Care"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal_care_2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:05:58.520-08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:09:17.324-08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-1193ec7f"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alden"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Retta"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Connelly"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aurelio+tennie@monami.io"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"volunteer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:05:58.029-08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:05:58.140-08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kendal-g-et-culpa-doloremque"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hosea"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kendal"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goyette"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"visit_coding"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>This endpoint retrieves a specific visit.</p>
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the visit to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='get-visits-by-start-at-date'>Get Visits by Start At Date</h2>
+<blockquote>
+<p>GET /api/visits/?q[start_at_from]=:start_at_from&amp;q[start_at_to]=:start_at_to</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/visits?q[start_at_from]<span class="o">=</span>8/05/2014&amp;q[start_at_to]<span class="o">=</span>8/05/2023
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/visits?q[start_at_from]=2/15/2024&amp;per_page=1'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="p">:</span>  <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="p">:</span>  <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"visits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tentative"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"visit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"schedule_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"scheduled_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"scheduled_start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-17T17:15:00.000-08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:06:07.285-08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:09:18.265-08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-17T17:15:00.000-08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-17T19:15:00.000-08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Services"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:05:55.578Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.201Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"reporting_framework"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oaa"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"community_services"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"funding_source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"III-B"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.081Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.081Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iii_b"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"service_definition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.213Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T19:06:38.213Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"default_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Personal Care"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal_care_2"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:05:59.483-08:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:09:17.385-08:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-def6e24a"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hong"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Huels"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"volunteer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:05:57.062-08:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-13T11:05:57.235-08:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"naida-b-culpa-repudiandae-autem"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verlene"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Naida"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boyle"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"visit_coding"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=2&amp;per_page=1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=144&amp;per_page=1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">144</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint filters based on visit start date.</p>
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>start_at_from</td>
+<td>The first date a visit could happen on in the given range</td>
+</tr>
+<tr>
+<td>start_at_to</td>
+<td>The last date a visit could happen on in the given range</td>
 </tr>
 </tbody></table>
 <h1 id='webhooks'>Webhooks</h1>
