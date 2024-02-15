@@ -13,7 +13,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/visits?page=1&p
 ```ruby
   credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
 
-  response = Excon.get('https://app.monami.io/api/serivce_records?page=1&per_page=3',
+  response = Excon.get('https://app.monami.io/api/visits?page=1&per_page=3',
     headers: {
       'Content-Type' :  'application/json',
       'Authorization' :  "Basic #{credential}"
