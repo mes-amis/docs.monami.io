@@ -11,6 +11,7 @@ toc_footers:
 includes:
   - authentication
   - errors
+  - client_calls
   - clients
   - service_records
   - visits
