@@ -25,7 +25,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?pa
 
 ```json
 {
-    "visits": [
+    "client_calls": [
         {
             "id": 10,
             "attempt_count": 0,
@@ -259,7 +259,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[s
 
 ```json
 {
-    "visits": [
+    "client_calls": [
         {
             "id": 10,
             "attempt_count": 0,
@@ -378,7 +378,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
 
 ```json
 {
-    "visits": [
+    "client_calls": [
         {
             "id": 15,
             "attempt_count": 0,
