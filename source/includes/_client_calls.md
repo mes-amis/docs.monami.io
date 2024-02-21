@@ -464,7 +464,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
 }
 ```
 
-This endpoint filters based on client call statuses.
+This endpoint filters based on the volunteer present on a client call.
 
 <!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
 
