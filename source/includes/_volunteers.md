@@ -183,7 +183,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/volunteers/ \
 --form 'city="San Francisco"' \
 --form 'state="CA"' \
 --form 'zip="94117"' \
---form 'dynamic_fields="{\"dynamic_companion_gender_identity\": \"custom_value\", \"dynamic_companion_pronouns\": \"custom_value2\"}"'
+--form 'custom_fields="{\"gender_identity\": \"custom_value\", \"pronouns\": \"custom_value2\"}"'
 ```
 
 ```ruby
@@ -196,7 +196,7 @@ url = URI("http://app.monami.test/api/clients/")
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = "Basic #{credential}"
-form_data = [['first_name', 'Jane'],['preferred_name', 'Volunteer'],['last_name', 'Doe'],['date_of_birth', '1940-05-30'],['email', 'sample@monami.io'],['gender', 'female'],['phone', '+17075518391'],['languages', 'english,portuguese'],['address_line1', 'X Random St'],['city', 'San Francisco'],['state', 'CA'],['zip', '94117'],['country', 'United States'],['dynamic_fields', '{"dynamic_companion_gender_identity": "custom_value", "dynamic_companion_pronouns": "custom_value2"}']]
+form_data = [['first_name', 'Jane'],['preferred_name', 'Volunteer'],['last_name', 'Doe'],['date_of_birth', '1940-05-30'],['email', 'sample@monami.io'],['gender', 'female'],['phone', '+17075518391'],['languages', 'english,portuguese'],['address_line1', 'X Random St'],['city', 'San Francisco'],['state', 'CA'],['zip', '94117'],['country', 'United States'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
 request.set_form form_data, 'multipart/form-data'
 response = http.request(request)
 puts response.read_body
@@ -217,8 +217,8 @@ puts response.read_body
   "email": "sample@monami.io",
   "label": "volunteer-d",
   "custom_fields": {
-    "dynamic_companion_pronouns": "custom_value2",
-    "dynamic_companion_gender_identity": "custom_value"
+    "pronouns": "custom_value2",
+    "gender_identity": "custom_value"
   },
   "address": {
     "address_line1": "X Random St",
@@ -263,7 +263,7 @@ This endpoint retrieves the newly created volunteer.
 | state          | Volunteers State 2 letter abbreviation eg.: `CA` |
 | zip            | 5 digits zip code |
 | languages      | Comma separated list of Language Object type labels |
-| dynamic_fields | JSON formatted custom fields |
+| custom_fields | JSON formatted custom fields |
 
 ## Create a Volunteer for a specific Person
 
@@ -283,7 +283,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people/82/volunt
 --form 'city="San Francisco"' \
 --form 'state="CA"' \
 --form 'zip="94117"' \
---form 'dynamic_fields="{\"dynamic_companion_gender_identity\": \"custom_value\", \"dynamic_companion_pronouns\": \"custom_value2\"}"'
+--form 'custom_fields="{\"gender_identity\": \"custom_value\", \"pronouns\": \"custom_value2\"}"'
 ```
 
 ```ruby
@@ -296,7 +296,7 @@ url = URI("http://app.monami.test/api/people/82/volunteers/")
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = "Basic #{credential}"
-form_data = [['first_name', 'Jane'],['preferred_name', 'Volunteer'],['last_name', 'Doe'],['date_of_birth', '1940-05-30'],['email', 'sample@monami.io'],['gender', 'female'],['phone', '+17075518391'],['languages', 'english,portuguese'],['address_line1', 'X Random St'],['city', 'San Francisco'],['state', 'CA'],['zip', '94117'],['country', 'United States'],['dynamic_fields', '{"dynamic_companion_gender_identity": "custom_value", "dynamic_companion_pronouns": "custom_value2"}']]
+form_data = [['first_name', 'Jane'],['preferred_name', 'Volunteer'],['last_name', 'Doe'],['date_of_birth', '1940-05-30'],['email', 'sample@monami.io'],['gender', 'female'],['phone', '+17075518391'],['languages', 'english,portuguese'],['address_line1', 'X Random St'],['city', 'San Francisco'],['state', 'CA'],['zip', '94117'],['country', 'United States'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
 request.set_form form_data, 'multipart/form-data'
 response = http.request(request)
 puts response.read_body
@@ -317,8 +317,8 @@ puts response.read_body
   "email": "sample@monami.io",
   "label": "volunteer-d",
   "custom_fields": {
-    "dynamic_companion_pronouns": "custom_value2",
-    "dynamic_companion_gender_identity": "custom_value"
+    "pronouns": "custom_value2",
+    "identity": "custom_value"
   },
   "address": {
     "address_line1": "X Random St",
@@ -364,5 +364,5 @@ This endpoint retrieves a specific client.
 | state          | Clients State 2 letter abbreviation eg.: `CA` |
 | zip            | 5 digits zip code |
 | languages      | Comma separated list of Language Object type labels |
-| dynamic_fields | JSON formatted custom fields |
+| custom_fields | JSON formatted custom fields |
 
