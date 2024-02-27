@@ -343,10 +343,16 @@
             <a href="#clients" class="toc-h1 toc-link" data-title="Clients">Clients</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-clients" class="toc-h2 toc-link" data-title="Get All clients">Get All clients</a>
+                    <a href="#get-all-clients" class="toc-h2 toc-link" data-title="Get All Clients">Get All Clients</a>
                   </li>
                   <li>
                     <a href="#get-a-specific-client" class="toc-h2 toc-link" data-title="Get a Specific Client">Get a Specific Client</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-client" class="toc-h2 toc-link" data-title="Create a Client">Create a Client</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-client-for-a-specific-person" class="toc-h2 toc-link" data-title="Create a Client for a specific Person">Create a Client for a specific Person</a>
                   </li>
               </ul>
           </li>
@@ -409,6 +415,23 @@
                   </li>
                   <li>
                     <a href="#get-visits-by-start-at-date" class="toc-h2 toc-link" data-title="Get Visits by Start At Date">Get Visits by Start At Date</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#volunteers" class="toc-h1 toc-link" data-title="Volunteers">Volunteers</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-volunteers" class="toc-h2 toc-link" data-title="Get All Volunteers">Get All Volunteers</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-volunteer" class="toc-h2 toc-link" data-title="Get a Specific Volunteer">Get a Specific Volunteer</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-volunteer" class="toc-h2 toc-link" data-title="Create a Volunteer">Create a Volunteer</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-volunteer-for-a-specific-person" class="toc-h2 toc-link" data-title="Create a Volunteer for a specific Person">Create a Volunteer for a specific Person</a>
                   </li>
               </ul>
           </li>
@@ -1147,16 +1170,16 @@ Remember — the info!
 <td>The ID for the volunteer associated with the client call</td>
 </tr>
 </tbody></table>
-<h1 id='clients'>Clients</h1><h2 id='get-all-clients'>Get All clients</h2>
+<h1 id='clients'>Clients</h1><h2 id='get-all-clients'>Get All Clients</h2>
 <p>This endpoint returns a paginated list of clients as well as pagination links and meta information.</p>
 
 <blockquote>
 <p>GET /api/clients</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="s2">"https://app.monami.io/api/clients?page=1&amp;per_page=3"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="s2">"https://app.monami.io/api/clients?page=1&amp;per_page=1"</span>
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
 
-  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/clients?page=1&amp;per_page=3'</span><span class="p">,</span>
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/clients?page=1&amp;per_page=1'</span><span class="p">,</span>
     <span class="ss">headers: </span><span class="p">{</span>
       <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
       <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
@@ -1169,38 +1192,46 @@ Remember — the info!
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"clients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Truman"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moon"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Haley"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"truman@example.monami.io"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">103</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T07:40:43.088-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T07:45:05.875-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-f3e8ee17"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1934-02-27"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"client@monami.io"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T15:40:42.601Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T15:45:05.848Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prefer not to say"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"spanish"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.monami.io/api/clients?page=1&amp;per_page=3"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.monami.io/api/clients?page=1&amp;per_page=3"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.monami.io/api/clients?page=2&amp;per_page=3"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.monami.io/api/clients?page=2&amp;per_page=3"</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients?page=2&amp;per_page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients?page=24&amp;per_page=1"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
     </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1213,7 +1244,7 @@ Remember — the info!
 </thead><tbody>
 <tr>
 <td>clients</td>
-<td>The collection of results .</td>
+<td>The collection of results.</td>
 </tr>
 <tr>
 <td>links</td>
@@ -1251,10 +1282,10 @@ Remember — the info!
 <blockquote>
 <p>GET /api/clients/:id</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/clients/1
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/clients/2
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
 
-  <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/clients/1'</span><span class="p">,</span>
+  <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/clients/2'</span><span class="p">,</span>
     <span class="ss">headers: </span><span class="p">{</span>
       <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
       <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
@@ -1265,12 +1296,36 @@ Remember — the info!
 <p>A sucessful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Truman"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moon"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Haley"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"truman@example.monami.io"</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T07:40:43.088-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T07:45:05.875-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-f3e8ee17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1934-02-27"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"client@monami.io"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T15:40:42.601Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T15:45:05.848Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prefer not to say"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"spanish"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a specific client.</p>
@@ -1286,6 +1341,266 @@ Remember — the info!
 <tr>
 <td>id</td>
 <td>The id of the client to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-client'>Create a Client</h2>
+<blockquote>
+<p>POST /api/clients/</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/clients/ <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'first_name="Jane"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'preferred_name="Client"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'last_name="Doe"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'date_of_birth="1940-05-30"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'email="sample@monami.io"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'gender="female"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'phone="+17075518391"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'languages="english,portuguese"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'address_line1="X Random St"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'city="San Francisco"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'state="CA"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'zip="94117"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'dynamic_fields="{\"dynamic_companion_gender_identity\": \"custom_value\", \"dynamic_companion_pronouns\": \"custom_value2\"}"'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
+
+<span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://app.monami.test/api/clients/"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">form_data</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">'first_name'</span><span class="p">,</span> <span class="s1">'Jane'</span><span class="p">],[</span><span class="s1">'preferred_name'</span><span class="p">,</span> <span class="s1">'Client'</span><span class="p">],[</span><span class="s1">'last_name'</span><span class="p">,</span> <span class="s1">'Doe'</span><span class="p">],[</span><span class="s1">'date_of_birth'</span><span class="p">,</span> <span class="s1">'1940-05-30'</span><span class="p">],[</span><span class="s1">'email'</span><span class="p">,</span> <span class="s1">'sample@monami.io'</span><span class="p">],[</span><span class="s1">'gender'</span><span class="p">,</span> <span class="s1">'female'</span><span class="p">],[</span><span class="s1">'phone'</span><span class="p">,</span> <span class="s1">'+17075518391'</span><span class="p">],[</span><span class="s1">'languages'</span><span class="p">,</span> <span class="s1">'english,portuguese'</span><span class="p">],[</span><span class="s1">'address_line1'</span><span class="p">,</span> <span class="s1">'X Random St'</span><span class="p">],[</span><span class="s1">'city'</span><span class="p">,</span> <span class="s1">'San Francisco'</span><span class="p">],[</span><span class="s1">'state'</span><span class="p">,</span> <span class="s1">'CA'</span><span class="p">],[</span><span class="s1">'zip'</span><span class="p">,</span> <span class="s1">'94117'</span><span class="p">],[</span><span class="s1">'country'</span><span class="p">,</span> <span class="s1">'United States'</span><span class="p">],[</span><span class="s1">'dynamic_fields'</span><span class="p">,</span> <span class="s1">'{"dynamic_companion_gender_identity": "custom_value", "dynamic_companion_pronouns": "custom_value2"}'</span><span class="p">]]</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">set_form</span> <span class="n">form_data</span><span class="p">,</span> <span class="s1">'multipart/form-data'</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T09:51:33.078-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T09:51:33.078-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-318cbbd8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"dynamic_companion_pronouns"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_value2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dynamic_companion_gender_identity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X Random St"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94117"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1940-05-30"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample@monami.io"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T17:51:32.984Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T17:51:33.122Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Female"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the newly created client.</p>
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+<h3 id='payload-parameters'>Payload Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>Client&#39;s first name</td>
+</tr>
+<tr>
+<td>preferred_name</td>
+<td>Client&#39;s preferred name</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>Client&#39;s last name</td>
+</tr>
+<tr>
+<td>date_of_birth</td>
+<td>Client&#39;s date eg.: <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td>email</td>
+<td>Client&#39;s email address</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>Client&#39;s gender. Options are: <code>female</code>, <code>male</code>, <code>trans_female</code>, <code>trans_male</code>, <code>non_binary</code>, <code>trans_non_binary</code>, <code>gender_queer</code>, <code>two_spirit</code>, <code>questioning_not_sure</code>, <code>not_listed</code>, <code>prefer_not_to_say</code></td>
+</tr>
+<tr>
+<td>address_line1</td>
+<td>Client&#39;s address</td>
+</tr>
+<tr>
+<td>city</td>
+<td>Client&#39;s City</td>
+</tr>
+<tr>
+<td>state</td>
+<td>Clients State 2 letter abbreviation eg.: <code>CA</code></td>
+</tr>
+<tr>
+<td>zip</td>
+<td>5 digits zip code</td>
+</tr>
+<tr>
+<td>languages</td>
+<td>Comma separated list of Language Object type labels</td>
+</tr>
+<tr>
+<td>dynamic_fields</td>
+<td>JSON formatted custom fields</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-client-for-a-specific-person'>Create a Client for a specific Person</h2>
+<blockquote>
+<p>POST /api/people/:person_id/clients/</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/people/82/clients/ <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'first_name="Jane"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'preferred_name="Client"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'last_name="Doe"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'date_of_birth="1940-05-30"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'email="sample@monami.io"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'gender="female"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'phone="+17075518391"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'languages="english,portuguese"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'address_line1="X Random St"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'city="San Francisco"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'state="CA"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'zip="94117"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'dynamic_fields="{\"dynamic_companion_gender_identity\": \"custom_value\", \"dynamic_companion_pronouns\": \"custom_value2\"}"'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
+
+<span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://app.monami.test/api/people/82/clients/"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">form_data</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">'first_name'</span><span class="p">,</span> <span class="s1">'Jane'</span><span class="p">],[</span><span class="s1">'preferred_name'</span><span class="p">,</span> <span class="s1">'Client'</span><span class="p">],[</span><span class="s1">'last_name'</span><span class="p">,</span> <span class="s1">'Doe'</span><span class="p">],[</span><span class="s1">'date_of_birth'</span><span class="p">,</span> <span class="s1">'1940-05-30'</span><span class="p">],[</span><span class="s1">'email'</span><span class="p">,</span> <span class="s1">'sample@monami.io'</span><span class="p">],[</span><span class="s1">'gender'</span><span class="p">,</span> <span class="s1">'female'</span><span class="p">],[</span><span class="s1">'phone'</span><span class="p">,</span> <span class="s1">'+17075518391'</span><span class="p">],[</span><span class="s1">'languages'</span><span class="p">,</span> <span class="s1">'english,portuguese'</span><span class="p">],[</span><span class="s1">'address_line1'</span><span class="p">,</span> <span class="s1">'X Random St'</span><span class="p">],[</span><span class="s1">'city'</span><span class="p">,</span> <span class="s1">'San Francisco'</span><span class="p">],[</span><span class="s1">'state'</span><span class="p">,</span> <span class="s1">'CA'</span><span class="p">],[</span><span class="s1">'zip'</span><span class="p">,</span> <span class="s1">'94117'</span><span class="p">],[</span><span class="s1">'country'</span><span class="p">,</span> <span class="s1">'United States'</span><span class="p">],[</span><span class="s1">'dynamic_fields'</span><span class="p">,</span> <span class="s1">'{"dynamic_companion_gender_identity": "custom_value", "dynamic_companion_pronouns": "custom_value2"}'</span><span class="p">]]</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">set_form</span> <span class="n">form_data</span><span class="p">,</span> <span class="s1">'multipart/form-data'</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T09:51:33.078-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T09:51:33.078-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-318cbbd8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"dynamic_companion_pronouns"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_value2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dynamic_companion_gender_identity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X Random St"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94117"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1940-05-30"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample@monami.io"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T17:51:32.984Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T17:51:33.122Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Female"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a specific client.</p>
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+<h3 id='payload-parameters-2'>Payload Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the client to retrieve</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>Client&#39;s first name</td>
+</tr>
+<tr>
+<td>preferred_name</td>
+<td>Client&#39;s preferred name</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>Client&#39;s last name</td>
+</tr>
+<tr>
+<td>date_of_birth</td>
+<td>Client&#39;s date eg.: <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td>email</td>
+<td>Client&#39;s email address</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>Client&#39;s gender. Options are: <code>female</code>, <code>male</code>, <code>trans_female</code>, <code>trans_male</code>, <code>non_binary</code>, <code>trans_non_binary</code>, <code>gender_queer</code>, <code>two_spirit</code>, <code>questioning_not_sure</code>, <code>not_listed</code>, <code>prefer_not_to_say</code></td>
+</tr>
+<tr>
+<td>address_line1</td>
+<td>Client&#39;s address</td>
+</tr>
+<tr>
+<td>city</td>
+<td>Client&#39;s City</td>
+</tr>
+<tr>
+<td>state</td>
+<td>Clients State 2 letter abbreviation eg.: <code>CA</code></td>
+</tr>
+<tr>
+<td>zip</td>
+<td>5 digits zip code</td>
+</tr>
+<tr>
+<td>languages</td>
+<td>Comma separated list of Language Object type labels</td>
+</tr>
+<tr>
+<td>dynamic_fields</td>
+<td>JSON formatted custom fields</td>
 </tr>
 </tbody></table>
 <h1 id='languages'>Languages</h1><h2 id='get-languages'>Get Languages</h2>
@@ -2622,6 +2937,455 @@ Remember — the info!
 <tr>
 <td>start_at_to</td>
 <td>The last date a visit could happen on in the given range</td>
+</tr>
+</tbody></table>
+<h1 id='volunteers'>Volunteers</h1><h2 id='get-all-volunteers'>Get All Volunteers</h2>
+<p>This endpoint returns a paginated list of volunteers as well as pagination links and meta information.</p>
+
+<blockquote>
+<p>GET /api/volunteers</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="s2">"https://app.monami.io/api/volunteers?page=1&amp;per_page=1"</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/volunteers?page=1&amp;per_page=1'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"volunteers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T07:40:39.407-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T07:40:39.988-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample@monami.io"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1946-02-27"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample@monami.io"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T15:40:38.788Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T15:40:40.006Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prefer not to say"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"spanish"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/volunteers?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/volunteers?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/volunteers?page=2&amp;per_page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/volunteers?page=2&amp;per_page=1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>volunteers</td>
+<td>The collection of results.</td>
+</tr>
+<tr>
+<td>links</td>
+<td>Pagination links to access all the pages of the results</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>Helpful response metadata</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>Select the page of results.</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>25</td>
+<td>How many results per page.</td>
+</tr>
+</tbody></table>
+
+<!-- <aside class="success">
+Remember — the info!
+</aside> -->
+<h2 id='get-a-specific-volunteer'>Get a Specific Volunteer</h2>
+<blockquote>
+<p>GET /api/volunteers/:id</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/volunteers/1
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/volunteers/1'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T07:40:39.407-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T07:40:39.988-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample@monami.io"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1946-02-27"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample@monami.io"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T15:40:38.788Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T15:40:40.006Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prefer not to say"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"spanish"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a specific volunteer.</p>
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the volunteer to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-volunteer'>Create a Volunteer</h2>
+<blockquote>
+<p>POST /api/volunteer/</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/volunteers/ <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'first_name="Jane"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'preferred_name="Volunteer"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'last_name="Doe"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'date_of_birth="1940-05-30"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'email="sample@monami.io"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'gender="female"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'phone="+17075518391"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'languages=" [\"english\", \"portuguese\"]"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'address_line1="X Random St"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'city="San Francisco"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'state="CA"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'zip="94117"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'dynamic_fields="{\"dynamic_companion_gender_identity\": \"custom_value\", \"dynamic_companion_pronouns\": \"custom_value2\"}"'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
+
+<span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://app.monami.test/api/clients/"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">form_data</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">'first_name'</span><span class="p">,</span> <span class="s1">'Jane'</span><span class="p">],[</span><span class="s1">'preferred_name'</span><span class="p">,</span> <span class="s1">'Volunteer'</span><span class="p">],[</span><span class="s1">'last_name'</span><span class="p">,</span> <span class="s1">'Doe'</span><span class="p">],[</span><span class="s1">'date_of_birth'</span><span class="p">,</span> <span class="s1">'1940-05-30'</span><span class="p">],[</span><span class="s1">'email'</span><span class="p">,</span> <span class="s1">'sample@monami.io'</span><span class="p">],[</span><span class="s1">'gender'</span><span class="p">,</span> <span class="s1">'female'</span><span class="p">],[</span><span class="s1">'phone'</span><span class="p">,</span> <span class="s1">'+17075518391'</span><span class="p">],[</span><span class="s1">'languages'</span><span class="p">,</span> <span class="s1">'english,portuguese'</span><span class="p">],[</span><span class="s1">'address_line1'</span><span class="p">,</span> <span class="s1">'X Random St'</span><span class="p">],[</span><span class="s1">'city'</span><span class="p">,</span> <span class="s1">'San Francisco'</span><span class="p">],[</span><span class="s1">'state'</span><span class="p">,</span> <span class="s1">'CA'</span><span class="p">],[</span><span class="s1">'zip'</span><span class="p">,</span> <span class="s1">'94117'</span><span class="p">],[</span><span class="s1">'country'</span><span class="p">,</span> <span class="s1">'United States'</span><span class="p">],[</span><span class="s1">'dynamic_fields'</span><span class="p">,</span> <span class="s1">'{"dynamic_companion_gender_identity": "custom_value", "dynamic_companion_pronouns": "custom_value2"}'</span><span class="p">]]</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">set_form</span> <span class="n">form_data</span><span class="p">,</span> <span class="s1">'multipart/form-data'</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"applied"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T11:00:43.619-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T11:00:43.619-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Volunteer"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample@monami.io"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"volunteer-d"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"dynamic_companion_pronouns"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_value2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dynamic_companion_gender_identity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X Random St"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94117"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Volunteer"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1940-05-30"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample@monami.io"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T17:51:32.984Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T19:00:43.654Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Female"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the newly created volunteer.</p>
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+<h3 id='payload-parameters'>Payload Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>Volunteer&#39;s first name</td>
+</tr>
+<tr>
+<td>preferred_name</td>
+<td>Volunteer&#39;s preferred name</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>Volunteer&#39;s last name</td>
+</tr>
+<tr>
+<td>date_of_birth</td>
+<td>Volunteer&#39;s date eg.: <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td>email</td>
+<td>Volunteer&#39;s email address</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>Volunteer&#39;s gender. Options are: <code>female</code>, <code>male</code>, <code>trans_female</code>, <code>trans_male</code>, <code>non_binary</code>, <code>trans_non_binary</code>, <code>gender_queer</code>, <code>two_spirit</code>, <code>questioning_not_sure</code>, <code>not_listed</code>, <code>prefer_not_to_say</code></td>
+</tr>
+<tr>
+<td>address_line1</td>
+<td>Volunteer&#39;s address</td>
+</tr>
+<tr>
+<td>city</td>
+<td>Volunteer&#39;s City</td>
+</tr>
+<tr>
+<td>state</td>
+<td>Volunteers State 2 letter abbreviation eg.: <code>CA</code></td>
+</tr>
+<tr>
+<td>zip</td>
+<td>5 digits zip code</td>
+</tr>
+<tr>
+<td>languages</td>
+<td>Comma separated list of Language Object type labels</td>
+</tr>
+<tr>
+<td>dynamic_fields</td>
+<td>JSON formatted custom fields</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-volunteer-for-a-specific-person'>Create a Volunteer for a specific Person</h2>
+<blockquote>
+<p>POST /api/people/:person_id/volunteers/</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/people/82/volunteers/ <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'first_name="Jane"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'preferred_name="Volunteer"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'last_name="Doe"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'date_of_birth="1940-05-30"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'email="sample@monami.io"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'gender="female"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'phone="+17075518391"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'languages=" [\"english\", \"portuguese\"]"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'address_line1="X Random St"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'city="San Francisco"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'state="CA"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'zip="94117"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'dynamic_fields="{\"dynamic_companion_gender_identity\": \"custom_value\", \"dynamic_companion_pronouns\": \"custom_value2\"}"'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
+
+<span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://app.monami.test/api/people/82/volunteers/"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">form_data</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">'first_name'</span><span class="p">,</span> <span class="s1">'Jane'</span><span class="p">],[</span><span class="s1">'preferred_name'</span><span class="p">,</span> <span class="s1">'Volunteer'</span><span class="p">],[</span><span class="s1">'last_name'</span><span class="p">,</span> <span class="s1">'Doe'</span><span class="p">],[</span><span class="s1">'date_of_birth'</span><span class="p">,</span> <span class="s1">'1940-05-30'</span><span class="p">],[</span><span class="s1">'email'</span><span class="p">,</span> <span class="s1">'sample@monami.io'</span><span class="p">],[</span><span class="s1">'gender'</span><span class="p">,</span> <span class="s1">'female'</span><span class="p">],[</span><span class="s1">'phone'</span><span class="p">,</span> <span class="s1">'+17075518391'</span><span class="p">],[</span><span class="s1">'languages'</span><span class="p">,</span> <span class="s1">'english,portuguese'</span><span class="p">],[</span><span class="s1">'address_line1'</span><span class="p">,</span> <span class="s1">'X Random St'</span><span class="p">],[</span><span class="s1">'city'</span><span class="p">,</span> <span class="s1">'San Francisco'</span><span class="p">],[</span><span class="s1">'state'</span><span class="p">,</span> <span class="s1">'CA'</span><span class="p">],[</span><span class="s1">'zip'</span><span class="p">,</span> <span class="s1">'94117'</span><span class="p">],[</span><span class="s1">'country'</span><span class="p">,</span> <span class="s1">'United States'</span><span class="p">],[</span><span class="s1">'dynamic_fields'</span><span class="p">,</span> <span class="s1">'{"dynamic_companion_gender_identity": "custom_value", "dynamic_companion_pronouns": "custom_value2"}'</span><span class="p">]]</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">set_form</span> <span class="n">form_data</span><span class="p">,</span> <span class="s1">'multipart/form-data'</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"applied"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T11:00:43.619-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T11:00:43.619-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Volunteer"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample@monami.io"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"volunteer-d"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"dynamic_companion_pronouns"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_value2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dynamic_companion_gender_identity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X Random St"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94117"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Volunteer"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1940-05-30"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample@monami.io"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T17:51:32.984Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27T19:00:43.654Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Female"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a specific client.</p>
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+<h3 id='payload-parameters-2'>Payload Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the client to retrieve</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>Client&#39;s first name</td>
+</tr>
+<tr>
+<td>preferred_name</td>
+<td>Client&#39;s preferred name</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>Client&#39;s last name</td>
+</tr>
+<tr>
+<td>date_of_birth</td>
+<td>Client&#39;s date eg.: <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td>email</td>
+<td>Client&#39;s email address</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>Client&#39;s gender. Options are: <code>female</code>, <code>male</code>, <code>trans_female</code>, <code>trans_male</code>, <code>non_binary</code>, <code>trans_non_binary</code>, <code>gender_queer</code>, <code>two_spirit</code>, <code>questioning_not_sure</code>, <code>not_listed</code>, <code>prefer_not_to_say</code></td>
+</tr>
+<tr>
+<td>address_line1</td>
+<td>Client&#39;s address</td>
+</tr>
+<tr>
+<td>city</td>
+<td>Client&#39;s City</td>
+</tr>
+<tr>
+<td>state</td>
+<td>Clients State 2 letter abbreviation eg.: <code>CA</code></td>
+</tr>
+<tr>
+<td>zip</td>
+<td>5 digits zip code</td>
+</tr>
+<tr>
+<td>languages</td>
+<td>Comma separated list of Language Object type labels</td>
+</tr>
+<tr>
+<td>dynamic_fields</td>
+<td>JSON formatted custom fields</td>
 </tr>
 </tbody></table>
 <h1 id='webhooks'>Webhooks</h1>
