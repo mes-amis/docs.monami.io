@@ -16,6 +16,7 @@ includes:
   - people
   - service_records
   - visits
+  - volunteers
   - webhooks
 
 search: true
