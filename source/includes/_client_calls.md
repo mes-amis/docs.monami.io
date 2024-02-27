@@ -7,13 +7,13 @@ This endpoint returns a paginated list of client calls as well as pagination lin
 > GET /api/client_calls
 
 ```shell
-curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?page=1&per_page=1"
+curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?page=6&per_page=1"
 ```
 
 ```ruby
   credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
 
-  response = Excon.get('https://app.monami.io/api/client_calls?page=1&per_page=1',
+  response = Excon.get('https://app.monami.io/api/client_calls?page=6&per_page=1',
     headers: {
       'Content-Type' :  'application/json',
       'Authorization' :  "Basic #{credential}"
@@ -27,42 +27,69 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?pa
 {
     "client_calls": [
         {
-            "id": 1,
-            "attempt_count": 1,
-            "status": "pending",
-            "completed_call_start_at": null,
-            "slug": "eea40fcfea5b84db",
-            "created_at": "2024-02-27T15:40:54.742Z",
-            "updated_at": "2024-02-27T15:41:21.287Z",
-            "completed_call_duration_in_minutes": 0,
-            "program": null,
-            "funding_source": null,
-            "service_definition": null,
-            "client": {
-                "id": 5,
+            "id": 11,
+            "attempt_count": 0,
+            "status": "completed",
+            "completed_call_start_at": "2024-02-27T15:40:55.980Z",
+            "slug": "481a1528509286d5",
+            "created_at": "2024-02-27T15:40:55.994Z",
+            "updated_at": "2024-02-27T15:41:21.358Z",
+            "completed_call_duration_in_minutes": 25.0,
+            "program": {
+                "id": 1,
+                "name": "Community Services",
+                "short_name": null,
+                "created_at": "2024-02-27T15:40:36.959Z",
+                "updated_at": "2024-02-27T15:41:16.780Z",
+                "type": "internal",
+                "description": null,
+                "category": null,
+                "reporting_framework": "oaa",
+                "label": "community_services"
+            },
+            "funding_source": {
+                "id": 13,
+                "name": "III-B",
                 "status": "active",
-                "created_at": "2024-02-27T07:40:47.304-08:00",
-                "updated_at": "2024-02-27T07:41:21.792-08:00",
+                "created_at": "2024-02-27T15:41:16.651Z",
+                "updated_at": "2024-02-27T15:41:16.651Z",
+                "label": "iii_b"
+            },
+            "service_definition": {
+                "id": 30,
+                "created_at": "2024-02-27T15:41:16.785Z",
+                "updated_at": "2024-02-27T15:41:16.785Z",
+                "default_frequency": "weekly",
+                "name": "Telephone socialization",
+                "short_name": null,
+                "label": "telephone_socialization",
+                "status": "active"
+            },
+            "client": {
+                "id": 2,
+                "status": "active",
+                "created_at": "2024-02-27T07:40:43.088-08:00",
+                "updated_at": "2024-02-27T07:45:05.875-08:00",
                 "external_id": null,
-                "label": "ami-dc4b157a",
+                "label": "ami-f3e8ee17",
                 "custom_fields": {},
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,
-                    "city": "My String",
-                    "state": "My String",
-                    "zip": "My String"
+                    "city": "Palo Alto",
+                    "state": "CA",
+                    "zip": "94306"
                 },
                 "person": {
-                    "id": 22,
+                    "id": 13,
                     "first_name": "My String",
                     "preferred_name": "My String",
                     "middle_name": null,
                     "last_name": "My String",
-                    "date_of_birth": "1949-02-27",
-                    "email": "sample.email@monami.io",
-                    "created_at": "2024-02-27T15:40:46.669Z",
-                    "updated_at": "2024-02-27T15:41:21.789Z",
+                    "date_of_birth": "1934-02-27",
+                    "email": "sample@monami.io",
+                    "created_at": "2024-02-27T15:40:42.601Z",
+                    "updated_at": "2024-02-27T15:45:05.848Z",
                     "gender": "Prefer not to say",
                     "primary_language": "english",
                     "languages": [
@@ -71,34 +98,34 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?pa
                 }
             },
             "volunteer": {
-                "id": 2,
+                "id": 1,
                 "status": "approved",
-                "created_at": "2024-02-27T07:40:42.068-08:00",
-                "updated_at": "2024-02-27T07:40:42.372-08:00",
+                "created_at": "2024-02-27T07:40:39.407-08:00",
+                "updated_at": "2024-02-27T07:40:39.988-08:00",
                 "external_id": null,
                 "first_name": "My String",
                 "preferred_name": "My String",
                 "last_name": "My String",
-                "email": "volunteer.email@monami.io",
-                "label": "delena-s-nisi-perferendis-libero",
+                "email": "sample@monami.io",
+                "label": "danielle-r-nihil-a-et",
                 "custom_fields": {},
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,
-                    "city": "My String",
-                    "state": "My String",
-                    "zip": "My String"
+                    "city": "Palo Alto",
+                    "state": "CA",
+                    "zip": "94306"
                 },
                 "person": {
-                    "id": 9,
+                    "id": 7,
                     "first_name": "My String",
                     "preferred_name": "My String",
                     "middle_name": null,
                     "last_name": "My String",
-                    "date_of_birth": "1939-02-27",
-                    "email": "volunteer.email@monami.io",
-                    "created_at": "2024-02-27T15:40:40.200Z",
-                    "updated_at": "2024-02-27T15:41:21.854Z",
+                    "date_of_birth": "1946-02-27",
+                    "email": "sample@monami.io",
+                    "created_at": "2024-02-27T15:40:38.788Z",
+                    "updated_at": "2024-02-27T15:40:40.006Z",
                     "gender": "Prefer not to say",
                     "primary_language": "english",
                     "languages": [
@@ -109,14 +136,15 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?pa
         }
     ],
     "links": {
-        "self": "http://app.monami.test/api/client_calls?page=1&per_page=1",
+        "self": "http://app.monami.test/api/client_calls?page=6&per_page=1",
         "first": "http://app.monami.test/api/client_calls?page=1&per_page=1",
-        "next": "http://app.monami.test/api/client_calls?page=2&per_page=1",
+        "prev": "http://app.monami.test/api/client_calls?page=5&per_page=1",
+        "next": "http://app.monami.test/api/client_calls?page=7&per_page=1",
         "last": "http://app.monami.test/api/client_calls?page=23&per_page=1"
     },
     "meta": {
         "total_pages": 23,
-        "current_page": 1
+        "current_page": 6
     }
 }
 ```
@@ -145,13 +173,13 @@ Remember — the info!
 > GET /api/client_calls/:id
 
 ```shell
-curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls/1
+curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls/11
 ```
 
 ```ruby
   credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
 
-  Excon.get('https://app.monami.io/api/client_calls/1',
+  Excon.get('https://app.monami.io/api/client_calls/11',
     headers: {
       'Content-Type' :  'application/json',
       'Authorization' :  "Basic #{credential}"
@@ -163,86 +191,113 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls/1
 
 ```json
 {
-    "id": 1,
-    "attempt_count": 1,
-    "status": "pending",
-    "completed_call_start_at": null,
-    "slug": "eea40fcfea5b84db",
-    "created_at": "2024-02-27T15:40:54.742Z",
-    "updated_at": "2024-02-27T15:41:21.287Z",
-    "completed_call_duration_in_minutes": 0,
-    "program": null,
-    "funding_source": null,
-    "service_definition": null,
-    "client": {
-        "id": 5,
-        "status": "active",
-        "created_at": "2024-02-27T07:40:47.304-08:00",
-        "updated_at": "2024-02-27T07:41:21.792-08:00",
-        "external_id": null,
-        "label": "ami-dc4b157a",
-        "custom_fields": {},
-        "address": {
-            "address_line1": "My String",
-            "address_line2": null,
-            "city": "My String",
-            "state": "My String",
-            "zip": "My String"
-        },
-        "person": {
-            "id": 22,
-            "first_name": "My String",
-            "preferred_name": "My String",
-            "middle_name": null,
-            "last_name": "My String",
-            "date_of_birth": "1949-02-27",
-            "email": "sample.email@monami.io",
-            "created_at": "2024-02-27T15:40:46.669Z",
-            "updated_at": "2024-02-27T15:41:21.789Z",
-            "gender": "Prefer not to say",
-            "primary_language": "english",
-            "languages": [
-                "spanish"
-            ]
+            "id": 11,
+            "attempt_count": 0,
+            "status": "completed",
+            "completed_call_start_at": "2024-02-27T15:40:55.980Z",
+            "slug": "481a1528509286d5",
+            "created_at": "2024-02-27T15:40:55.994Z",
+            "updated_at": "2024-02-27T15:41:21.358Z",
+            "completed_call_duration_in_minutes": 25.0,
+            "program": {
+                "id": 1,
+                "name": "Community Services",
+                "short_name": null,
+                "created_at": "2024-02-27T15:40:36.959Z",
+                "updated_at": "2024-02-27T15:41:16.780Z",
+                "type": "internal",
+                "description": null,
+                "category": null,
+                "reporting_framework": "oaa",
+                "label": "community_services"
+            },
+            "funding_source": {
+                "id": 13,
+                "name": "III-B",
+                "status": "active",
+                "created_at": "2024-02-27T15:41:16.651Z",
+                "updated_at": "2024-02-27T15:41:16.651Z",
+                "label": "iii_b"
+            },
+            "service_definition": {
+                "id": 30,
+                "created_at": "2024-02-27T15:41:16.785Z",
+                "updated_at": "2024-02-27T15:41:16.785Z",
+                "default_frequency": "weekly",
+                "name": "Telephone socialization",
+                "short_name": null,
+                "label": "telephone_socialization",
+                "status": "active"
+            },
+            "client": {
+                "id": 2,
+                "status": "active",
+                "created_at": "2024-02-27T07:40:43.088-08:00",
+                "updated_at": "2024-02-27T07:45:05.875-08:00",
+                "external_id": null,
+                "label": "ami-f3e8ee17",
+                "custom_fields": {},
+                "address": {
+                    "address_line1": "My String",
+                    "address_line2": null,
+                    "city": "Palo Alto",
+                    "state": "CA",
+                    "zip": "94306"
+                },
+                "person": {
+                    "id": 13,
+                    "first_name": "My String",
+                    "preferred_name": "My String",
+                    "middle_name": null,
+                    "last_name": "My String",
+                    "date_of_birth": "1934-02-27",
+                    "email": "sample@monami.io",
+                    "created_at": "2024-02-27T15:40:42.601Z",
+                    "updated_at": "2024-02-27T15:45:05.848Z",
+                    "gender": "Prefer not to say",
+                    "primary_language": "english",
+                    "languages": [
+                        "spanish"
+                    ]
+                }
+            },
+            "volunteer": {
+                "id": 1,
+                "status": "approved",
+                "created_at": "2024-02-27T07:40:39.407-08:00",
+                "updated_at": "2024-02-27T07:40:39.988-08:00",
+                "external_id": null,
+                "first_name": "My String",
+                "preferred_name": "My String",
+                "last_name": "My String",
+                "email": "sample@monami.io",
+                "label": "danielle-r-nihil-a-et",
+                "custom_fields": {},
+                "address": {
+                    "address_line1": "My String",
+                    "address_line2": null,
+                    "city": "Palo Alto",
+                    "state": "CA",
+                    "zip": "94306"
+                },
+                "person": {
+                    "id": 7,
+                    "first_name": "My String",
+                    "preferred_name": "My String",
+                    "middle_name": null,
+                    "last_name": "My String",
+                    "date_of_birth": "1946-02-27",
+                    "email": "sample@monami.io",
+                    "created_at": "2024-02-27T15:40:38.788Z",
+                    "updated_at": "2024-02-27T15:40:40.006Z",
+                    "gender": "Prefer not to say",
+                    "primary_language": "english",
+                    "languages": [
+                        "spanish"
+                    ]
+                }
+            }
         }
-    },
-    "volunteer": {
-        "id": 2,
-        "status": "approved",
-        "created_at": "2024-02-27T07:40:42.068-08:00",
-        "updated_at": "2024-02-27T07:40:42.372-08:00",
-        "external_id": null,
-        "first_name": "My String",
-        "preferred_name": "My String",
-        "last_name": "My String",
-        "email": "volunteer.email@monami.io",
-        "label": "delena-s-nisi-perferendis-libero",
-        "custom_fields": {},
-        "address": {
-            "address_line1": "My String",
-            "address_line2": null,
-            "city": "My String",
-            "state": "My String",
-            "zip": "My String"
-        },
-        "person": {
-            "id": 9,
-            "first_name": "My String",
-            "preferred_name": "My String",
-            "middle_name": null,
-            "last_name": "My String",
-            "date_of_birth": "1939-02-27",
-            "email": "volunteer.email@monami.io",
-            "created_at": "2024-02-27T15:40:40.200Z",
-            "updated_at": "2024-02-27T15:41:21.854Z",
-            "gender": "Prefer not to say",
-            "primary_language": "english",
-            "languages": [
-                "spanish"
-            ]
-        }
-    }
-}
 ```
 
 This endpoint retrieves a specific client call.
