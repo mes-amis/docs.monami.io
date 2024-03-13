@@ -29,21 +29,18 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/volunteers?page
     {
       "id": 1,
       "status": "approved",
-      "created_at": "2024-02-27T07:40:39.407-08:00",
-      "updated_at": "2024-02-27T07:40:39.988-08:00",
+      "created_at": "2024-03-12T07:17:28.069-07:00",
+      "updated_at": "2024-03-12T07:17:29.032-07:00",
       "external_id": null,
-      "first_name": "My String",
-      "preferred_name": "My String",
-      "last_name": "My String",
-      "email": "sample@monami.io",
-      "label": "My String",
+      "label": "twyla-r-earum-rerum-eum",
       "custom_fields": {},
+      "languages": null,
       "address": {
         "address_line1": "My String",
         "address_line2": null,
-        "city": "My String",
-        "state": "My String",
-        "zip": "My String"
+        "city": "Palo Alto",
+        "state": "CA",
+        "zip": "94306"
       },
       "person": {
         "id": 7,
@@ -51,14 +48,15 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/volunteers?page
         "preferred_name": "My String",
         "middle_name": null,
         "last_name": "My String",
-        "date_of_birth": "1946-02-27",
-        "email": "sample@monami.io",
-        "created_at": "2024-02-27T15:40:38.788Z",
-        "updated_at": "2024-02-27T15:40:40.006Z",
-        "gender": "Prefer not to say",
+        "date_of_birth": "1930-03-12",
+        "email": "email@monami.io",
+        "created_at": "2024-03-12T14:17:27.096Z",
+        "updated_at": "2024-03-12T14:17:29.037Z",
+        "gender": "prefer_not_to_say",
+        "primary_phone_number": "+17075514082",
         "primary_language": "english",
         "languages": [
-            "spanish"
+          "spanish"
         ]
       }
     }
@@ -120,21 +118,18 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/volunteers/1
 {
   "id": 1,
   "status": "approved",
-  "created_at": "2024-02-27T07:40:39.407-08:00",
-  "updated_at": "2024-02-27T07:40:39.988-08:00",
+  "created_at": "2024-03-12T07:17:28.069-07:00",
+  "updated_at": "2024-03-12T07:17:29.032-07:00",
   "external_id": null,
-  "first_name": "My String",
-  "preferred_name": "My String",
-  "last_name": "My String",
-  "email": "sample@monami.io",
-  "label": "My String",
+  "label": "twyla-r-earum-rerum-eum",
   "custom_fields": {},
+  "languages": null,
   "address": {
     "address_line1": "My String",
     "address_line2": null,
-    "city": "My String",
-    "state": "My String",
-    "zip": "My String"
+    "city": "Palo Alto",
+    "state": "CA",
+    "zip": "94306"
   },
   "person": {
     "id": 7,
@@ -142,14 +137,15 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/volunteers/1
     "preferred_name": "My String",
     "middle_name": null,
     "last_name": "My String",
-    "date_of_birth": "1946-02-27",
-    "email": "sample@monami.io",
-    "created_at": "2024-02-27T15:40:38.788Z",
-    "updated_at": "2024-02-27T15:40:40.006Z",
-    "gender": "Prefer not to say",
+    "date_of_birth": "1930-03-12",
+    "email": "email@monami.io",
+    "created_at": "2024-03-12T14:17:27.096Z",
+    "updated_at": "2024-03-12T14:17:29.037Z",
+    "gender": "prefer_not_to_say",
+    "primary_phone_number": "+17075514082",
     "primary_language": "english",
     "languages": [
-        "spanish"
+      "spanish"
     ]
   }
 }
@@ -171,18 +167,9 @@ This endpoint retrieves a specific volunteer.
 
 ```shell
 curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/volunteers/ \
---form 'first_name="Jane"' \
---form 'preferred_name="Volunteer"' \
---form 'last_name="Doe"' \
---form 'date_of_birth="1940-05-30"' \
---form 'email="sample@monami.io"' \
---form 'gender="female"' \
---form 'phone="+17075518391"' \
---form 'languages=" [\"english\", \"portuguese\"]"' \
---form 'address_line1="X Random St"' \
---form 'city="San Francisco"' \
---form 'state="CA"' \
---form 'zip="94117"' \
+--form 'person="{\"first_name\": \"John\",\"preferred_name\": \"Volunteer\",\"last_name\": \"Doe\",\"date_of_birth\": \"1940-05-30\",\"email\": \"volunteer@monami.io\",\"gender\": \"male\",\"primary_phone_number\": \"+17075518391\"}"' \
+--form 'address="{\"address_line1\": \"X Random St\", \"city\": \"San Francisco\", \"state\": \"CA\", \"zip\": \"94117\"}"' \
+--form 'languages="english,portuguese"' \
 --form 'custom_fields="{\"gender_identity\": \"custom_value\", \"pronouns\": \"custom_value2\"}"'
 ```
 
@@ -191,12 +178,12 @@ require "uri"
 require "net/http"
 
 credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
-url = URI("http://app.monami.test/api/clients/")
+url = URI("http://app.monami.test/api/volunteers/")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = "Basic #{credential}"
-form_data = [['first_name', 'Jane'],['preferred_name', 'Volunteer'],['last_name', 'Doe'],['date_of_birth', '1940-05-30'],['email', 'sample@monami.io'],['gender', 'female'],['phone', '+17075518391'],['languages', 'english,portuguese'],['address_line1', 'X Random St'],['city', 'San Francisco'],['state', 'CA'],['zip', '94117'],['country', 'United States'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
+form_data = [['person', '{"first_name": "John","preferred_name": "Volunteer","last_name": "Doe","date_of_birth": "1940-05-30","email": "volunteer@monami.io","gender": "male","primary_phone_number": "+17075518391"}'],['address', '{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'],['languages', 'english,portuguese'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
 request.set_form form_data, 'multipart/form-data'
 response = http.request(request)
 puts response.read_body
@@ -208,18 +195,18 @@ puts response.read_body
 {
   "id": 3,
   "status": "applied",
-  "created_at": "2024-02-27T11:00:43.619-08:00",
-  "updated_at": "2024-02-27T11:00:43.619-08:00",
+  "created_at": "2024-03-13T11:38:00.900-07:00",
+  "updated_at": "2024-03-13T11:38:00.900-07:00",
   "external_id": null,
-  "first_name": "Jane",
-  "preferred_name": "Volunteer",
-  "last_name": "Doe",
-  "email": "sample@monami.io",
   "label": "volunteer-d",
   "custom_fields": {
     "pronouns": "custom_value2",
     "gender_identity": "custom_value"
   },
+  "languages": [
+    "english",
+    "portuguese"
+  ],
   "address": {
     "address_line1": "X Random St",
     "address_line2": null,
@@ -228,18 +215,22 @@ puts response.read_body
     "zip": "94117"
   },
   "person": {
-    "id": 82,
-    "first_name": "Jane",
+    "id": 79,
+    "first_name": "John",
     "preferred_name": "Volunteer",
     "middle_name": null,
     "last_name": "Doe",
     "date_of_birth": "1940-05-30",
-    "email": "sample@monami.io",
-    "created_at": "2024-02-27T17:51:32.984Z",
-    "updated_at": "2024-02-27T19:00:43.654Z",
-    "gender": "Female",
+    "email": "volunteer@monami.io",
+    "created_at": "2024-03-13T18:38:00.777Z",
+    "updated_at": "2024-03-13T18:38:00.931Z",
+    "gender": "male",
+    "primary_phone_number": "+17075518391",
     "primary_language": null,
-    "languages": null
+    "languages": [
+      "english",
+      "portuguese"
+    ]
   }
 }
 ```
@@ -252,37 +243,38 @@ This endpoint retrieves the newly created volunteer.
 
 | Parameter      | Description                      |
 | -------------- | -------------------------------- |
-| first_name     | Volunteer's first name      |
-| preferred_name | Volunteer's preferred name  |
-| last_name      | Volunteer's last name       |
-| date_of_birth  | Volunteer's date eg.: `YYYY-MM-DD` |
-| email          | Volunteer's email address          |
-| gender         | Volunteer's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
-| address_line1  | Volunteer's address |
-| city           | Volunteer's City |
-| state          | Volunteers State 2 letter abbreviation eg.: `CA` |
-| zip            | 5 digits zip code |
+| person         | JSON formatted person parameters |
+| address        | JSON formatted address parameters|
 | languages      | Comma separated list of Language Object type labels |
-| custom_fields | JSON formatted custom fields |
+| custom_fields  | JSON formatted custom fields |
+
+#### Person Parameters
+
+| Parameter      | Description                      |
+| -------------- | -------------------------------- |
+| first_name     | Volunteer's first name              |
+| preferred_name | Volunteer's preferred name          |
+| last_name      | Volunteer's last name               |
+| date_of_birth  | Volunteer's date eg.: `YYYY-MM-DD`  |
+| email          | Volunteer's email address           |
+| gender         | Volunteer's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
+
+#### Address Parameters
+| Parameter      | Description                                   |
+| -------------- | --------------------------------------------- |
+| address_line1  | Volunteer's address                              |
+| city           | Volunteer's City                                 |
+| state          | Volunteers State 2 letter abbreviation eg.: `CA` |
+| zip            | 5 digits zip code                             |
 
 ## Create a Volunteer for a specific Person
 
 > POST /api/people/:person_id/volunteers/
 
 ```shell
-curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people/82/volunteers/ \
---form 'first_name="Jane"' \
---form 'preferred_name="Volunteer"' \
---form 'last_name="Doe"' \
---form 'date_of_birth="1940-05-30"' \
---form 'email="sample@monami.io"' \
---form 'gender="female"' \
---form 'phone="+17075518391"' \
---form 'languages=" [\"english\", \"portuguese\"]"' \
---form 'address_line1="X Random St"' \
---form 'city="San Francisco"' \
---form 'state="CA"' \
---form 'zip="94117"' \
+curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people/79/volunteers/ \
+--form 'address="{\"address_line1\": \"X Random St\", \"city\": \"San Francisco\", \"state\": \"CA\", \"zip\": \"94117\"}"' \
+--form 'languages="english,portuguese"' \
 --form 'custom_fields="{\"gender_identity\": \"custom_value\", \"pronouns\": \"custom_value2\"}"'
 ```
 
@@ -291,12 +283,12 @@ require "uri"
 require "net/http"
 
 credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
-url = URI("http://app.monami.test/api/people/82/volunteers/")
+url = URI("http://app.monami.test/api/people/79/volunteers/")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = "Basic #{credential}"
-form_data = [['first_name', 'Jane'],['preferred_name', 'Volunteer'],['last_name', 'Doe'],['date_of_birth', '1940-05-30'],['email', 'sample@monami.io'],['gender', 'female'],['phone', '+17075518391'],['languages', 'english,portuguese'],['address_line1', 'X Random St'],['city', 'San Francisco'],['state', 'CA'],['zip', '94117'],['country', 'United States'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
+form_data = [['address', '{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'],['languages', 'english,portuguese'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
 request.set_form form_data, 'multipart/form-data'
 response = http.request(request)
 puts response.read_body
@@ -306,20 +298,20 @@ puts response.read_body
 
 ```json
 {
-  "id": 3,
+  "id": 4,
   "status": "applied",
-  "created_at": "2024-02-27T11:00:43.619-08:00",
-  "updated_at": "2024-02-27T11:00:43.619-08:00",
+  "created_at": "2024-03-13T11:42:32.745-07:00",
+  "updated_at": "2024-03-13T11:42:32.745-07:00",
   "external_id": null,
-  "first_name": "Jane",
-  "preferred_name": "Volunteer",
-  "last_name": "Doe",
-  "email": "sample@monami.io",
   "label": "volunteer-d",
   "custom_fields": {
     "pronouns": "custom_value2",
-    "identity": "custom_value"
+    "gender_identity": "custom_value"
   },
+  "languages": [
+    "english",
+    "portuguese"
+  ],
   "address": {
     "address_line1": "X Random St",
     "address_line2": null,
@@ -328,23 +320,27 @@ puts response.read_body
     "zip": "94117"
   },
   "person": {
-    "id": 82,
-    "first_name": "Jane",
+    "id": 79,
+    "first_name": "John",
     "preferred_name": "Volunteer",
     "middle_name": null,
     "last_name": "Doe",
     "date_of_birth": "1940-05-30",
-    "email": "sample@monami.io",
-    "created_at": "2024-02-27T17:51:32.984Z",
-    "updated_at": "2024-02-27T19:00:43.654Z",
-    "gender": "Female",
+    "email": "volunteer@monami.io",
+    "created_at": "2024-03-13T18:38:00.777Z",
+    "updated_at": "2024-03-13T18:42:32.777Z",
+    "gender": "male",
+    "primary_phone_number": "+17075518391",
     "primary_language": null,
-    "languages": null
+    "languages": [
+      "english",
+      "portuguese"
+    ]
   }
 }
 ```
 
-This endpoint retrieves a specific client.
+This endpoint creates a volunteer for a given person.
 
 <!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
 
@@ -352,17 +348,16 @@ This endpoint retrieves a specific client.
 
 | Parameter      | Description                      |
 | -------------- | -------------------------------- |
-| id             | The id of the client to retrieve |
-| first_name     | Client's first name      |
-| preferred_name | Client's preferred name  |
-| last_name      | Client's last name       |
-| date_of_birth  | Client's date eg.: `YYYY-MM-DD` |
-| email          | Client's email address          |
-| gender         | Client's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
-| address_line1  | Client's address |
-| city           | Client's City |
-| state          | Clients State 2 letter abbreviation eg.: `CA` |
-| zip            | 5 digits zip code |
+| person_id      | Integer ID present in the URL    |
+| address        | JSON formatted address parameters|
 | languages      | Comma separated list of Language Object type labels |
-| custom_fields | JSON formatted custom fields |
+| custom_fields  | JSON formatted custom fields |
+
+#### Address Parameters
+| Parameter      | Description                                   |
+| -------------- | --------------------------------------------- |
+| address_line1  | Volunteer's address                              |
+| city           | Volunteer's City                                 |
+| state          | Volunteers State 2 letter abbreviation eg.: `CA` |
+| zip            | 5 digits zip code                             |
 
