@@ -73,8 +73,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?pa
                 "external_id": null,
                 "label": "ami-2bff7b48",
                 "custom_fields": {},
-                "primary_language": null,
-                "languages": null,
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,
@@ -108,7 +106,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?pa
                 "external_id": null,
                 "label": "twyla-r-earum-rerum-eum",
                 "custom_fields": {},
-                "languages": null,
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,
@@ -237,8 +234,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls/11
         "external_id": null,
         "label": "ami-2bff7b48",
         "custom_fields": {},
-        "primary_language": null,
-        "languages": null,
         "address": {
             "address_line1": "My String",
             "address_line2": null,
@@ -272,7 +267,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls/11
         "external_id": null,
         "label": "twyla-r-earum-rerum-eum",
         "custom_fields": {},
-        "languages": null,
         "address": {
             "address_line1": "My String",
             "address_line2": null,
@@ -383,8 +377,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
                 "external_id": null,
                 "label": "ami-2bff7b48",
                 "custom_fields": {},
-                "primary_language": null,
-                "languages": null,
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,
@@ -418,7 +410,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
                 "external_id": null,
                 "label": "twyla-r-earum-rerum-eum",
                 "custom_fields": {},
-                "languages": null,
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,
@@ -540,8 +531,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
                 "external_id": null,
                 "label": "ami-5b3d9f58",
                 "custom_fields": {},
-                "primary_language": null,
-                "languages": null,
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,
@@ -575,7 +564,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
                 "external_id": null,
                 "label": "twyla-r-earum-rerum-eum",
                 "custom_fields": {},
-                "languages": null,
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,
@@ -697,8 +685,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[c
                 "external_id": null,
                 "label": "ami-2bff7b48",
                 "custom_fields": {},
-                "primary_language": null,
-                "languages": null,
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,
@@ -732,7 +718,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[c
                 "external_id": null,
                 "label": "twyla-r-earum-rerum-eum",
                 "custom_fields": {},
-                "languages": null,
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,

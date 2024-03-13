@@ -34,8 +34,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
       "external_id": null,
       "label": "ami-9776d470",
       "custom_fields": {},
-      "primary_language": null,
-      "languages": null,
       "address": {
         "address_line1": "My String",
         "address_line2": null,
@@ -122,8 +120,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients/12
   "external_id": null,
   "label": "ami-9776d470",
   "custom_fields": {},
-  "primary_language": null,
-  "languages": null,
   "address": {
     "address_line1": "My String",
     "address_line2": null,
@@ -165,9 +161,8 @@ This endpoint retrieves a specific client.
 
 ```shell
 curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients/ \
---form 'person="{\"first_name\": \"John\",\"preferred_name\": \"Client\",\"last_name\": \"Doe\",\"date_of_birth\": \"1940-05-30\",\"email\": \"test@monami.io\",\"gender\": \"female\",\"primary_phone_number\": \"+17075518391\"}"' \
+--form 'person="{\"first_name\": \"John\",\"preferred_name\": \"Client\",\"last_name\": \"Doe\",\"date_of_birth\": \"1940-05-30\",\"email\": \"test@monami.io\",\"gender\": \"female\",\"primary_phone_number\": \"+17075518391\", \"languages\": \"english,portuguese\"}"' \
 --form 'address="{\"address_line1\": \"X Random St\", \"city\": \"San Francisco\", \"state\": \"CA\", \"zip\": \"94117\"}"' \
---form 'languages="english,portuguese"' \
 --form 'custom_fields="{\"gender_identity\": \"custom_value\", \"pronouns\": \"custom_value2\"}"'
 ```
 
@@ -181,7 +176,7 @@ url = URI("http://app.monami.test/api/clients/")
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = "Basic #{credential}"
-form_data = [['person', '{"first_name": "John","preferred_name": "Client","last_name": "Doe","date_of_birth": "1940-05-30","test": "test@monami.io","gender": "female","primary_phone_number": "+17075518391"}'],['address', '{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'],['languages', 'english,portuguese'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
+form_data = [['person', '{"first_name": "John","preferred_name": "Client","last_name": "Doe","date_of_birth": "1940-05-30","test": "test@monami.io","gender": "female","primary_phone_number": "+17075518391", "languages": "english,portuguese"}'],['address', '{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
 request.set_form form_data, 'multipart/form-data'
 response = http.request(request)
 puts response.read_body
@@ -201,11 +196,6 @@ puts response.read_body
     "pronouns": "custom_value2",
     "gender_identity": "custom_value"
   },
-  "primary_language": null,
-  "languages": [
-    "english",
-    "portuguese"
-  ],
   "address": {
     "address_line1": "X Random St",
     "address_line2": null,
@@ -244,7 +234,6 @@ This endpoint retrieves the newly created client.
 | -------------- | -------------------------------- |
 | person         | JSON formatted person parameters |
 | address        | JSON formatted address parameters|
-| languages      | Comma separated list of Language Object type labels |
 | custom_fields  | JSON formatted custom fields |
 
 #### Person Parameters
@@ -257,6 +246,7 @@ This endpoint retrieves the newly created client.
 | date_of_birth  | Client's date eg.: `YYYY-MM-DD`  |
 | email          | Client's email address           |
 | gender         | Client's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
+| languages      | Comma separated list of Language Object type labels |
 
 #### Address Parameters
 | Parameter      | Description                                   |
@@ -272,7 +262,6 @@ This endpoint retrieves the newly created client.
 
 ```shell
 curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people/82/clients/ \
---form 'languages="spanish,portuguese"' \
 --form 'custom_fields="{\"gender_identity\": \"custom_value\", \"pronouns\": \"custom_value2\"}"'
 ```
 
@@ -286,7 +275,7 @@ url = URI("http://app.monami.test/api/people/82/clients/")
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = "Basic #{credential}"
-form_data = [['languages', 'spanish,portuguese'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
+form_data = [['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
 request.set_form form_data, 'multipart/form-data'
 response = http.request(request)
 puts response.read_body
@@ -306,11 +295,6 @@ puts response.read_body
     "pronouns": "custom_value2",
     "gender_identity": "custom_value"
   },
-  "primary_language": null,
-  "languages": [
-    "spanish",
-    "portuguese"
-  ],
   "person": {
     "id": 78,
     "first_name": "Jane",
@@ -326,8 +310,7 @@ puts response.read_body
     "primary_language": null,
     "languages": [
       "english",
-      "portuguese",
-      "spanish"
+      "portuguese"
     ]
   }
 }
@@ -343,6 +326,5 @@ This endpoint creates a client for a specific person.
 | -------------- | -------------------------------- |
 | person_id      | Integer ID present in the URL    |
 | address        | JSON formatted address parameters|
-| languages      | Comma separated list of Language Object type labels |
 | custom_fields  | JSON formatted custom fields |
 

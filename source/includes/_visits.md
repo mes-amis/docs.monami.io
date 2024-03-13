@@ -76,8 +76,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/visits?page=1&p
                 "external_id": null,
                 "label": "ami-3f472c50",
                 "custom_fields": {},
-                "primary_language": null,
-                "languages": null,
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,
@@ -111,7 +109,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/visits?page=1&p
                 "external_id": null,
                 "label": "twyla-r-earum-rerum-eum",
                 "custom_fields": {},
-                "languages": null,
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,
@@ -244,8 +241,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/visits/126
         "external_id": null,
         "label": "ami-3f472c50",
         "custom_fields": {},
-        "primary_language": null,
-        "languages": null,
         "address": {
             "address_line1": "My String",
             "address_line2": null,
@@ -279,7 +274,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/visits/126
         "external_id": null,
         "label": "twyla-r-earum-rerum-eum",
         "custom_fields": {},
-        "languages": null,
         "address": {
             "address_line1": "My String",
             "address_line2": null,
@@ -394,8 +388,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/visits?q[start_a
                 "external_id": null,
                 "label": "ami-5b3d9f58",
                 "custom_fields": {},
-                "primary_language": null,
-                "languages": null,
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,
@@ -429,7 +421,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/visits?q[start_a
                 "external_id": null,
                 "label": "twyla-r-earum-rerum-eum",
                 "custom_fields": {},
-                "languages": null,
                 "address": {
                     "address_line1": "My String",
                     "address_line2": null,

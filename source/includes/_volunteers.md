@@ -34,7 +34,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/volunteers?page
       "external_id": null,
       "label": "twyla-r-earum-rerum-eum",
       "custom_fields": {},
-      "languages": null,
       "address": {
         "address_line1": "My String",
         "address_line2": null,
@@ -123,7 +122,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/volunteers/1
   "external_id": null,
   "label": "twyla-r-earum-rerum-eum",
   "custom_fields": {},
-  "languages": null,
   "address": {
     "address_line1": "My String",
     "address_line2": null,
@@ -167,9 +165,8 @@ This endpoint retrieves a specific volunteer.
 
 ```shell
 curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/volunteers/ \
---form 'person="{\"first_name\": \"John\",\"preferred_name\": \"Volunteer\",\"last_name\": \"Doe\",\"date_of_birth\": \"1940-05-30\",\"email\": \"volunteer@monami.io\",\"gender\": \"male\",\"primary_phone_number\": \"+17075518391\"}"' \
+--form 'person="{\"first_name\": \"John\",\"preferred_name\": \"Volunteer\",\"last_name\": \"Doe\",\"date_of_birth\": \"1940-05-30\",\"email\": \"volunteer@monami.io\",\"gender\": \"male\",\"primary_phone_number\": \"+17075518391\", \"languages\": \"english,portuguese\"}"' \
 --form 'address="{\"address_line1\": \"X Random St\", \"city\": \"San Francisco\", \"state\": \"CA\", \"zip\": \"94117\"}"' \
---form 'languages="english,portuguese"' \
 --form 'custom_fields="{\"gender_identity\": \"custom_value\", \"pronouns\": \"custom_value2\"}"'
 ```
 
@@ -183,7 +180,7 @@ url = URI("http://app.monami.test/api/volunteers/")
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = "Basic #{credential}"
-form_data = [['person', '{"first_name": "John","preferred_name": "Volunteer","last_name": "Doe","date_of_birth": "1940-05-30","email": "volunteer@monami.io","gender": "male","primary_phone_number": "+17075518391"}'],['address', '{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'],['languages', 'english,portuguese'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
+form_data = [['person', '{"first_name": "John","preferred_name": "Volunteer","last_name": "Doe","date_of_birth": "1940-05-30","email": "volunteer@monami.io","gender": "male","primary_phone_number": "+17075518391", "languages": "english,portuguese"}'],['address', '{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
 request.set_form form_data, 'multipart/form-data'
 response = http.request(request)
 puts response.read_body
@@ -203,10 +200,6 @@ puts response.read_body
     "pronouns": "custom_value2",
     "gender_identity": "custom_value"
   },
-  "languages": [
-    "english",
-    "portuguese"
-  ],
   "address": {
     "address_line1": "X Random St",
     "address_line2": null,
@@ -245,7 +238,6 @@ This endpoint retrieves the newly created volunteer.
 | -------------- | -------------------------------- |
 | person         | JSON formatted person parameters |
 | address        | JSON formatted address parameters|
-| languages      | Comma separated list of Language Object type labels |
 | custom_fields  | JSON formatted custom fields |
 
 #### Person Parameters
@@ -258,6 +250,7 @@ This endpoint retrieves the newly created volunteer.
 | date_of_birth  | Volunteer's date eg.: `YYYY-MM-DD`  |
 | email          | Volunteer's email address           |
 | gender         | Volunteer's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
+| languages      | Comma separated list of Language Object type labels |
 
 #### Address Parameters
 | Parameter      | Description                                   |
@@ -274,7 +267,6 @@ This endpoint retrieves the newly created volunteer.
 ```shell
 curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people/79/volunteers/ \
 --form 'address="{\"address_line1\": \"X Random St\", \"city\": \"San Francisco\", \"state\": \"CA\", \"zip\": \"94117\"}"' \
---form 'languages="english,portuguese"' \
 --form 'custom_fields="{\"gender_identity\": \"custom_value\", \"pronouns\": \"custom_value2\"}"'
 ```
 
@@ -288,7 +280,7 @@ url = URI("http://app.monami.test/api/people/79/volunteers/")
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = "Basic #{credential}"
-form_data = [['address', '{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'],['languages', 'english,portuguese'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
+form_data = [['address', '{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
 request.set_form form_data, 'multipart/form-data'
 response = http.request(request)
 puts response.read_body
@@ -308,10 +300,6 @@ puts response.read_body
     "pronouns": "custom_value2",
     "gender_identity": "custom_value"
   },
-  "languages": [
-    "english",
-    "portuguese"
-  ],
   "address": {
     "address_line1": "X Random St",
     "address_line2": null,
@@ -350,7 +338,6 @@ This endpoint creates a volunteer for a given person.
 | -------------- | -------------------------------- |
 | person_id      | Integer ID present in the URL    |
 | address        | JSON formatted address parameters|
-| languages      | Comma separated list of Language Object type labels |
 | custom_fields  | JSON formatted custom fields |
 
 #### Address Parameters
