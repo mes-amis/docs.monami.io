@@ -32,7 +32,7 @@ The Mon Ami API uses the following error codes:
 | 405         | Method Not Allowed    | You tried to access a record with an invalid method.                         |
 | 406         | Not Acceptable        | You requested a format that isn't json.                                      |
 | 410         | Gone                  | The record requested has been removed from our servers.                      |
-| 422         | Unprocessable Entity  | The request has invalid parameters. See the error messages in the respoonse. |
+| 422         | Unprocessable Entity  | The request has invalid parameters. See the error messages in the response.  |
 | 429         | Too Many Requests     | You're requesting too many records! Slow down!                               |
 | 500         | Internal Server Error | We had a problem with our server. Try again later.                           |
 | 503         | Service Unavailable   | We're temporarily offline for maintenance. Please try again later.           |
