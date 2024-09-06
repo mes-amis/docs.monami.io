@@ -17,6 +17,7 @@ includes:
   - people
   - service_records
   - service_definitions
+  - service_rates
   - visits
   - volunteers
   - webhooks
