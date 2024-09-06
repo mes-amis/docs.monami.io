@@ -18,6 +18,7 @@ includes:
   - service_records
   - service_definitions
   - service_rates
+  - funding_sources
   - programs
   - visits
   - volunteers
