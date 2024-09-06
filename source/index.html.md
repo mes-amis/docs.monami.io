@@ -16,6 +16,7 @@ includes:
   - languages
   - people
   - service_records
+  - service_definitions
   - visits
   - volunteers
   - webhooks
