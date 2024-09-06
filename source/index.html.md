@@ -18,6 +18,7 @@ includes:
   - service_records
   - service_definitions
   - service_rates
+  - programs
   - visits
   - volunteers
   - webhooks
