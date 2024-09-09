@@ -16,6 +16,10 @@ includes:
   - languages
   - people
   - service_records
+  - service_definitions
+  - service_rates
+  - funding_sources
+  - programs
   - visits
   - volunteers
   - webhooks
