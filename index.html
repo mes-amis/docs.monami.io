@@ -2213,6 +2213,50 @@ Remember — the info!
 <blockquote>
 <p>POST /api/service_records</p>
 </blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/service_records <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'"{\"recipient_id\":\"ami-54709fe3\",\"program_label\":\"nutrition\",\"service_definition_label\":\"nutrition_definition_name_1\",\"funding_source_label\":\"label_1\",\"provider_label\":\"kihn-mcdermott\",\"service_rate_id\":1,\"unit_count\":2.5,\"service_delivered_on\":\"2024-09-10\",\"comment\":\"Hello API!\"}"'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
+
+<span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://app.monami.test/api/service_records"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">form_data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"recipient_id"</span><span class="ss">:"ami-54709fe3"</span><span class="p">,</span><span class="s2">"program_label"</span><span class="ss">:"nutrition"</span><span class="p">,</span><span class="s2">"service_definition_label"</span><span class="ss">:"nutrition_definition_name_1"</span><span class="p">,</span><span class="s2">"funding_source_label"</span><span class="ss">:"label_1"</span><span class="p">,</span><span class="s2">"provider_label"</span><span class="ss">:"kihn-mcdermott"</span><span class="p">,</span><span class="s2">"service_rate_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">"unit_count"</span><span class="p">:</span><span class="mf">2.5</span><span class="p">,</span><span class="s2">"service_delivered_on"</span><span class="ss">:"2024-09-10"</span><span class="p">,</span><span class="s2">"comment"</span><span class="ss">:"Hello API!"</span><span class="p">}</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">set_form</span> <span class="n">form_data</span><span class="p">,</span> <span class="s1">'multipart/form-data'</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"each"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"unit_count"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"per_unit_expenditure_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"service_delivered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-10"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"service_detail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"service_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"program_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nutrition"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"helping_hands"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"service_definition_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"congregate_dining"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"funding_source_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"state_funding"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"site_label"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-54709fe3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"volunteer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello API!"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"recipient_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients/ami-54709fe3"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
 <h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -2257,52 +2301,6 @@ Remember — the info!
 <td>Notes about the service record</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/service_records <span class="se">\</span>
-<span class="nt">--form</span> <span class="s1">'"{\"recipient_id\":\"ami-54709fe3\",\"program_label\":\"nutrition\",\"service_definition_label\":\"nutrition_definition_name_1\",\"funding_source_label\":\"label_1\",\"provider_label\":\"kihn-mcdermott\",\"service_rate_id\":1,\"unit_count\":2.5,\"service_delivered_on\":\"2024-09-10\",\"comment\":\"Hello API!\"}"'</span>
-</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
-<span class="nb">require</span> <span class="s2">"net/http"</span>
-
-<span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://app.monami.test/api/service_records"</span><span class="p">)</span>
-
-<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
-<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
-<span class="n">form_data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"recipient_id"</span><span class="ss">:"ami-54709fe3"</span><span class="p">,</span><span class="s2">"program_label"</span><span class="ss">:"nutrition"</span><span class="p">,</span><span class="s2">"service_definition_label"</span><span class="ss">:"nutrition_definition_name_1"</span><span class="p">,</span><span class="s2">"funding_source_label"</span><span class="ss">:"label_1"</span><span class="p">,</span><span class="s2">"provider_label"</span><span class="ss">:"kihn-mcdermott"</span><span class="p">,</span><span class="s2">"service_rate_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">"unit_count"</span><span class="p">:</span><span class="mf">2.5</span><span class="p">,</span><span class="s2">"service_delivered_on"</span><span class="ss">:"2024-09-10"</span><span class="p">,</span><span class="s2">"comment"</span><span class="ss">:"Hello API!"</span><span class="p">}</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">set_form</span> <span class="n">form_data</span><span class="p">,</span> <span class="s1">'multipart/form-data'</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
-</code></pre></div>
-<blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"each"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"unit_count"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"per_unit_expenditure_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recipient_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"service_delivered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-10"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"service_detail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"service_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"program_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nutrition"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"provider_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"helping_hands"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"service_definition_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"congregate_dining"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"funding_source_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"state_funding"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"site_label"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recipient_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recipient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-54709fe3"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"volunteer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello API!"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"recipient_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients/ami-54709fe3"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves the newly created client.</p>
-
-<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
 <h3 id='response-parameters'>Response Parameters</h3>
 <table><thead>
 <tr>
