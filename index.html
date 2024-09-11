@@ -346,7 +346,7 @@
             <a href="#clients" class="toc-h1 toc-link" data-title="Clients">Clients</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-clients" class="toc-h2 toc-link" data-title="Get All Clients">Get All Clients</a>
+                    <a href="#list-clients" class="toc-h2 toc-link" data-title="List Clients">List Clients</a>
                   </li>
                   <li>
                     <a href="#get-a-specific-client" class="toc-h2 toc-link" data-title="Get a Specific Client">Get a Specific Client</a>
@@ -397,7 +397,7 @@
                     <a href="#create-a-service-record" class="toc-h2 toc-link" data-title="Create a Service Record">Create a Service Record</a>
                   </li>
                   <li>
-                    <a href="#get-all-service-records" class="toc-h2 toc-link" data-title="Get All service records">Get All service records</a>
+                    <a href="#list-service-records" class="toc-h2 toc-link" data-title="List Service Records">List Service Records</a>
                   </li>
                   <li>
                     <a href="#get-a-specific-service-record" class="toc-h2 toc-link" data-title="Get a Specific Service Record">Get a Specific Service Record</a>
@@ -452,7 +452,7 @@
             <a href="#visits" class="toc-h1 toc-link" data-title="Visits">Visits</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-visits" class="toc-h2 toc-link" data-title="Get All visits">Get All visits</a>
+                    <a href="#list-visits" class="toc-h2 toc-link" data-title="List Visits">List Visits</a>
                   </li>
                   <li>
                     <a href="#get-a-specific-visit" class="toc-h2 toc-link" data-title="Get a Specific Visit">Get a Specific Visit</a>
@@ -466,7 +466,7 @@
             <a href="#volunteers" class="toc-h1 toc-link" data-title="Volunteers">Volunteers</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-volunteers" class="toc-h2 toc-link" data-title="Get All Volunteers">Get All Volunteers</a>
+                    <a href="#list-volunteers" class="toc-h2 toc-link" data-title="List Volunteers">List Volunteers</a>
                   </li>
                   <li>
                     <a href="#get-a-specific-volunteer" class="toc-h2 toc-link" data-title="Get a Specific Volunteer">Get a Specific Volunteer</a>
@@ -1389,7 +1389,7 @@ Remember — the info!
 <td>The last date a client call could be completed at in the given range</td>
 </tr>
 </tbody></table>
-<h1 id='clients'>Clients</h1><h2 id='get-all-clients'>Get All Clients</h2>
+<h1 id='clients'>Clients</h1><h2 id='list-clients'>List Clients</h2>
 <p>This endpoint returns a paginated list of clients as well as pagination links and meta information.</p>
 
 <blockquote>
@@ -1616,10 +1616,7 @@ Remember — the info!
     </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075518391"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"portuguese"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"english"</span><span class="p">,</span><span class="w"> </span><span class="s2">"portuguese"</span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1753,10 +1750,7 @@ Remember — the info!
     </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075518391"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"portuguese"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"english"</span><span class="p">,</span><span class="w"> </span><span class="s2">"portuguese"</span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -2385,7 +2379,7 @@ Remember — the info!
 <td>A map of URLs to related API endpoints.</td>
 </tr>
 </tbody></table>
-<h2 id='get-all-service-records'>Get All service records</h2>
+<h2 id='list-service-records'>List Service Records</h2>
 <p>This endpoint returns a paginated list of service records as well as pagination links and meta information.</p>
 
 <blockquote>
@@ -3278,7 +3272,7 @@ Remember — the info!
 <td>An array of labels of the service definitions associatted with this program</td>
 </tr>
 </tbody></table>
-<h1 id='visits'>Visits</h1><h2 id='get-all-visits'>Get All visits</h2>
+<h1 id='visits'>Visits</h1><h2 id='list-visits'>List Visits</h2>
 <p>This endpoint returns a paginated list of visits as well as pagination links and meta information.</p>
 
 <blockquote>
@@ -3298,128 +3292,124 @@ Remember — the info!
 <p>A sucessful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"visits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">126</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"visit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"schedule_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"scheduled_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"scheduled_start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T15:00:00.000-07:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:18:35.882-07:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:20:35.498-07:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T15:00:00.000-07:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T18:30:00.000-07:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Services"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:24.975Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.381Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"reporting_framework"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oaa"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"community_services"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"funding_source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"III-B"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.053Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.053Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iii_b"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"service_definition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.409Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.409Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"default_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Personal Care"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal_care_2"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:34.014-07:00"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:19:00.423-07:00"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-3f472c50"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94301"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1930-03-12"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@monami.io"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:33.331Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:19:00.410Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075511731"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                        </span><span class="s2">"spanish"</span><span class="w">
-                    </span><span class="p">]</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"volunteer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:28.069-07:00"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:29.032-07:00"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twyla-r-earum-rerum-eum"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94306"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1930-03-12"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@monami.io"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:27.096Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:29.037Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075514082"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                        </span><span class="s2">"spanish"</span><span class="w">
-                    </span><span class="p">]</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"visit_coding"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="nl">"visits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">126</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"visit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"schedule_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"scheduled_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"scheduled_start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T15:00:00.000-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:18:35.882-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:20:35.498-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T15:00:00.000-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T18:30:00.000-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Services"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:24.975Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.381Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reporting_framework"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oaa"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"community_services"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"funding_source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"III-B"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.053Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.053Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iii_b"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"service_definition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.409Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.409Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Personal Care"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal_care_2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:34.014-07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:19:00.423-07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-3f472c50"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94301"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1930-03-12"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@monami.io"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:33.331Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:19:00.410Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075511731"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"spanish"</span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=2&amp;per_page=1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=240&amp;per_page=1"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"volunteer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:28.069-07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:29.032-07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twyla-r-earum-rerum-eum"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94306"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1930-03-12"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@monami.io"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:27.096Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:29.037Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075514082"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"spanish"</span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"visit_coding"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=2&amp;per_page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=240&amp;per_page=1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='response-parameters'>Response Parameters</h3>
 <table><thead>
@@ -3482,114 +3472,110 @@ Remember — the info!
 <p>A sucessful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">126</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"visit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"schedule_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"scheduled_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"scheduled_start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T15:00:00.000-07:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:18:35.882-07:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:20:35.498-07:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T15:00:00.000-07:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T18:30:00.000-07:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Services"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:24.975Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.381Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reporting_framework"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oaa"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"community_services"</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">126</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"visit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"schedule_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scheduled_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scheduled_start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T15:00:00.000-07:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:18:35.882-07:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:20:35.498-07:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T15:00:00.000-07:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T18:30:00.000-07:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Services"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:24.975Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.381Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reporting_framework"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oaa"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"community_services"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"funding_source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"III-B"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.053Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.053Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iii_b"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"service_definition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.409Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.409Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"default_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Personal Care"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal_care_2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:34.014-07:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:19:00.423-07:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-3f472c50"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94301"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"funding_source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"III-B"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.053Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.053Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iii_b"</span><span class="w">
+    </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1930-03-12"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@monami.io"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:33.331Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:19:00.410Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075511731"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"spanish"</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"volunteer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:28.069-07:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:29.032-07:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twyla-r-earum-rerum-eum"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94306"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"service_definition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.409Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.409Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"default_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Personal Care"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal_care_2"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:34.014-07:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:19:00.423-07:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-3f472c50"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94301"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1930-03-12"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@monami.io"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:33.331Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:19:00.410Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075511731"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"spanish"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"volunteer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:28.069-07:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:29.032-07:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twyla-r-earum-rerum-eum"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94306"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1930-03-12"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@monami.io"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:27.096Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:29.037Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075514082"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"spanish"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"visit_coding"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1930-03-12"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@monami.io"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:27.096Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:29.037Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075514082"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"spanish"</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"visit_coding"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a specific visit.</p>
@@ -3625,128 +3611,124 @@ Remember — the info!
 <p>A sucessful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"visits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"visit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"schedule_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"scheduled_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"scheduled_start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T15:00:00.000-07:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:18:07.987-07:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:20:34.273-07:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T15:00:00.000-07:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T18:30:00.000-07:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Services"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:24.975Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.381Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"reporting_framework"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oaa"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"community_services"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"funding_source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"III-B"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.053Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.053Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iii_b"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"service_definition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.409Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.409Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"default_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Personal Care"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal_care_2"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:30.034-07:00"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:19:00.671-07:00"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-5b3d9f58"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94306"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1946-03-12"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@monami.io"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:29.266Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:19:00.668Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075514392"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                        </span><span class="s2">"spanish"</span><span class="w">
-                    </span><span class="p">]</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"volunteer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:28.069-07:00"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:29.032-07:00"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twyla-r-earum-rerum-eum"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94306"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1930-03-12"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@monami.io"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:27.096Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:29.037Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075514082"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                        </span><span class="s2">"spanish"</span><span class="w">
-                    </span><span class="p">]</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"visit_coding"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="nl">"visits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"visit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"schedule_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"scheduled_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"scheduled_start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T15:00:00.000-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:18:07.987-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:20:34.273-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T15:00:00.000-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-10T18:30:00.000-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Services"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:24.975Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.381Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reporting_framework"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oaa"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"community_services"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"funding_source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"III-B"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.053Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.053Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iii_b"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"service_definition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.409Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:18:53.409Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weekly"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Personal Care"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal_care_2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:30.034-07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:19:00.671-07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-5b3d9f58"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94306"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1946-03-12"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@monami.io"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:29.266Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:19:00.668Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075514392"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"spanish"</span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=2&amp;per_page=1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=20&amp;per_page=1"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"volunteer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:28.069-07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T07:17:29.032-07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twyla-r-earum-rerum-eum"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address_line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_line2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94306"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"preferred_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My String"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1930-03-12"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@monami.io"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:27.096Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:29.037Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075514082"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"spanish"</span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"visit_coding"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=1&amp;per_page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=2&amp;per_page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/visits?page=20&amp;per_page=1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint filters based on visit start date.</p>
@@ -3768,7 +3750,7 @@ Remember — the info!
 <td>The last date a visit could happen on in the given range</td>
 </tr>
 </tbody></table>
-<h1 id='volunteers'>Volunteers</h1><h2 id='get-all-volunteers'>Get All Volunteers</h2>
+<h1 id='volunteers'>Volunteers</h1><h2 id='list-volunteers'>List Volunteers</h2>
 <p>This endpoint returns a paginated list of volunteers as well as pagination links and meta information.</p>
 
 <blockquote>
@@ -3817,9 +3799,7 @@ Remember — the info!
         </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075514082"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"spanish"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"spanish"</span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -3922,9 +3902,7 @@ Remember — the info!
     </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075514082"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"spanish"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"spanish"</span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -3999,10 +3977,7 @@ Remember — the info!
     </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075518391"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"portuguese"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"english"</span><span class="p">,</span><span class="w"> </span><span class="s2">"portuguese"</span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4144,10 +4119,7 @@ Remember — the info!
     </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"primary_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075518391"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"portuguese"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"english"</span><span class="p">,</span><span class="w"> </span><span class="s2">"portuguese"</span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
