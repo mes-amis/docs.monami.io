@@ -4,20 +4,6 @@
 
 > POST /api/service_records
 
-### Request Parameters
-
-| Parameter                | Description                                                             |
-| ------------------------ | ----------------------------------------------------------------------- |
-| recipient_id             | The unique ID of the recipient of the service. Ex: `ami-54709fe3`       |
-| program_label            | The label of the Program associated with the service record.            |
-| service_definition_label | The label of the Service Definition associated with the service record. |
-| funding_source_label     | The label of the Funding Source associated with the service record.     |
-| provider_label           | The label of the Provider associated with the service record.           |
-| service_rate_id          | The ID of the service rate associated with the service record.          |
-| unit_count               | The number of service units delivered.                                  |
-| service_delivered_on     | The date the service was rendered.                                      |
-| comment                  | Notes about the service record                                          |
-
 ```shell
 curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/service_records \
 --form '"{\"recipient_id\":\"ami-54709fe3\",\"program_label\":\"nutrition\",\"service_definition_label\":\"nutrition_definition_name_1\",\"funding_source_label\":\"label_1\",\"provider_label\":\"kihn-mcdermott\",\"service_rate_id\":1,\"unit_count\":2.5,\"service_delivered_on\":\"2024-09-10\",\"comment\":\"Hello API!\"}"'
@@ -67,9 +53,21 @@ puts response.read_body
 }
 ```
 
-This endpoint retrieves the newly created client.
-
 <!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+
+### Request Parameters
+
+| Parameter                | Description                                                             |
+| ------------------------ | ----------------------------------------------------------------------- |
+| recipient_id             | The unique ID of the recipient of the service. Ex: `ami-54709fe3`       |
+| program_label            | The label of the Program associated with the service record.            |
+| service_definition_label | The label of the Service Definition associated with the service record. |
+| funding_source_label     | The label of the Funding Source associated with the service record.     |
+| provider_label           | The label of the Provider associated with the service record.           |
+| service_rate_id          | The ID of the service rate associated with the service record.          |
+| unit_count               | The number of service units delivered.                                  |
+| service_delivered_on     | The date the service was rendered.                                      |
+| comment                  | Notes about the service record                                          |
 
 ### Response Parameters
 
