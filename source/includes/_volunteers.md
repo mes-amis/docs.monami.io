@@ -1,6 +1,6 @@
 # Volunteers
 
-## Get All Volunteers
+## List Volunteers
 
 This endpoint returns a paginated list of volunteers as well as pagination links and meta information.
 
@@ -54,9 +54,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/volunteers?page
         "gender": "prefer_not_to_say",
         "primary_phone_number": "+17075514082",
         "primary_language": "english",
-        "languages": [
-          "spanish"
-        ]
+        "languages": ["spanish"]
       }
     }
   ],
@@ -77,7 +75,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/volunteers?page
 
 | Parameter  | Description                                             |
 | ---------- | ------------------------------------------------------- |
-| volunteers | The collection of results.                             |
+| volunteers | The collection of results.                              |
 | links      | Pagination links to access all the pages of the results |
 | meta       | Helpful response metadata                               |
 
@@ -142,9 +140,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/volunteers/1
     "gender": "prefer_not_to_say",
     "primary_phone_number": "+17075514082",
     "primary_language": "english",
-    "languages": [
-      "spanish"
-    ]
+    "languages": ["spanish"]
   }
 }
 ```
@@ -220,10 +216,7 @@ puts response.read_body
     "gender": "male",
     "primary_phone_number": "+17075518391",
     "primary_language": null,
-    "languages": [
-      "english",
-      "portuguese"
-    ]
+    "languages": ["english", "portuguese"]
   }
 }
 ```
@@ -234,31 +227,32 @@ This endpoint retrieves the newly created volunteer.
 
 ### Payload Parameters
 
-| Parameter      | Description                      |
-| -------------- | -------------------------------- |
-| person         | JSON formatted person parameters |
-| address        | JSON formatted address parameters|
-| custom_fields  | JSON formatted custom fields |
+| Parameter     | Description                       |
+| ------------- | --------------------------------- |
+| person        | JSON formatted person parameters  |
+| address       | JSON formatted address parameters |
+| custom_fields | JSON formatted custom fields      |
 
 #### Person Parameters
 
-| Parameter      | Description                      |
-| -------------- | -------------------------------- |
-| first_name     | Volunteer's first name              |
-| preferred_name | Volunteer's preferred name          |
-| last_name      | Volunteer's last name               |
-| date_of_birth  | Volunteer's date eg.: `YYYY-MM-DD`  |
-| email          | Volunteer's email address           |
+| Parameter      | Description                                                                                                                                                                                                |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| first_name     | Volunteer's first name                                                                                                                                                                                     |
+| preferred_name | Volunteer's preferred name                                                                                                                                                                                 |
+| last_name      | Volunteer's last name                                                                                                                                                                                      |
+| date_of_birth  | Volunteer's date eg.: `YYYY-MM-DD`                                                                                                                                                                         |
+| email          | Volunteer's email address                                                                                                                                                                                  |
 | gender         | Volunteer's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
-| languages      | Comma separated list of Language Object type labels |
+| languages      | Comma separated list of Language Object type labels                                                                                                                                                        |
 
 #### Address Parameters
-| Parameter      | Description                                   |
-| -------------- | --------------------------------------------- |
-| address_line1  | Volunteer's address                              |
-| city           | Volunteer's City                                 |
-| state          | Volunteers State 2 letter abbreviation eg.: `CA` |
-| zip            | 5 digits zip code                             |
+
+| Parameter     | Description                                      |
+| ------------- | ------------------------------------------------ |
+| address_line1 | Volunteer's address                              |
+| city          | Volunteer's City                                 |
+| state         | Volunteers State 2 letter abbreviation eg.: `CA` |
+| zip           | 5 digits zip code                                |
 
 ## Create a Volunteer for a specific Person
 
@@ -320,10 +314,7 @@ puts response.read_body
     "gender": "male",
     "primary_phone_number": "+17075518391",
     "primary_language": null,
-    "languages": [
-      "english",
-      "portuguese"
-    ]
+    "languages": ["english", "portuguese"]
   }
 }
 ```
@@ -334,17 +325,17 @@ This endpoint creates a volunteer for a given person.
 
 ### Payload Parameters
 
-| Parameter      | Description                      |
-| -------------- | -------------------------------- |
-| person_id      | Integer ID present in the URL    |
-| address        | JSON formatted address parameters|
-| custom_fields  | JSON formatted custom fields |
+| Parameter     | Description                       |
+| ------------- | --------------------------------- |
+| person_id     | Integer ID present in the URL     |
+| address       | JSON formatted address parameters |
+| custom_fields | JSON formatted custom fields      |
 
 #### Address Parameters
-| Parameter      | Description                                   |
-| -------------- | --------------------------------------------- |
-| address_line1  | Volunteer's address                              |
-| city           | Volunteer's City                                 |
-| state          | Volunteers State 2 letter abbreviation eg.: `CA` |
-| zip            | 5 digits zip code                             |
 
+| Parameter     | Description                                      |
+| ------------- | ------------------------------------------------ |
+| address_line1 | Volunteer's address                              |
+| city          | Volunteer's City                                 |
+| state         | Volunteers State 2 letter abbreviation eg.: `CA` |
+| zip           | 5 digits zip code                                |

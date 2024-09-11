@@ -1,6 +1,6 @@
 # Clients
 
-## Get All Clients
+## List Clients
 
 This endpoint returns a paginated list of clients as well as pagination links and meta information.
 
@@ -75,7 +75,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
 
 | Parameter | Description                                             |
 | --------- | ------------------------------------------------------- |
-| clients   | The collection of results.                             |
+| clients   | The collection of results.                              |
 | links     | Pagination links to access all the pages of the results |
 | meta      | Helpful response metadata                               |
 
@@ -216,10 +216,7 @@ puts response.read_body
     "gender": "female",
     "primary_phone_number": "+17075518391",
     "primary_language": null,
-    "languages": [
-      "english",
-      "portuguese"
-    ]
+    "languages": ["english", "portuguese"]
   }
 }
 ```
@@ -230,31 +227,32 @@ This endpoint retrieves the newly created client.
 
 ### Payload Parameters
 
-| Parameter      | Description                      |
-| -------------- | -------------------------------- |
-| person         | JSON formatted person parameters |
-| address        | JSON formatted address parameters|
-| custom_fields  | JSON formatted custom fields |
+| Parameter     | Description                       |
+| ------------- | --------------------------------- |
+| person        | JSON formatted person parameters  |
+| address       | JSON formatted address parameters |
+| custom_fields | JSON formatted custom fields      |
 
 #### Person Parameters
 
-| Parameter      | Description                      |
-| -------------- | -------------------------------- |
-| first_name     | Client's first name              |
-| preferred_name | Client's preferred name          |
-| last_name      | Client's last name               |
-| date_of_birth  | Client's date eg.: `YYYY-MM-DD`  |
-| email          | Client's email address           |
+| Parameter      | Description                                                                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| first_name     | Client's first name                                                                                                                                                                                     |
+| preferred_name | Client's preferred name                                                                                                                                                                                 |
+| last_name      | Client's last name                                                                                                                                                                                      |
+| date_of_birth  | Client's date eg.: `YYYY-MM-DD`                                                                                                                                                                         |
+| email          | Client's email address                                                                                                                                                                                  |
 | gender         | Client's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
-| languages      | Comma separated list of Language Object type labels |
+| languages      | Comma separated list of Language Object type labels                                                                                                                                                     |
 
 #### Address Parameters
-| Parameter      | Description                                   |
-| -------------- | --------------------------------------------- |
-| address_line1  | Client's address                              |
-| city           | Client's City                                 |
-| state          | Clients State 2 letter abbreviation eg.: `CA` |
-| zip            | 5 digits zip code                             |
+
+| Parameter     | Description                                   |
+| ------------- | --------------------------------------------- |
+| address_line1 | Client's address                              |
+| city          | Client's City                                 |
+| state         | Clients State 2 letter abbreviation eg.: `CA` |
+| zip           | 5 digits zip code                             |
 
 ## Create a Client for a specific Person
 
@@ -308,10 +306,7 @@ puts response.read_body
     "gender": "female",
     "primary_phone_number": "+17075518391",
     "primary_language": null,
-    "languages": [
-      "english",
-      "portuguese"
-    ]
+    "languages": ["english", "portuguese"]
   }
 }
 ```
@@ -322,9 +317,8 @@ This endpoint creates a client for a specific person.
 
 ### Payload Parameters
 
-| Parameter      | Description                      |
-| -------------- | -------------------------------- |
-| person_id      | Integer ID present in the URL    |
-| address        | JSON formatted address parameters|
-| custom_fields  | JSON formatted custom fields |
-
+| Parameter     | Description                       |
+| ------------- | --------------------------------- |
+| person_id     | Integer ID present in the URL     |
+| address       | JSON formatted address parameters |
+| custom_fields | JSON formatted custom fields      |

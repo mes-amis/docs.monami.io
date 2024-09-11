@@ -93,7 +93,7 @@ puts response.read_body
 | comment                    | Notes about the service record                                                                                                                                        |
 | links                      | A map of URLs to related API endpoints.                                                                                                                               |
 
-## Get All service records
+## List Service Records
 
 This endpoint returns a paginated list of service records as well as pagination links and meta information.
 
