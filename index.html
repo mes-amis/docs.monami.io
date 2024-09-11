@@ -394,6 +394,9 @@
             <a href="#service-records" class="toc-h1 toc-link" data-title="Service Records">Service Records</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#create-a-service-record" class="toc-h2 toc-link" data-title="Create a Service Record">Create a Service Record</a>
+                  </li>
+                  <li>
                     <a href="#get-all-service-records" class="toc-h2 toc-link" data-title="Get All service records">Get All service records</a>
                   </li>
                   <li>
@@ -408,7 +411,7 @@
                     <a href="#get-service-definitions" class="toc-h2 toc-link" data-title="Get Service Definitions">Get Service Definitions</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-language" class="toc-h2 toc-link" data-title="Get a Specific Language">Get a Specific Language</a>
+                    <a href="#get-a-specific-service-definition" class="toc-h2 toc-link" data-title="Get a Specific Service Definition">Get a Specific Service Definition</a>
                   </li>
               </ul>
           </li>
@@ -2206,7 +2209,185 @@ Remember — the info!
 <td>The ID for the client associated with the person</td>
 </tr>
 </tbody></table>
-<h1 id='service-records'>Service Records</h1><h2 id='get-all-service-records'>Get All service records</h2>
+<h1 id='service-records'>Service Records</h1><h2 id='create-a-service-record'>Create a Service Record</h2>
+<blockquote>
+<p>POST /api/service_records</p>
+</blockquote>
+<h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>recipient_id</td>
+<td>The unique ID of the recipient of the service. Ex: <code>ami-54709fe3</code></td>
+</tr>
+<tr>
+<td>program_label</td>
+<td>The label of the Program associated with the service record.</td>
+</tr>
+<tr>
+<td>service_definition_label</td>
+<td>The label of the Service Definition associated with the service record.</td>
+</tr>
+<tr>
+<td>funding_source_label</td>
+<td>The label of the Funding Source associated with the service record.</td>
+</tr>
+<tr>
+<td>provider_label</td>
+<td>The label of the Provider associated with the service record.</td>
+</tr>
+<tr>
+<td>service_rate_id</td>
+<td>The ID of the service rate associated with the service record.</td>
+</tr>
+<tr>
+<td>unit_count</td>
+<td>The number of service units delivered.</td>
+</tr>
+<tr>
+<td>service_delivered_on</td>
+<td>The date the service was rendered.</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>Notes about the service record</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/service_records <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'"{\"recipient_id\":\"ami-54709fe3\",\"program_label\":\"nutrition\",\"service_definition_label\":\"nutrition_definition_name_1\",\"funding_source_label\":\"label_1\",\"provider_label\":\"kihn-mcdermott\",\"service_rate_id\":1,\"unit_count\":2.5,\"service_delivered_on\":\"2024-09-10\",\"comment\":\"Hello API!\"}"'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
+
+<span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://app.monami.test/api/service_records"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">form_data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"recipient_id"</span><span class="ss">:"ami-54709fe3"</span><span class="p">,</span><span class="s2">"program_label"</span><span class="ss">:"nutrition"</span><span class="p">,</span><span class="s2">"service_definition_label"</span><span class="ss">:"nutrition_definition_name_1"</span><span class="p">,</span><span class="s2">"funding_source_label"</span><span class="ss">:"label_1"</span><span class="p">,</span><span class="s2">"provider_label"</span><span class="ss">:"kihn-mcdermott"</span><span class="p">,</span><span class="s2">"service_rate_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">"unit_count"</span><span class="p">:</span><span class="mf">2.5</span><span class="p">,</span><span class="s2">"service_delivered_on"</span><span class="ss">:"2024-09-10"</span><span class="p">,</span><span class="s2">"comment"</span><span class="ss">:"Hello API!"</span><span class="p">}</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">set_form</span> <span class="n">form_data</span><span class="p">,</span> <span class="s1">'multipart/form-data'</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"each"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"unit_count"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"per_unit_expenditure_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"service_delivered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-10"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"service_detail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"service_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"program_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nutrition"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"helping_hands"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"service_definition_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"congregate_dining"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"funding_source_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"state_funding"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"site_label"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-54709fe3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"volunteer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello API!"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"recipient_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients/ami-54709fe3"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the newly created client.</p>
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+<h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique ID of the service record</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status of the service record. (active, pending, canceled)</td>
+</tr>
+<tr>
+<td>unit_type</td>
+<td>The unit type of the service. (fifteen_minute, daily, each, per_service, per_month, per_meal, per_hour, per_trip, per_session, per_contact, per_activity, per_person)</td>
+</tr>
+<tr>
+<td>unit_count</td>
+<td>The number of service units delivered.</td>
+</tr>
+<tr>
+<td>per_unit_expenditure_cents</td>
+<td>The per unit cost in Cents.</td>
+</tr>
+<tr>
+<td>recipient_count</td>
+<td>The number of recipients of the service.</td>
+</tr>
+<tr>
+<td>service_delivered_on</td>
+<td>The date the service was rendered.</td>
+</tr>
+<tr>
+<td>service_detail</td>
+<td>Notes about the service delivery.</td>
+</tr>
+<tr>
+<td>service_rate_id</td>
+<td>The ID of the service rate associated with the service record.</td>
+</tr>
+<tr>
+<td>program_label</td>
+<td>The label of the Program associated with the service record. This can be used as an ID on other APIs.</td>
+</tr>
+<tr>
+<td>provider_label</td>
+<td>The label of the Provider associated with the service record. This can be used as an ID on other APIs.</td>
+</tr>
+<tr>
+<td>service_definition_label</td>
+<td>The label of the Service Definition associated with the service record. This can be used as an ID on other APIs.</td>
+</tr>
+<tr>
+<td>funding_source_label</td>
+<td>The label of the Funding Source associated with the service record. This can be used as an ID on other APIs.</td>
+</tr>
+<tr>
+<td>site_label</td>
+<td>The label of the Site associated with the service record. This can be used as an ID on other APIs.</td>
+</tr>
+<tr>
+<td>recipient_type</td>
+<td>The type of recipient of the service. Usually Client, but something service groups are used.</td>
+</tr>
+<tr>
+<td>recipient_id</td>
+<td>The unique ID of the recipieint of the service</td>
+</tr>
+<tr>
+<td>volunteer_id</td>
+<td>The unique ID of a volunteer if they&#39;re associated with the service record.</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>Notes about the service record</td>
+</tr>
+<tr>
+<td>links</td>
+<td>A map of URLs to related API endpoints.</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-service-records'>Get All service records</h2>
 <p>This endpoint returns a paginated list of service records as well as pagination links and meta information.</p>
 
 <blockquote>
@@ -2307,7 +2488,7 @@ Remember — the info!
     </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-parameters'>Response Parameters</h3>
+</span></code></pre></div><h3 id='response-parameters-2'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2516,7 +2697,7 @@ Remember — the info!
 <!-- <aside class="success">
 Remember — the info!
 </aside> -->
-<h2 id='get-a-specific-language'>Get a Specific Language</h2>
+<h2 id='get-a-specific-service-definition'>Get a Specific Service Definition</h2>
 <blockquote>
 <p>GET /api/service_definitions/:id_or_label</p>
 </blockquote>
