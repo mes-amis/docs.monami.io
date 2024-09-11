@@ -201,14 +201,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
 }
 ```
 
-### Response Parameters
-
-| Parameter       | Description                                             |
-| --------------- | ------------------------------------------------------- |
-| service_records | The collection of results.                              |
-| links           | Pagination links to access all the pages of the results |
-| meta            | Helpful response metadata                               |
-
 ### Query Parameters
 
 | Parameter      | Default | Description                                                              |
@@ -218,6 +210,14 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
 | q[date_from]   | Null    | The first date a service record could be delivered on in the given range |
 | q[date_to]     | Null    | The last date a service record could be delivered on in the given range  |
 | q[with_status] | Null    | Filter service records by a status. (active, canceled, pending)          |
+
+### Response Parameters
+
+| Parameter       | Description                                             |
+| --------------- | ------------------------------------------------------- |
+| service_records | The collection of results.                              |
+| links           | Pagination links to access all the pages of the results |
+| meta            | Helpful response metadata                               |
 
 <!-- <aside class="success">
 Remember — the info!
