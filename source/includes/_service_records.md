@@ -1,5 +1,100 @@
 # Service Records
 
+## Create a Service Record
+
+> POST /api/service_records
+
+### Request Parameters
+
+| Parameter                | Description                                                             |
+| ------------------------ | ----------------------------------------------------------------------- |
+| recipient_id             | The unique ID of the recipient of the service. Ex: `ami-54709fe3`       |
+| program_label            | The label of the Program associated with the service record.            |
+| service_definition_label | The label of the Service Definition associated with the service record. |
+| funding_source_label     | The label of the Funding Source associated with the service record.     |
+| provider_label           | The label of the Provider associated with the service record.           |
+| service_rate_id          | The ID of the service rate associated with the service record.          |
+| unit_count               | The number of service units delivered.                                  |
+| service_delivered_on     | The date the service was rendered.                                      |
+| comment                  | Notes about the service record                                          |
+
+```shell
+curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/service_records \
+--form '"{\"recipient_id\":\"ami-54709fe3\",\"program_label\":\"nutrition\",\"service_definition_label\":\"nutrition_definition_name_1\",\"funding_source_label\":\"label_1\",\"provider_label\":\"kihn-mcdermott\",\"service_rate_id\":1,\"unit_count\":2.5,\"service_delivered_on\":\"2024-09-10\",\"comment\":\"Hello API!\"}"'
+```
+
+```ruby
+require "uri"
+require "net/http"
+
+credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
+url = URI("http://app.monami.test/api/service_records")
+
+http = Net::HTTP.new(url.host, url.port);
+request = Net::HTTP::Post.new(url)
+request["Authorization"] = "Basic #{credential}"
+form_data = {"recipient_id":"ami-54709fe3","program_label":"nutrition","service_definition_label":"nutrition_definition_name_1","funding_source_label":"label_1","provider_label":"kihn-mcdermott","service_rate_id":1,"unit_count":2.5,"service_delivered_on":"2024-09-10","comment":"Hello API!"}
+request.set_form form_data, 'multipart/form-data'
+response = http.request(request)
+puts response.read_body
+```
+
+> A sucessful request returns JSON structured like this:
+
+```json
+{
+  "id": 1,
+  "status": "active",
+  "unit_type": "each",
+  "unit_count": 2.5,
+  "per_unit_expenditure_cents": 1000,
+  "recipient_count": 1,
+  "service_delivered_on": "2024-09-10",
+  "service_detail": null,
+  "service_rate_id": 1,
+  "program_label": "nutrition",
+  "provider_label": "helping_hands",
+  "service_definition_label": "congregate_dining",
+  "funding_source_label": "state_funding",
+  "site_label": null,
+  "recipient_type": "Client",
+  "recipient_id": "ami-54709fe3",
+  "volunteer_id": null,
+  "comment": "Hello API!",
+  "links": {
+    "recipient_url": "http://app.monami.test/api/clients/ami-54709fe3"
+  }
+}
+```
+
+This endpoint retrieves the newly created client.
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+
+### Response Parameters
+
+| Parameter                  | Description                                                                                                                                                           |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                         | The unique ID of the service record                                                                                                                                   |
+| status                     | Status of the service record. (active, pending, canceled)                                                                                                             |
+| unit_type                  | The unit type of the service. (fifteen_minute, daily, each, per_service, per_month, per_meal, per_hour, per_trip, per_session, per_contact, per_activity, per_person) |
+| unit_count                 | The number of service units delivered.                                                                                                                                |
+| per_unit_expenditure_cents | The per unit cost in Cents.                                                                                                                                           |
+| recipient_count            | The number of recipients of the service.                                                                                                                              |
+| service_delivered_on       | The date the service was rendered.                                                                                                                                    |
+| service_detail             | Notes about the service delivery.                                                                                                                                     |
+| service_rate_id            | The ID of the service rate associated with the service record.                                                                                                        |
+| program_label              | The label of the Program associated with the service record. This can be used as an ID on other APIs.                                                                 |
+| provider_label             | The label of the Provider associated with the service record. This can be used as an ID on other APIs.                                                                |
+| service_definition_label   | The label of the Service Definition associated with the service record. This can be used as an ID on other APIs.                                                      |
+| funding_source_label       | The label of the Funding Source associated with the service record. This can be used as an ID on other APIs.                                                          |
+| site_label                 | The label of the Site associated with the service record. This can be used as an ID on other APIs.                                                                    |
+| recipient_type             | The type of recipient of the service. Usually Client, but something service groups are used.                                                                          |
+| recipient_id               | The unique ID of the recipieint of the service                                                                                                                        |
+| volunteer_id               | The unique ID of a volunteer if they're associated with the service record.                                                                                           |
+| comment                    | Notes about the service record                                                                                                                                        |
+| links                      | A map of URLs to related API endpoints.                                                                                                                               |
+
 ## Get All service records
 
 This endpoint returns a paginated list of service records as well as pagination links and meta information.

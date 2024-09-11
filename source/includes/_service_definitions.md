@@ -78,7 +78,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/service_definit
 Remember — the info!
 </aside> -->
 
-## Get a Specific Language
+## Get a Specific Service Definition
 
 > GET /api/service_definitions/:id_or_label
 
