@@ -385,9 +385,9 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients/ami-abc
 
 ### Query Parameters
 
-| Parameter       | Default | Description                                                                    |
-| --------------- | ------- | ------------------------------------------------------------------------------ |
-| label           | null    | Filter by a Document Template label. Ex: 'nutrition-assessment'                |
-| completed_at_gt | null    | Filter by completed_at date greater than a cutoff date in 'YYYY-MM-DD' format. |
-| page            | 1       | Select the page of results.                                                    |
-| per_page        | 25      | How many results per page.                                                     |
+| Parameter          | Default | Description                                                                    |
+| ------------------ | ------- | ------------------------------------------------------------------------------ |
+| q[label]           | null    | Filter by a Document Template label. Ex: 'nutrition-assessment'                |
+| q[completed_at_gt] | null    | Filter by completed_at date greater than a cutoff date in 'YYYY-MM-DD' format. |
+| page               | 1       | Select the page of results.                                                    |
+| per_page           | 25      | How many results per page.                                                     |
