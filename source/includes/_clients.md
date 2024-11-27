@@ -322,3 +322,72 @@ This endpoint creates a client for a specific person.
 | person_id     | Integer ID present in the URL     |
 | address       | JSON formatted address parameters |
 | custom_fields | JSON formatted custom fields      |
+
+## List Documents for a Client
+
+This endpoint returns a paginated list of Documents that have been completed for a Client.
+
+> GET /api/clients/:client_id/documents
+
+```shell
+curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients/ami-abc1234/documents"
+```
+
+```ruby
+  credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
+
+  response = Excon.get('https://app.monami.io/api/clients/ami-abc1234/documents',
+    headers: {
+      'Content-Type' => 'application/json',
+      'Authorization' => "Basic #{credential}"
+    }
+  )
+```
+
+> A sucessful request returns JSON structured like this:
+
+```json
+{
+  "documents": [
+    {
+      "document": {
+        "metadata": {
+          "name": "Nutrition Assessment",
+          "label": "nutrition-assessment",
+          "status": "completed"
+        },
+        "data": {
+          "person.first_name": "Robert",
+          "person.last_name": "Johnson"
+        }
+      }
+    }
+  ],
+  "links": {
+    "self": "http://app.monami.test/api/clients/ami-6f22e351/documents?page=1",
+    "first": "http://app.monami.test/api/clients/ami-6f22e351/documents?page=1",
+    "last": "http://app.monami.test/api/clients/ami-6f22e351/documents?page=1"
+  },
+  "meta": {
+    "total_pages": 1,
+    "current_page": 1
+  }
+}
+```
+
+### Response Parameters
+
+| Parameter | Description                                             |
+| --------- | ------------------------------------------------------- |
+| documents | The collection of results.                              |
+| links     | Pagination links to access all the pages of the results |
+| meta      | Helpful response metadata                               |
+
+### Query Parameters
+
+| Parameter       | Default | Description                                                                    |
+| --------------- | ------- | ------------------------------------------------------------------------------ |
+| label           | null    | Filter by a Document Template label. Ex: 'nutrition-assessment'                |
+| completed_at_gt | null    | Filter by completed_at date greater than a cutoff date in 'YYYY-MM-DD' format. |
+| page            | 1       | Select the page of results.                                                    |
+| per_page        | 25      | How many results per page.                                                     |
