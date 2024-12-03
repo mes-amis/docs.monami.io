@@ -357,6 +357,9 @@
                   <li>
                     <a href="#create-a-client-for-a-specific-person" class="toc-h2 toc-link" data-title="Create a Client for a specific Person">Create a Client for a specific Person</a>
                   </li>
+                  <li>
+                    <a href="#list-documents-for-a-client" class="toc-h2 toc-link" data-title="List Documents for a Client">List Documents for a Client</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1775,6 +1778,100 @@ Remember — the info!
 <tr>
 <td>custom_fields</td>
 <td>JSON formatted custom fields</td>
+</tr>
+</tbody></table>
+<h2 id='list-documents-for-a-client'>List Documents for a Client</h2>
+<p>This endpoint returns a paginated list of Documents that have been completed for a Client.</p>
+
+<blockquote>
+<p>GET /api/clients/:client_id/documents</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="s2">"https://app.monami.io/api/clients/ami-abc1234/documents"</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/clients/ami-abc1234/documents'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nutrition Assessment"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nutrition-assessment"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"person.first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"person.last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Johnson"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients/ami-6f22e351/documents?page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients/ami-6f22e351/documents?page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.test/api/clients/ami-6f22e351/documents?page=1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-parameters-2'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>documents</td>
+<td>The collection of results.</td>
+</tr>
+<tr>
+<td>links</td>
+<td>Pagination links to access all the pages of the results</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>Helpful response metadata</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>q[label]</td>
+<td>null</td>
+<td>Filter by a Document Template label. Ex: &#39;nutrition-assessment&#39;</td>
+</tr>
+<tr>
+<td>q[completed_at_gt]</td>
+<td>null</td>
+<td>Filter by completed_at date greater than a cutoff date in &#39;YYYY-MM-DD&#39; format.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>Select the page of results.</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>25</td>
+<td>How many results per page.</td>
 </tr>
 </tbody></table>
 <h1 id='languages'>Languages</h1><h2 id='get-languages'>Get Languages</h2>
