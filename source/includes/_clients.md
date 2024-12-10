@@ -52,9 +52,15 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
         "created_at": "2024-03-12T14:19:02.091Z",
         "updated_at": "2024-03-12T14:19:02.115Z",
         "gender": "prefer_not_to_say",
-        "primary_phone_number": "+15044791643",
         "primary_language": "english",
-        "languages": null
+        "languages": null,
+        "phone_numbers": [
+          {
+            "number": "+17075513459",
+            "primary": true,
+            "label": "cell"
+          }
+        ]
       }
     }
   ],
@@ -81,10 +87,17 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
 
 ### Query Parameters
 
-| Parameter | Default | Description                 |
-| --------- | ------- | --------------------------- |
-| page      | 1       | Select the page of results. |
-| per_page  | 25      | How many results per page.  |
+| Parameter      | Default | Description                                    |
+|----------------|---------|------------------------------------------------|
+| page           | 1       | Select the page of results.                    |
+| per_page       | 25      | How many results per page.                     |
+| first_name     |      | Filters by the user's first name               |
+| last_name      |      | Filters by the user's last name                |
+| phone_number   |      | Filters by any of the user's phone numbers     |
+| date_of_birth  |      | Filters by the user's date of birth            |
+| address_county |      | Filters by the user's county                   |
+| social_security_number_last_4 |      | Filters by the last 4 digits of the user's SSN |
+| status |      | Filters by the user's status                   |
 
 <!-- <aside class="success">
 Remember — the info!
@@ -138,9 +151,15 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients/12
     "created_at": "2024-03-12T14:19:02.091Z",
     "updated_at": "2024-03-12T14:19:02.115Z",
     "gender": "prefer_not_to_say",
-    "primary_phone_number": "+15044791643",
     "primary_language": "english",
-    "languages": null
+    "languages": null,
+    "phone_numbers": [
+      {
+        "number": "+15044791643",
+        "primary": true,
+        "label": "cell"
+      }
+    ]
   }
 }
 ```
@@ -214,9 +233,15 @@ puts response.read_body
     "created_at": "2024-03-13T16:04:33.256Z",
     "updated_at": "2024-03-13T16:04:33.399Z",
     "gender": "female",
-    "primary_phone_number": "+17075518391",
     "primary_language": null,
-    "languages": ["english", "portuguese"]
+    "languages": ["english", "portuguese"],
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "cell"
+      }
+    ]
   }
 }
 ```
@@ -304,9 +329,15 @@ puts response.read_body
     "created_at": "2024-03-13T16:04:33.256Z",
     "updated_at": "2024-03-13T16:04:33.399Z",
     "gender": "female",
-    "primary_phone_number": "+17075518391",
     "primary_language": null,
-    "languages": ["english", "portuguese"]
+    "languages": ["english", "portuguese"],
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "cell"
+      }
+    ]
   }
 }
 ```
