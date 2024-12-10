@@ -59,10 +59,10 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/volunteers?page
     }
   ],
   "links": {
-    "self": "http://app.monami.test/api/volunteers?page=1&per_page=1",
-    "first": "http://app.monami.test/api/volunteers?page=1&per_page=1",
-    "next": "http://app.monami.test/api/volunteers?page=2&per_page=1",
-    "last": "http://app.monami.test/api/volunteers?page=2&per_page=1"
+    "self": "http://app.monami.io/api/volunteers?page=1&per_page=1",
+    "first": "http://app.monami.io/api/volunteers?page=1&per_page=1",
+    "next": "http://app.monami.io/api/volunteers?page=2&per_page=1",
+    "last": "http://app.monami.io/api/volunteers?page=2&per_page=1"
   },
   "meta": {
     "total_pages": 2,
@@ -171,7 +171,7 @@ require "uri"
 require "net/http"
 
 credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
-url = URI("http://app.monami.test/api/volunteers/")
+url = URI("http://app.monami.io/api/volunteers/")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
@@ -269,7 +269,7 @@ require "uri"
 require "net/http"
 
 credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
-url = URI("http://app.monami.test/api/people/79/volunteers/")
+url = URI("http://app.monami.io/api/people/79/volunteers/")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)

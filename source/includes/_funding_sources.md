@@ -52,9 +52,9 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/funding_sources
     }
   ],
   "links": {
-    "self": "http://app.monami.test/api/funding_sources?page=1",
-    "first": "http://app.monami.test/api/funding_sources?page=1",
-    "last": "http://app.monami.test/api/funding_sources?page=1"
+    "self": "http://app.monami.io/api/funding_sources?page=1",
+    "first": "http://app.monami.io/api/funding_sources?page=1",
+    "last": "http://app.monami.io/api/funding_sources?page=1"
   },
   "meta": {
     "total_pages": 1,

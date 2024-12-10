@@ -40,10 +40,10 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/people?page=2&p
         }
     ],
     "links": {
-        "self": "http://app.monami.test/api/people?page=2&per_page=1",
-        "first": "http://app.monami.test/api/people?page=1&per_page=1",
-        "prev": "http://app.monami.test/api/people?page=1&per_page=1",
-        "last": "http://app.monami.test/api/people?page=2&per_page=1"
+        "self": "http://app.monami.io/api/people?page=2&per_page=1",
+        "first": "http://app.monami.io/api/people?page=1&per_page=1",
+        "prev": "http://app.monami.io/api/people?page=1&per_page=1",
+        "last": "http://app.monami.io/api/people?page=2&per_page=1"
     },
     "meta": {
         "total_pages": 2,
@@ -156,9 +156,9 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_emai
         }
     ],
     "links": {
-        "self": "http://app.monami.test/api/people?page=1",
-        "first": "http://app.monami.test/api/people?page=1",
-        "last": "http://app.monami.test/api/people?page=1"
+        "self": "http://app.monami.io/api/people?page=1",
+        "first": "http://app.monami.io/api/people?page=1",
+        "last": "http://app.monami.io/api/people?page=1"
     },
     "meta": {
         "total_pages": 1,
@@ -215,9 +215,9 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_volu
         }
     ],
     "links": {
-        "self": "http://app.monami.test/api/people?page=1",
-        "first": "http://app.monami.test/api/people?page=1",
-        "last": "http://app.monami.test/api/people?page=1"
+        "self": "http://app.monami.io/api/people?page=1",
+        "first": "http://app.monami.io/api/people?page=1",
+        "last": "http://app.monami.io/api/people?page=1"
     },
     "meta": {
         "total_pages": 1,
@@ -274,9 +274,9 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_clie
         }
     ],
     "links": {
-        "self": "http://app.monami.test/api/people?page=1",
-        "first": "http://app.monami.test/api/people?page=1",
-        "last": "http://app.monami.test/api/people?page=1"
+        "self": "http://app.monami.io/api/people?page=1",
+        "first": "http://app.monami.io/api/people?page=1",
+        "last": "http://app.monami.io/api/people?page=1"
     },
     "meta": {
         "total_pages": 1,

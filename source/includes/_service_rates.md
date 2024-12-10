@@ -39,9 +39,9 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/service_rates?p
     }
   ],
   "links": {
-    "self": "http://app.monami.test/api/service_rates?page=1",
-    "first": "http://app.monami.test/api/service_rates?page=1",
-    "last": "http://app.monami.test/api/service_rates?page=1"
+    "self": "http://app.monami.io/api/service_rates?page=1",
+    "first": "http://app.monami.io/api/service_rates?page=1",
+    "last": "http://app.monami.io/api/service_rates?page=1"
   },
   "meta": {
     "total_pages": 1,

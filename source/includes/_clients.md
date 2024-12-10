@@ -59,10 +59,10 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
     }
   ],
   "links": {
-    "self": "http://app.monami.test/api/clients?page=1&per_page=1",
-    "first": "http://app.monami.test/api/clients?page=1&per_page=1",
-    "next": "http://app.monami.test/api/clients?page=2&per_page=1",
-    "last": "http://app.monami.test/api/clients?page=21&per_page=1"
+    "self": "http://app.monami.io/api/clients?page=1&per_page=1",
+    "first": "http://app.monami.io/api/clients?page=1&per_page=1",
+    "next": "http://app.monami.io/api/clients?page=2&per_page=1",
+    "last": "http://app.monami.io/api/clients?page=21&per_page=1"
   },
   "meta": {
     "total_pages": 21,
@@ -171,7 +171,7 @@ require "uri"
 require "net/http"
 
 credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
-url = URI("http://app.monami.test/api/clients/")
+url = URI("http://app.monami.io/api/clients/")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
@@ -268,7 +268,7 @@ require "uri"
 require "net/http"
 
 credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
-url = URI("http://app.monami.test/api/people/82/clients/")
+url = URI("http://app.monami.io/api/people/82/clients/")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
@@ -364,9 +364,9 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients/ami-abc
     }
   ],
   "links": {
-    "self": "http://app.monami.test/api/clients/ami-6f22e351/documents?page=1",
-    "first": "http://app.monami.test/api/clients/ami-6f22e351/documents?page=1",
-    "last": "http://app.monami.test/api/clients/ami-6f22e351/documents?page=1"
+    "self": "http://app.monami.io/api/clients/ami-6f22e351/documents?page=1",
+    "first": "http://app.monami.io/api/clients/ami-6f22e351/documents?page=1",
+    "last": "http://app.monami.io/api/clients/ami-6f22e351/documents?page=1"
   },
   "meta": {
     "total_pages": 1,

@@ -14,7 +14,7 @@ require "uri"
 require "net/http"
 
 credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
-url = URI("http://app.monami.test/api/service_records")
+url = URI("http://app.monami.io/api/service_records")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
@@ -48,7 +48,7 @@ puts response.read_body
   "volunteer_id": null,
   "comment": "Hello API!",
   "links": {
-    "recipient_url": "http://app.monami.test/api/clients/ami-54709fe3"
+    "recipient_url": "http://app.monami.io/api/clients/ami-54709fe3"
   }
 }
 ```
@@ -139,7 +139,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
       "recipient_id": "ami-e0852a7e",
       "volunteer_id": null,
       "links": {
-        "recipient_url": "http://app.monami.test/api/clients/ami-e0852a7e"
+        "recipient_url": "http://app.monami.io/api/clients/ami-e0852a7e"
       }
     },
     {
@@ -162,7 +162,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
       "recipient_id": "ami-6969e283",
       "volunteer_id": null,
       "links": {
-        "recipient_url": "http://app.monami.test/api/clients/ami-6969e283"
+        "recipient_url": "http://app.monami.io/api/clients/ami-6969e283"
       }
     },
     {
@@ -185,14 +185,14 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
       "recipient_id": "ami-dfcabdc4",
       "volunteer_id": null,
       "links": {
-        "recipient_url": "http://app.monami.test/api/clients/ami-dfcabdc4"
+        "recipient_url": "http://app.monami.io/api/clients/ami-dfcabdc4"
       }
     }
   ],
   "links": {
-    "self": "http://app.monami.test/api/service_records?page=1",
-    "first": "http://app.monami.test/api/service_records?page=1",
-    "last": "http://app.monami.test/api/service_records?page=1"
+    "self": "http://app.monami.io/api/service_records?page=1",
+    "first": "http://app.monami.io/api/service_records?page=1",
+    "last": "http://app.monami.io/api/service_records?page=1"
   },
   "meta": {
     "total_pages": 1,
@@ -265,7 +265,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/service_records/
   "volunteer_id": null,
   "comment": null,
   "links": {
-    "recipient_url": "http://app.monami.test/api/clients/ami-bb6ff3ef"
+    "recipient_url": "http://app.monami.io/api/clients/ami-bb6ff3ef"
   }
 }
 ```
