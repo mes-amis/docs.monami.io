@@ -134,10 +134,10 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?pa
         }
     ],
     "links": {
-        "self": "http://app.monami.test/api/client_calls?page=1&per_page=1",
-        "first": "http://app.monami.test/api/client_calls?page=1&per_page=1",
-        "next": "http://app.monami.test/api/client_calls?page=2&per_page=1",
-        "last": "http://app.monami.test/api/client_calls?page=23&per_page=1"
+        "self": "http://app.monami.io/api/client_calls?page=1&per_page=1",
+        "first": "http://app.monami.io/api/client_calls?page=1&per_page=1",
+        "next": "http://app.monami.io/api/client_calls?page=2&per_page=1",
+        "last": "http://app.monami.io/api/client_calls?page=23&per_page=1"
     },
     "meta": {
         "total_pages": 23,
@@ -438,10 +438,10 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
         }
     ],
     "links": {
-        "self": "http://app.monami.test/api/client_calls?page=1&per_page=1",
-        "first": "http://app.monami.test/api/client_calls?page=1&per_page=1",
-        "next": "http://app.monami.test/api/client_calls?page=2&per_page=1",
-        "last": "http://app.monami.test/api/client_calls?page=20&per_page=1"
+        "self": "http://app.monami.io/api/client_calls?page=1&per_page=1",
+        "first": "http://app.monami.io/api/client_calls?page=1&per_page=1",
+        "next": "http://app.monami.io/api/client_calls?page=2&per_page=1",
+        "last": "http://app.monami.io/api/client_calls?page=20&per_page=1"
     },
     "meta": {
         "total_pages": 20,
@@ -592,10 +592,10 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
         }
     ],
     "links": {
-        "self": "http://app.monami.test/api/client_calls?page=1&per_page=1",
-        "first": "http://app.monami.test/api/client_calls?page=1&per_page=1",
-        "next": "http://app.monami.test/api/client_calls?page=2&per_page=1",
-        "last": "http://app.monami.test/api/client_calls?page=13&per_page=1"
+        "self": "http://app.monami.io/api/client_calls?page=1&per_page=1",
+        "first": "http://app.monami.io/api/client_calls?page=1&per_page=1",
+        "next": "http://app.monami.io/api/client_calls?page=2&per_page=1",
+        "last": "http://app.monami.io/api/client_calls?page=13&per_page=1"
     },
     "meta": {
         "total_pages": 13,
@@ -746,10 +746,10 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[c
         }
     ],
     "links": {
-        "self": "http://app.monami.test/api/client_calls?page=1&per_page=1",
-        "first": "http://app.monami.test/api/client_calls?page=1&per_page=1",
-        "next": "http://app.monami.test/api/client_calls?page=2&per_page=1",
-        "last": "http://app.monami.test/api/client_calls?page=20&per_page=1"
+        "self": "http://app.monami.io/api/client_calls?page=1&per_page=1",
+        "first": "http://app.monami.io/api/client_calls?page=1&per_page=1",
+        "next": "http://app.monami.io/api/client_calls?page=2&per_page=1",
+        "last": "http://app.monami.io/api/client_calls?page=20&per_page=1"
     },
     "meta": {
         "total_pages": 20,

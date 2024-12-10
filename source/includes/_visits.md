@@ -134,10 +134,10 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/visits?page=1&p
     }
   ],
   "links": {
-    "self": "http://app.monami.test/api/visits?page=1&per_page=1",
-    "first": "http://app.monami.test/api/visits?page=1&per_page=1",
-    "next": "http://app.monami.test/api/visits?page=2&per_page=1",
-    "last": "http://app.monami.test/api/visits?page=240&per_page=1"
+    "self": "http://app.monami.io/api/visits?page=1&per_page=1",
+    "first": "http://app.monami.io/api/visits?page=1&per_page=1",
+    "next": "http://app.monami.io/api/visits?page=2&per_page=1",
+    "last": "http://app.monami.io/api/visits?page=240&per_page=1"
   },
   "meta": {
     "total_pages": 240,
@@ -437,10 +437,10 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/visits?q[start_a
     }
   ],
   "links": {
-    "self": "http://app.monami.test/api/visits?page=1&per_page=1",
-    "first": "http://app.monami.test/api/visits?page=1&per_page=1",
-    "next": "http://app.monami.test/api/visits?page=2&per_page=1",
-    "last": "http://app.monami.test/api/visits?page=20&per_page=1"
+    "self": "http://app.monami.io/api/visits?page=1&per_page=1",
+    "first": "http://app.monami.io/api/visits?page=1&per_page=1",
+    "next": "http://app.monami.io/api/visits?page=2&per_page=1",
+    "last": "http://app.monami.io/api/visits?page=20&per_page=1"
   },
   "meta": {
     "total_pages": 20,
