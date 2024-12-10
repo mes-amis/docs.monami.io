@@ -52,15 +52,15 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
         "created_at": "2024-03-12T14:19:02.091Z",
         "updated_at": "2024-03-12T14:19:02.115Z",
         "gender": "prefer_not_to_say",
-        "primary_language": "english",
-        "languages": null,
         "phone_numbers": [
           {
-            "number": "+17075513459",
+            "number": "+15044791643",
             "primary": true,
-            "label": "cell"
+            "label": "home"
           }
-        ]
+        ],
+        "primary_language": "english",
+        "languages": null
       }
     }
   ],
@@ -151,15 +151,15 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients/12
     "created_at": "2024-03-12T14:19:02.091Z",
     "updated_at": "2024-03-12T14:19:02.115Z",
     "gender": "prefer_not_to_say",
-    "primary_language": "english",
-    "languages": null,
     "phone_numbers": [
       {
         "number": "+15044791643",
         "primary": true,
-        "label": "cell"
+        "label": "home"
       }
-    ]
+    ],
+    "primary_language": "english",
+    "languages": null
   }
 }
 ```
@@ -233,20 +233,20 @@ puts response.read_body
     "created_at": "2024-03-13T16:04:33.256Z",
     "updated_at": "2024-03-13T16:04:33.399Z",
     "gender": "female",
-    "primary_language": null,
-    "languages": ["english", "portuguese"],
     "phone_numbers": [
       {
         "number": "+17075518391",
         "primary": true,
-        "label": "cell"
+        "label": "home"
       }
-    ]
+    ],
+    "primary_language": null,
+    "languages": ["english", "portuguese"]
   }
 }
 ```
 
-This endpoint retrieves the newly created client.
+This endpoint returns the newly created client.
 
 <!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
 
@@ -329,15 +329,15 @@ puts response.read_body
     "created_at": "2024-03-13T16:04:33.256Z",
     "updated_at": "2024-03-13T16:04:33.399Z",
     "gender": "female",
-    "primary_language": null,
-    "languages": ["english", "portuguese"],
     "phone_numbers": [
       {
         "number": "+17075518391",
         "primary": true,
-        "label": "cell"
+        "label": "home"
       }
-    ]
+    ],
+    "primary_language": null,
+    "languages": ["english", "portuguese"]
   }
 }
 ```
