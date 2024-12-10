@@ -13,6 +13,7 @@ includes:
   - errors
   - client_calls
   - clients
+  - assessments
   - languages
   - people
   - service_records
