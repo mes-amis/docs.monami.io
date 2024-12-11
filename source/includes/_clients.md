@@ -52,7 +52,13 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
         "created_at": "2024-03-12T14:19:02.091Z",
         "updated_at": "2024-03-12T14:19:02.115Z",
         "gender": "prefer_not_to_say",
-        "primary_phone_number": "+15044791643",
+        "phone_numbers": [
+          {
+            "number": "+15044791643",
+            "primary": true,
+            "label": "home"
+          }
+        ],
         "primary_language": "english",
         "languages": null
       }
@@ -81,10 +87,17 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
 
 ### Query Parameters
 
-| Parameter | Default | Description                 |
-| --------- | ------- | --------------------------- |
-| page      | 1       | Select the page of results. |
-| per_page  | 25      | How many results per page.  |
+| Parameter      | Default | Description                                    |
+|----------------|---------|------------------------------------------------|
+| page           | 1       | Select the page of results.                    |
+| per_page       | 25      | How many results per page.                     |
+| first_name     |      | Filters by the user's first name               |
+| last_name      |      | Filters by the user's last name                |
+| phone_number   |      | Filters by any of the user's phone numbers     |
+| date_of_birth  |      | Filters by the user's date of birth            |
+| address_county |      | Filters by the user's county                   |
+| social_security_number_last_4 |      | Filters by the last 4 digits of the user's SSN |
+| status |      | Filters by the user's status                   |
 
 <!-- <aside class="success">
 Remember — the info!
@@ -138,7 +151,13 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients/12
     "created_at": "2024-03-12T14:19:02.091Z",
     "updated_at": "2024-03-12T14:19:02.115Z",
     "gender": "prefer_not_to_say",
-    "primary_phone_number": "+15044791643",
+    "phone_numbers": [
+      {
+        "number": "+15044791643",
+        "primary": true,
+        "label": "home"
+      }
+    ],
     "primary_language": "english",
     "languages": null
   }
@@ -214,14 +233,20 @@ puts response.read_body
     "created_at": "2024-03-13T16:04:33.256Z",
     "updated_at": "2024-03-13T16:04:33.399Z",
     "gender": "female",
-    "primary_phone_number": "+17075518391",
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "home"
+      }
+    ],
     "primary_language": null,
     "languages": ["english", "portuguese"]
   }
 }
 ```
 
-This endpoint retrieves the newly created client.
+This endpoint returns the newly created client.
 
 <!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
 
@@ -304,7 +329,13 @@ puts response.read_body
     "created_at": "2024-03-13T16:04:33.256Z",
     "updated_at": "2024-03-13T16:04:33.399Z",
     "gender": "female",
-    "primary_phone_number": "+17075518391",
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "home"
+      }
+    ],
     "primary_language": null,
     "languages": ["english", "portuguese"]
   }
