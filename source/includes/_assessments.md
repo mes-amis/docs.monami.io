@@ -56,6 +56,18 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/assessments/tem
 | links     | Pagination links to access all the pages of the results |
 | meta      | Helpful response metadata                               |
 
+#### `templates` parameters
+
+| Parameter   | Description                                                                              |
+| ----------- | ---------------------------------------------------------------------------------------- |
+| label       | The persistent API ID to use when referring to the document or passing in other requests |
+| name        | The name of the assessment template.                                                     |
+| code        | (Optional) - The document code of the assessment template                                |
+| description | A helpful description of the template                                                    |
+| full_name   | A combined name of the code and name of the assessment template                          |
+| created_at  | The creation DateTime of the assessment template                                         |
+| updated_at  | DateTime of the most recent update to the assessment template                            |
+
 ### Query Parameters
 
 | Parameter   | Default | Description                                                                       |
