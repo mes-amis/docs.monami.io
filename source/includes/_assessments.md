@@ -128,9 +128,9 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/assessments/req
 | client_id      | The label of the client to create the assessment request.    |
 | document_label | The label of the document template to use for the assessment |
 
-## List assessments
+## List Assessment requests
 
-This endpoint returns a collection of assessments and related metadata
+This endpoint returns a collection of assessment requests and metadata
 
 > GET /api/assessments/requests
 
