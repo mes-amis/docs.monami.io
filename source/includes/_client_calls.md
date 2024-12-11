@@ -91,10 +91,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?pa
                     "created_at": "2024-03-12T14:17:34.924Z",
                     "updated_at": "2024-03-12T14:19:00.465Z",
                     "gender": "prefer_not_to_say",
-                    "primary_phone_number": "+17075511226",
                     "primary_language": "english",
                     "languages": [
                         "spanish"
+                    ],
+                    "phone_numbers": [
+                        {
+                            "number": "+17075511226",
+                            "primary": true,
+                            "label": "cell"
+                        }
                     ]
                 }
             },
@@ -124,10 +130,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?pa
                     "created_at": "2024-03-12T14:17:27.096Z",
                     "updated_at": "2024-03-12T14:17:29.037Z",
                     "gender": "prefer_not_to_say",
-                    "primary_phone_number": "+17075514082",
                     "primary_language": "english",
                     "languages": [
                         "spanish"
+                    ],
+                    "phone_numbers": [
+                        {
+                            "number": "+17075514082",
+                            "primary": true,
+                            "label": "cell"
+                        }
                     ]
                 }
             }
@@ -252,10 +264,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls/11
             "created_at": "2024-03-12T14:17:34.924Z",
             "updated_at": "2024-03-12T14:19:00.465Z",
             "gender": "prefer_not_to_say",
-            "primary_phone_number": "+17075511226",
             "primary_language": "english",
             "languages": [
                 "spanish"
+            ],
+            "phone_numbers": [
+                {
+                    "number": "+17075511226",
+                    "primary": true,
+                    "label": "cell"
+                }
             ]
         }
     },
@@ -285,10 +303,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls/11
             "created_at": "2024-03-12T14:17:27.096Z",
             "updated_at": "2024-03-12T14:17:29.037Z",
             "gender": "prefer_not_to_say",
-            "primary_phone_number": "+17075514082",
             "primary_language": "english",
             "languages": [
                 "spanish"
+            ],
+            "phone_numbers": [
+                {
+                    "number": "+17075514082",
+                    "primary": true,
+                    "label": "cell"
+                }
             ]
         }
     }
@@ -395,10 +419,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
                     "created_at": "2024-03-12T14:17:34.924Z",
                     "updated_at": "2024-03-12T14:19:00.465Z",
                     "gender": "prefer_not_to_say",
-                    "primary_phone_number": "+17075511226",
                     "primary_language": "english",
                     "languages": [
                         "spanish"
+                    ],
+                    "phone_numbers": [
+                        {
+                            "number": "+17075511226",
+                            "primary": true,
+                            "label": "cell"
+                        }
                     ]
                 }
             },
@@ -428,10 +458,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
                     "created_at": "2024-03-12T14:17:27.096Z",
                     "updated_at": "2024-03-12T14:17:29.037Z",
                     "gender": "prefer_not_to_say",
-                    "primary_phone_number": "+17075514082",
                     "primary_language": "english",
                     "languages": [
                         "spanish"
+                    ],
+                    "phone_numbers": [
+                        {
+                            "number": "+17075514082",
+                            "primary": true,
+                            "label": "cell"
+                        }
                     ]
                 }
             }
@@ -549,10 +585,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
                     "created_at": "2024-03-12T14:17:29.266Z",
                     "updated_at": "2024-03-12T14:19:00.668Z",
                     "gender": "prefer_not_to_say",
-                    "primary_phone_number": "+17075514392",
                     "primary_language": "english",
                     "languages": [
                         "spanish"
+                    ],
+                    "phone_numbers": [
+                        {
+                            "number": "+17075514392",
+                            "primary": true,
+                            "label": "cell"
+                        }
                     ]
                 }
             },
@@ -582,10 +624,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
                     "created_at": "2024-03-12T14:17:27.096Z",
                     "updated_at": "2024-03-12T14:17:29.037Z",
                     "gender": "prefer_not_to_say",
-                    "primary_phone_number": "+17075514082",
                     "primary_language": "english",
                     "languages": [
                         "spanish"
+                    ],
+                    "phone_numbers": [
+                        {
+                            "number": "+17075514082",
+                            "primary": true,
+                            "label": "cell"
+                        }
                     ]
                 }
             }
@@ -703,10 +751,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[c
                     "created_at": "2024-03-12T14:17:34.924Z",
                     "updated_at": "2024-03-12T14:19:00.465Z",
                     "gender": "prefer_not_to_say",
-                    "primary_phone_number": "+17075511226",
                     "primary_language": "english",
                     "languages": [
                         "spanish"
+                    ],
+                    "phone_numbers": [
+                        {
+                            "number": "+17075511226",
+                            "primary": true,
+                            "label": "cell"
+                        }
                     ]
                 }
             },
@@ -736,10 +790,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[c
                     "created_at": "2024-03-12T14:17:27.096Z",
                     "updated_at": "2024-03-12T14:17:29.037Z",
                     "gender": "prefer_not_to_say",
-                    "primary_phone_number": "+17075514082",
                     "primary_language": "english",
                     "languages": [
                         "spanish"
+                    ],
+                    "phone_numbers": [
+                        {
+                            "number": "+17075514082",
+                            "primary": true,
+                            "label": "cell"
+                        }
                     ]
                 }
             }
