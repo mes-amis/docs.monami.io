@@ -103,7 +103,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/assessments/req
 ```json
 {
   "id": 2,
-  "source": "api",
   "status": "requested",
   "created_at": "2024-12-10T23:48:51.180Z",
   "updated_at": "2024-12-10T23:48:51.180Z",
@@ -156,7 +155,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/assessments/req
   "requests": [
     {
       "id": 1,
-      "source": "api",
       "status": "completed",
       "created_at": "2024-12-10T23:43:48.318Z",
       "updated_at": "2024-12-10T23:43:52.045Z",
