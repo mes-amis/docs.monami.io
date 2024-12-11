@@ -363,6 +363,20 @@
               </ul>
           </li>
           <li>
+            <a href="#assessments" class="toc-h1 toc-link" data-title="Assessments">Assessments</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-available-templates-for-assessments" class="toc-h2 toc-link" data-title="List available templates for assessments">List available templates for assessments</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-assessment-request" class="toc-h2 toc-link" data-title="Create an Assessment Request">Create an Assessment Request</a>
+                  </li>
+                  <li>
+                    <a href="#list-assessments" class="toc-h2 toc-link" data-title="List assessments">List assessments</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#languages" class="toc-h1 toc-link" data-title="Languages">Languages</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1862,6 +1876,278 @@ Remember — the info!
 <td>q[completed_at_gt]</td>
 <td>null</td>
 <td>Filter by completed_at date greater than a cutoff date in &#39;YYYY-MM-DD&#39; format.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>Select the page of results.</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>25</td>
+<td>How many results per page.</td>
+</tr>
+</tbody></table>
+<h1 id='assessments'>Assessments</h1><h2 id='list-available-templates-for-assessments'>List available templates for assessments</h2>
+<p>This endpoint returns a collection of Documents Templates that can be used to create Assessment Requests.</p>
+
+<blockquote>
+<p>GET /api/assessments/templates</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="s2">"https://app.monami.io/api/assessments/templates"</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/assessments/templates'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"templates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Screen for Consumer Services v1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SF-101"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sf-101-screen-for-consumer-services-v1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The standard form 101"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SF-101 - Screen for Consumer Services v1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-10T23:29:39.002Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-10T23:29:39.002Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.io/api/assessments/templates?page=1&amp;per_page=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.io/api/assessments/templates?page=1&amp;per_page=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.io/api/assessments/templates?page=1&amp;per_page=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>templates</td>
+<td>The collection of available assessment templates.</td>
+</tr>
+<tr>
+<td>links</td>
+<td>Pagination links to access all the pages of the results</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>Helpful response metadata</td>
+</tr>
+</tbody></table>
+<h4 id='templates-parameters'><code>templates</code> parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>label</td>
+<td>The persistent API ID to use when referring to the document or passing in other requests</td>
+</tr>
+<tr>
+<td>name</td>
+<td>The name of the assessment template.</td>
+</tr>
+<tr>
+<td>code</td>
+<td>(Optional) - The document code of the assessment template</td>
+</tr>
+<tr>
+<td>description</td>
+<td>A helpful description of the template</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td>A combined name of the code and name of the assessment template</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>The creation DateTime of the assessment template</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>DateTime of the most recent update to the assessment template</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>q[label_eq]</td>
+<td>null</td>
+<td>Filter by a Document Template label. Ex: &#39;sf-101-screen-for-consumer-services-v1&#39;</td>
+</tr>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>Select the page of results.</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>25</td>
+<td>How many results per page.</td>
+</tr>
+</tbody></table>
+<h2 id='create-an-assessment-request'>Create an Assessment Request</h2>
+<p>This endpoint creates an assessment request</p>
+
+<blockquote>
+<p>POST /api/assessments/requests</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="s2">"https://app.monami.io/api/assessments/requests"</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/assessments/requests'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">},</span>
+    <span class="ss">body: </span><span class="s1">'{ "client_id": "ami-010101", "document_label": "sf-101-screen-for-consumer-services-v1" }'</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns an HTTP 201 Created status and JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"requested"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-10T23:48:51.180Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-10T23:48:51.180Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"documentable"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-010101"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Screen for Consumer Services v1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>client_id</td>
+<td>The label of the client to create the assessment request.</td>
+</tr>
+<tr>
+<td>document_label</td>
+<td>The label of the document template to use for the assessment</td>
+</tr>
+</tbody></table>
+<h2 id='list-assessments'>List assessments</h2>
+<p>This endpoint returns a collection of Documents Templates that can be used to cerate Assessment Requests.</p>
+
+<blockquote>
+<p>GET /api/assessments/requests</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="s2">"https://app.monami.io/api/assessments/requests"</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/assessments/requests'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"requests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-10T23:43:48.318Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-10T23:43:52.045Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"documentable"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-010101"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Screen for Consumer Services v1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"pdf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.io/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYlk9IiwiZXhwIjoiMjAyNC0xMi0xMVQwMDoyNDoxNy4yMDNaIiwicHVyIjoiYmxvYl9pZCJ9fQ==--60ce994086da61699e1d05034c0afad08588582a/Screen%20for%20Consumer%20Services%20v1_1733874231"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.io/api/assessments/requests?page=1&amp;per_page=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.io/api/assessments/requests?page=1&amp;per_page=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.io/api/assessments/requests?page=1&amp;per_page=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-parameters-2'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requests</td>
+<td>The collection of assessment requests.</td>
+</tr>
+<tr>
+<td>links</td>
+<td>Pagination links to access all the pages of the results</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>Helpful response metadata</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>q[status_eq]</td>
+<td>null</td>
+<td>Filter by request status(requested, completed).</td>
 </tr>
 <tr>
 <td>page</td>
