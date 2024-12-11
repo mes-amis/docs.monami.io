@@ -366,13 +366,16 @@
             <a href="#assessments" class="toc-h1 toc-link" data-title="Assessments">Assessments</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#list-available-templates-for-assessments" class="toc-h2 toc-link" data-title="List available templates for assessments">List available templates for assessments</a>
+                    <a href="#list-available-templates-for-assessment-requests" class="toc-h2 toc-link" data-title="List available templates for Assessment Requests">List available templates for Assessment Requests</a>
                   </li>
                   <li>
                     <a href="#create-an-assessment-request" class="toc-h2 toc-link" data-title="Create an Assessment Request">Create an Assessment Request</a>
                   </li>
                   <li>
                     <a href="#list-assessment-requests" class="toc-h2 toc-link" data-title="List Assessment requests">List Assessment requests</a>
+                  </li>
+                  <li>
+                    <a href="#show-an-assessment-request" class="toc-h2 toc-link" data-title="Show an Assessment request">Show an Assessment request</a>
                   </li>
               </ul>
           </li>
@@ -2007,7 +2010,7 @@ Remember — the info!
 <td>How many results per page.</td>
 </tr>
 </tbody></table>
-<h1 id='assessments'>Assessments</h1><h2 id='list-available-templates-for-assessments'>List available templates for assessments</h2>
+<h1 id='assessments'>Assessments</h1><h2 id='list-available-templates-for-assessment-requests'>List available templates for Assessment Requests</h2>
 <p>This endpoint returns a collection of Documents Templates that can be used to create Assessment Requests.</p>
 
 <blockquote>
@@ -2150,7 +2153,6 @@ Remember — the info!
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"requested"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-10T23:48:51.180Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-10T23:48:51.180Z"</span><span class="p">,</span><span class="w">
@@ -2205,7 +2207,6 @@ Remember — the info!
   </span><span class="nl">"requests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-10T23:43:48.318Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-10T23:43:52.045Z"</span><span class="p">,</span><span class="w">
@@ -2221,7 +2222,7 @@ Remember — the info!
         </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"pdf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.io/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYlk9IiwiZXhwIjoiMjAyNC0xMi0xMVQwMDoyNDoxNy4yMDNaIiwicHVyIjoiYmxvYl9pZCJ9fQ==--60ce994086da61699e1d05034c0afad08588582a/Screen%20for%20Consumer%20Services%20v1_1733874231"</span><span class="w">
+        </span><span class="nl">"pdf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.monami.io/pdf-path"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -2277,6 +2278,85 @@ Remember — the info!
 <td>per_page</td>
 <td>25</td>
 <td>How many results per page.</td>
+</tr>
+</tbody></table>
+<h2 id='show-an-assessment-request'>Show an Assessment request</h2>
+<p>This endpoint returns an assessment request and metadata.</p>
+
+<blockquote>
+<p>GET /api/assessments/requests/:id</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> <span class="s2">"https://app.monami.io/api/assessments/requests/5"</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code>  <span class="n">credential</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'MONAMI_UID'</span><span class="p">,</span> <span class="s1">'MONAMI_SECRET'</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+  <span class="n">response</span> <span class="o">=</span> <span class="no">Excon</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'https://app.monami.io/api/assessments/requests/5'</span><span class="p">,</span>
+    <span class="ss">headers: </span><span class="p">{</span>
+      <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+      <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>A sucessful request returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-11-14T07:39:01.266Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-11-14T09:26:06.951Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"documentable"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-010101"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Screen for Consumer Services v1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"adl_dress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yes"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"iadl_shop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NO DIFFICULTY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"iadl_summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quis expedita reprehenderit. Fuga consequatur ipsum. Deleniti eum laboriosam."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"iadl_housekeeping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NO DIFFICULTY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"iadl_manage_money"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NO DIFFICULTY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meals_last_3_days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"iadl_prepare_meals"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GREAT DIFFICULTY ‑ e.g., little or no involvement in the activity possible"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"iadl_use_telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GREAT DIFFICULTY ‑ e.g., little or no involvement in the activity possible"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"iadl_transportation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GREAT DIFFICULTY ‑ e.g., little or no involvement in the activity possible"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"assistance_receiving"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"iadl_manage_medications"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOME DIFFICULTY ‑ e.g., needs some help, is very slow, or fatigues"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"pdf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.monami.io/pdf-path"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-parameters-3'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique ID of the assessment request.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>The status of the assessment request. (<code>requested</code>, <code>completed</code>)</td>
+</tr>
+<tr>
+<td>documentable</td>
+<td>Type and identification metadata</td>
+</tr>
+<tr>
+<td>document</td>
+<td>Document data and metadata</td>
+</tr>
+<tr>
+<td>links</td>
+<td>Links to other repreresentaions of the document</td>
 </tr>
 </tbody></table>
 <h1 id='languages'>Languages</h1><h2 id='get-languages'>Get Languages</h2>
