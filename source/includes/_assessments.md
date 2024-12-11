@@ -2,7 +2,7 @@
 
 ## List available templates for assessments
 
-This endpoint returns a collection of Documents Templates that can be used to cerate Assessment Requests.
+This endpoint returns a collection of Documents Templates that can be used to create Assessment Requests.
 
 > GET /api/assessments/templates
 
@@ -27,7 +27,6 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/assessments/tem
 {
   "templates": [
     {
-      "id": 10,
       "name": "Screen for Consumer Services v1",
       "code": "SF-101",
       "label": "sf-101-screen-for-consumer-services-v1",
@@ -59,11 +58,11 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/assessments/tem
 
 ### Query Parameters
 
-| Parameter   | Default | Description                                                     |
-| ----------- | ------- | --------------------------------------------------------------- |
-| q[label_eq] | null    | Filter by a Document Template label. Ex: 'nutrition-assessment' |
-| page        | 1       | Select the page of results.                                     |
-| per_page    | 25      | How many results per page.                                      |
+| Parameter   | Default | Description                                                                       |
+| ----------- | ------- | --------------------------------------------------------------------------------- |
+| q[label_eq] | null    | Filter by a Document Template label. Ex: 'sf-101-screen-for-consumer-services-v1' |
+| page        | 1       | Select the page of results.                                                       |
+| per_page    | 25      | How many results per page.                                                        |
 
 ## Create an Assessment Request
 
