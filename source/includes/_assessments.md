@@ -130,7 +130,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/assessments/req
 
 ## List assessments
 
-This endpoint returns a collection of Documents Templates that can be used to cerate Assessment Requests.
+This endpoint returns a collection of assessments and related metadata
 
 > GET /api/assessments/requests
 
