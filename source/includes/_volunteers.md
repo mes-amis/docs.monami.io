@@ -52,9 +52,25 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/volunteers?page
         "created_at": "2024-03-12T14:17:27.096Z",
         "updated_at": "2024-03-12T14:17:29.037Z",
         "gender": "prefer_not_to_say",
-        "primary_phone_number": "+17075514082",
+<<<<<<< HEAD
+=======
+        "phone_numbers": [
+          {
+            "number": "+15044791643",
+            "primary": true,
+            "label": "home"
+          }
+        ],
+>>>>>>> 1093ccfc8dad4ffbc7cb11b4528bd1dac43ce37b
         "primary_language": "english",
-        "languages": ["spanish"]
+        "languages": ["spanish"],
+        "phone_numbers": [
+          {
+            "number": "+17075514082",
+            "primary": true,
+            "label": "cell"
+          }
+        ]
       }
     }
   ],
@@ -138,9 +154,15 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/volunteers/1
     "created_at": "2024-03-12T14:17:27.096Z",
     "updated_at": "2024-03-12T14:17:29.037Z",
     "gender": "prefer_not_to_say",
-    "primary_phone_number": "+17075514082",
     "primary_language": "english",
-    "languages": ["spanish"]
+    "languages": ["spanish"],
+    "phone_numbers": [
+      {
+        "number": "+17075514082",
+        "primary": true,
+        "label": "cell"
+      }
+    ]
   }
 }
 ```
@@ -214,9 +236,25 @@ puts response.read_body
     "created_at": "2024-03-13T18:38:00.777Z",
     "updated_at": "2024-03-13T18:38:00.931Z",
     "gender": "male",
-    "primary_phone_number": "+17075518391",
+<<<<<<< HEAD
+=======
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "home"
+      }
+    ],
+>>>>>>> 1093ccfc8dad4ffbc7cb11b4528bd1dac43ce37b
     "primary_language": null,
-    "languages": ["english", "portuguese"]
+    "languages": ["english", "portuguese"],
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "cell"
+      }
+    ]
   }
 }
 ```
@@ -312,9 +350,25 @@ puts response.read_body
     "created_at": "2024-03-13T18:38:00.777Z",
     "updated_at": "2024-03-13T18:42:32.777Z",
     "gender": "male",
-    "primary_phone_number": "+17075518391",
+<<<<<<< HEAD
+=======
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "home"
+      }
+    ],
+>>>>>>> 1093ccfc8dad4ffbc7cb11b4528bd1dac43ce37b
     "primary_language": null,
-    "languages": ["english", "portuguese"]
+    "languages": ["english", "portuguese"],
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "cell"
+      }
+    ]
   }
 }
 ```

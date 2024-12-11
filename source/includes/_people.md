@@ -36,7 +36,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/people?page=2&p
             "email": "My String",
             "created_at": "2024-01-25T15:56:29.766Z",
             "updated_at": "2024-01-25T15:56:29.766Z",
-            "gender": "Female"
+            "gender": "Female",
+            "phone_numbers": [
+              {
+                "number": "+15044791643",
+                "primary": true,
+                "label": "home"
+              }
+            ],
+            "primary_language": "english",
+            "languages": ["spanish"]
         }
     ],
     "links": {
@@ -103,7 +112,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people/6
     "email": "My String",
     "created_at": "2024-01-25T15:56:29.766Z",
     "updated_at": "2024-02-16T20:33:51.338Z",
-    "gender": "Female"
+    "gender": "Female",
+    "phone_numbers": [
+      {
+        "number": "+15044791643",
+        "primary": true,
+        "label": "home"
+      },
+    ],
+    "primary_language": "english",
+    "languages": ["spanish"]
 }
 ```
 
@@ -152,7 +170,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_emai
             "email": "some@email.com",
             "created_at": "2024-01-25T15:56:29.766Z",
             "updated_at": "2024-02-16T20:33:51.338Z",
-            "gender": "Female"
+            "gender": "Female",
+            "phone_numbers": [
+              {
+                "number": "+15044791643",
+                "primary": true,
+                "label": "home"
+              },
+            ],
+            "primary_language": "english",
+            "languages": ["spanish"]
         }
     ],
     "links": {
@@ -211,7 +238,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_volu
             "email": "My String",
             "created_at": "2024-01-25T15:56:30.555Z",
             "updated_at": "2024-01-25T15:56:30.959Z",
-            "gender": "Prefer not to say"
+            "gender": "Prefer not to say",
+            "phone_numbers": [
+              {
+                "number": "+15044791643",
+                "primary": true,
+                "label": "home"
+              },
+            ],
+            "primary_language": "english",
+            "languages": ["german"]
         }
     ],
     "links": {
@@ -270,7 +306,16 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_clie
             "email": "My String",
             "created_at": "2024-01-25T15:56:30.555Z",
             "updated_at": "2024-01-25T15:56:30.959Z",
-            "gender": "Prefer not to say"
+            "gender": "Prefer not to say",
+            "phone_numbers": [
+              {
+                "number": "+15044791643",
+                "primary": true,
+                "label": "home"
+              },
+            ],
+            "primary_language": "english",
+            "languages": ["german"]
         }
     ],
     "links": {
