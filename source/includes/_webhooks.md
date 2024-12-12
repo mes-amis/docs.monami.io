@@ -98,6 +98,14 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET -d '{ "topic": "client.created", "webhook_
 | topic       | The name of the topic or topics to be notified for. Allows wildcards. Ex `client.*` will receive all client events |
 | webhook_url | The URL you want the webhook notification to POST to.                                                              |
 
+### Available topics
+
+| Model               | Events                        |
+| ------------------- | ----------------------------- |
+| assessments.request | completed, created            |
+| client_call         | completed                     |
+| visit               | completed                     |
+
 ## Delete a webhook subscription
 
 If you're no longer interested in getting webhook notifications, you can destroy a webhook.
