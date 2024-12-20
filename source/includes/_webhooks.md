@@ -138,21 +138,10 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET  -H 'Content-Type: application/json' -X 'D
   "topic": "client.created",
   "data": {
     "id": 8,
-    "person_id": 16,
-    "status": "pending",
+    "type": "Client",
+    "label": "ami-010101",
     "created_at": "2022-05-16T16:51:42.382-07:00",
-    "updated_at": "2022-05-16T16:51:42.382-07:00",
-    "first_name": "Client",
-    "preferred_name": null,
-    "last_name": "Name",
-    "email": "client.name@example.monami.io",
-    "address": {
-      "address_line1": "123 Fake Street",
-      "address_line2": null,
-      "city": "San Mateo",
-      "state": "CA",
-      "zip": "94402"
-    }
+    "updated_at": "2022-05-16T16:51:42.382-07:00"
   }
 }
 ```
