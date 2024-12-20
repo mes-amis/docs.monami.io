@@ -387,11 +387,11 @@ This endpoint creates a volunteer for a given person.
 
 ## Update a Volunteer
 
-> PUT /api/volunteers/:volunteer_id
+> PATCH /api/volunteers/:volunteer_id
 
 ```shell
 curl -i -u $MONAMI_UID:$MONAMI_SECRET \
--X PUT https://app.monami.io/api/volunteers/3 \
+-X PATCH https://app.monami.io/api/volunteers/3 \
 -d '{ "person": { "email": "new_email@monami.io" }, "address": { "address_line2": "Apt 2B" } }' \
 -H 'Content-Type: application/json'
 ```

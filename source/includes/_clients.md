@@ -356,11 +356,11 @@ This endpoint creates a client for a specific person.
 
 ## Update a Client
 
-> PUT /api/clients/:client_id
+> PATCH /api/clients/:client_id
 
 ```shell
 curl -i -u $MONAMI_UID:$MONAMI_SECRET \
--X PUT https://app.monami.io/api/clients/22 \
+-X PATCH https://app.monami.io/api/clients/22 \
 -d '{ "person": { "email": "new_email@monami.io" } }' \
 -H 'Content-Type: application/json'
 ```

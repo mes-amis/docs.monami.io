@@ -342,11 +342,11 @@ This endpoint returns the Person record for a given Client.
 
 ## Update a Person
 
-> PUT /api/people/:person_id
+> PATCH /api/people/:person_id
 
 ```shell
 curl -i -u $MONAMI_UID:$MONAMI_SECRET \
--X PUT https://app.monami.io/api/people/6 \
+-X PATCH https://app.monami.io/api/people/6 \
 -d '{ "email": "new_email@monami.io", "languages": ["italian", "spanish"] }' \
 -H 'Content-Type: application/json'
 ```
