@@ -339,3 +339,70 @@ This endpoint returns the Person record for a given Client.
 | Parameter        | Description                                          |
 | ---------------- | ---------------------------------------------------- |
 | by_client        | The ID for the client associated with the person     |
+
+## Update a Person
+
+> PUT /api/people/:person_id
+
+```shell
+curl -i -u $MONAMI_UID:$MONAMI_SECRET \
+-X PUT https://app.monami.io/api/people/6 \
+-d '{ "email": "new_email@monami.io", "languages": ["italian", "spanish"] }' \
+-H 'Content-Type: application/json'
+```
+
+```ruby
+credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
+
+response = Excon.put('https://app.monami.io/api/people/6',
+  headers: {
+    'Content-Type' => 'application/json',
+    'Authorization' => "Basic #{credential}"
+  },
+  body: {
+    email: 'new_email@monami.io',
+    languages: ['italian', 'spanish']
+  }.to_json
+)
+```
+
+> A sucessful request returns JSON structured like this:
+
+```json
+{
+    "id": 6,
+    "first_name": "Karma",
+    "preferred_name": null,
+    "middle_name": null,
+    "last_name": "Marty",
+    "date_of_birth": null,
+    "email": "new_email@monami.io",
+    "created_at": "2024-01-25T15:56:29.766Z",
+    "updated_at": "2024-02-16T20:33:51.338Z",
+    "gender": "Female",
+    "phone_numbers": [
+      {
+        "number": "+15044791643",
+        "primary": true,
+        "label": "home"
+      },
+    ],
+    "primary_language": "english",
+    "languages": ["spanish", "italian"]
+}
+```
+This endpoint returns the updated person.
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+
+### Payload Parameters
+
+| Parameter      | Description                                                                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| first_name     | Person's first name                                                                                                                                                                                     |
+| preferred_name | Person's preferred name                                                                                                                                                                                 |
+| last_name      | Person's last name                                                                                                                                                                                      |
+| date_of_birth  | Person's birthdate eg.: `YYYY-MM-DD`                                                                                                                                                                         |
+| email          | Person's email address                                                                                                                                                                                  |
+| gender         | Person's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
+| languages      | Array of Language Object type labels                                                                                                                                                     |

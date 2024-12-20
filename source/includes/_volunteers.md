@@ -272,10 +272,10 @@ This endpoint retrieves the newly created volunteer.
 | first_name     | Volunteer's first name                                                                                                                                                                                     |
 | preferred_name | Volunteer's preferred name                                                                                                                                                                                 |
 | last_name      | Volunteer's last name                                                                                                                                                                                      |
-| date_of_birth  | Volunteer's date eg.: `YYYY-MM-DD`                                                                                                                                                                         |
+| date_of_birth  | Volunteer's birthdate eg.: `YYYY-MM-DD`                                                                                                                                                                         |
 | email          | Volunteer's email address                                                                                                                                                                                  |
 | gender         | Volunteer's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
-| languages      | Comma separated list of Language Object type labels                                                                                                                                                        |
+| languages      | Array of Language Object type labels                                                                                                                                                        |
 
 #### Address Parameters
 
@@ -384,3 +384,113 @@ This endpoint creates a volunteer for a given person.
 | city          | Volunteer's City                                 |
 | state         | Volunteers State 2 letter abbreviation eg.: `CA` |
 | zip           | 5 digits zip code                                |
+
+## Update a Volunteer
+
+> PUT /api/volunteers/:volunteer_id
+
+```shell
+curl -i -u $MONAMI_UID:$MONAMI_SECRET \
+-X PUT https://app.monami.io/api/volunteers/3 \
+-d '{ "person": { "email": "new_email@monami.io" }, "address": { "address_line2": "Apt 2B" } }' \
+-H 'Content-Type: application/json'
+```
+
+```ruby
+credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
+
+response = Excon.put('https://app.monami.io/api/volunteers/3',
+  headers: {
+    'Content-Type' => 'application/json',
+    'Authorization' => "Basic #{credential}"
+  },
+  body: {
+    person: { email: 'new_email@monami.io' },
+    address: { address_line2: 'Apt 2B' }
+  }.to_json
+)
+```
+
+> A sucessful request returns JSON structured like this:
+
+```json
+{
+  "id": 3,
+  "status": "applied",
+  "created_at": "2024-03-13T11:38:00.900-07:00",
+  "updated_at": "2024-03-13T11:38:00.900-07:00",
+  "external_id": null,
+  "label": "volunteer-d",
+  "custom_fields": {
+    "pronouns": "custom_value2",
+    "gender_identity": "custom_value"
+  },
+  "address": {
+    "address_line1": "X Random St",
+    "address_line2": "Apt 2B",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip": "94117"
+  },
+  "person": {
+    "id": 79,
+    "first_name": "John",
+    "preferred_name": "Volunteer",
+    "middle_name": null,
+    "last_name": "Doe",
+    "date_of_birth": "1940-05-30",
+    "email": "new_email@monami.io",
+    "created_at": "2024-03-13T18:38:00.777Z",
+    "updated_at": "2024-03-13T18:38:00.931Z",
+    "gender": "male",
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "home"
+      }
+    ],
+    "primary_language": null,
+    "languages": ["english", "portuguese"],
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "cell"
+      }
+    ]
+  }
+}
+```
+This endpoint returns the updated volunteer.
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+
+### Payload Parameters
+
+| Parameter     | Description                       |
+| ------------- | --------------------------------- |
+| person        | JSON formatted person parameters  |
+| address       | JSON formatted address parameters |
+| custom_fields | JSON formatted custom fields      |
+
+#### Person Parameters
+
+| Parameter      | Description                                                                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| first_name     | Volunteer's first name                                                                                                                                                                                     |
+| preferred_name | Volunteer's preferred name                                                                                                                                                                                 |
+| last_name      | Volunteer's last name                                                                                                                                                                                      |
+| date_of_birth  | Volunteer's birthdate eg.: `YYYY-MM-DD`                                                                                                                                                                         |
+| email          | Volunteer's email address                                                                                                                                                                                  |
+| gender         | Volunteer's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
+| languages      | Array of Language Object type labels                                                                                                                                                     |
+
+#### Address Parameters
+
+| Parameter     | Description                                         |
+| ------------- | --------------------------------------------------- |
+| address_line1 | Volunteer's address                                 |
+| city          | Volunteer's city                                    |
+| state         | Volunteer's state. 2 letter abbreviation e.g.: `CA` |
+| zip           | 5 digit zip code                                    |

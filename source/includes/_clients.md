@@ -195,7 +195,7 @@ url = URI("http://app.monami.io/api/clients/")
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = "Basic #{credential}"
-form_data = [['person', '{"first_name": "John","preferred_name": "Client","last_name": "Doe","date_of_birth": "1940-05-30","test": "test@monami.io","gender": "female","primary_phone_number": "+17075518391", "languages": "english,portuguese"}'],['address', '{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
+form_data = [['person', '{"first_name": "Jane","preferred_name": "Client","last_name": "Doe","date_of_birth": "1940-05-30","test": "test@monami.io","gender": "female","primary_phone_number": "+17075518391", "languages": "english,portuguese"}'],['address', '{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
 request.set_form form_data, 'multipart/form-data'
 response = http.request(request)
 puts response.read_body
@@ -265,10 +265,10 @@ This endpoint returns the newly created client.
 | first_name     | Client's first name                                                                                                                                                                                     |
 | preferred_name | Client's preferred name                                                                                                                                                                                 |
 | last_name      | Client's last name                                                                                                                                                                                      |
-| date_of_birth  | Client's date eg.: `YYYY-MM-DD`                                                                                                                                                                         |
+| date_of_birth  | Client's birthdate eg.: `YYYY-MM-DD`                                                                                                                                                                         |
 | email          | Client's email address                                                                                                                                                                                  |
 | gender         | Client's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
-| languages      | Comma separated list of Language Object type labels                                                                                                                                                     |
+| languages      | Array of Language Object type labels                                                                                                                                                     |
 
 #### Address Parameters
 
@@ -284,7 +284,7 @@ This endpoint returns the newly created client.
 > POST /api/people/:person_id/clients/
 
 ```shell
-curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people/82/clients/ \
+curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people/78/clients/ \
 --form 'custom_fields="{\"gender_identity\": \"custom_value\", \"pronouns\": \"custom_value2\"}"'
 ```
 
@@ -353,6 +353,109 @@ This endpoint creates a client for a specific person.
 | person_id     | Integer ID present in the URL     |
 | address       | JSON formatted address parameters |
 | custom_fields | JSON formatted custom fields      |
+
+## Update a Client
+
+> PUT /api/clients/:client_id
+
+```shell
+curl -i -u $MONAMI_UID:$MONAMI_SECRET \
+-X PUT https://app.monami.io/api/clients/22 \
+-d '{ "person": { "email": "new_email@monami.io" } }' \
+-H 'Content-Type: application/json'
+```
+
+```ruby
+credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
+
+response = Excon.put('https://app.monami.io/api/clients/22',
+  headers: {
+    'Content-Type' => 'application/json',
+    'Authorization' => "Basic #{credential}"
+  },
+  body: {
+    person: { email: 'new_email@monami.io' },
+    address: { address_line2: 'Apt 2B' }
+  }.to_json
+)
+```
+
+> A sucessful request returns JSON structured like this:
+
+```json
+{
+  "id": 22,
+  "status": "active",
+  "created_at": "2024-03-13T09:04:33.346-07:00",
+  "updated_at": "2024-03-13T09:04:33.346-07:00",
+  "external_id": null,
+  "label": "ami-c090e55c",
+  "custom_fields": {
+    "pronouns": "custom_value2",
+    "gender_identity": "custom_value"
+  },
+  "address": {
+    "address_line1": "X Random St",
+    "address_line2": "Apt 2B",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip": "94117"
+  },
+  "person": {
+    "id": 78,
+    "first_name": "Jane",
+    "preferred_name": "Client",
+    "middle_name": null,
+    "last_name": "Doe",
+    "date_of_birth": "1940-05-30",
+    "email": "new_email@monami.io",
+    "created_at": "2024-03-13T16:04:33.256Z",
+    "updated_at": "2024-03-13T16:04:33.399Z",
+    "gender": "female",
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "home"
+      }
+    ],
+    "primary_language": null,
+    "languages": ["english", "portuguese"]
+  }
+}
+```
+This endpoint returns the updated client.
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+
+### Payload Parameters
+
+| Parameter     | Description                       |
+| ------------- | --------------------------------- |
+| person        | JSON formatted person parameters  |
+| address       | JSON formatted address parameters |
+| custom_fields | JSON formatted custom fields      |
+
+#### Person Parameters
+
+| Parameter      | Description                                                                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| first_name     | Client's first name                                                                                                                                                                                     |
+| preferred_name | Client's preferred name                                                                                                                                                                                 |
+| last_name      | Client's last name                                                                                                                                                                                      |
+| date_of_birth  | Client's birthdate eg.: `YYYY-MM-DD`                                                                                                                                                                         |
+| email          | Client's email address                                                                                                                                                                                  |
+| gender         | Client's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
+| languages      | Array of Language Object type labels                                                                                                                                                     |
+
+#### Address Parameters
+
+| Parameter     | Description                                      |
+| ------------- | ------------------------------------------------ |
+| address_line1 | Client's address                                 |
+| city          | Client's city                                    |
+| state         | Client's state. 2-letter abbreviation e.g.: `CA` |
+| zip           | 5 digits zip code                                |
 
 ## List Documents for a Client
 
