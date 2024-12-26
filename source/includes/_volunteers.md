@@ -21,7 +21,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/volunteers?page
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -115,7 +115,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/volunteers/1
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -194,7 +194,7 @@ response = http.request(request)
 puts response.read_body
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -298,7 +298,7 @@ response = http.request(request)
 puts response.read_body
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -390,7 +390,7 @@ response = Excon.put('https://app.monami.io/api/volunteers/3',
 )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -457,6 +457,15 @@ This endpoint returns the updated volunteer.
 | email          | Volunteer's email address                                                                                                                                                                                  |
 | gender         | Volunteer's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
 | languages      | Array of Language Object type labels                                                                                                                                                     |
+| phone_numbers  | Array of Phone Numbers parameters                                                                                                                                                                       |
+
+#### Phone Number Parameters
+
+| Parameter | Description                                                          |
+|-----------|----------------------------------------------------------------------|
+| number    | Phone Number's number. ex: +17075518391                              |
+| primary   | Is the phone number primary?                                         |
+| label     | Label or Type of phone number. Options are: `cell`, `home` or `work` |
 
 #### Address Parameters
 
