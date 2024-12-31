@@ -460,11 +460,11 @@ This endpoint returns the updated client.
 
 #### Phone Number Parameters
 
-| Parameter | Description                                                          |
-|-----------|----------------------------------------------------------------------|
-| number    | Phone Number's number. ex: +17075518391                              |
-| primary   | Is the phone number primary?                                         |
-| label     | Label or Type of phone number. Options are: `cell`, `home` or `work` |
+| Parameter | Description                                             |
+|-----------|---------------------------------------------------------|
+| number    | Phone Number's number. ex: +17075518391                 |
+| primary   | Is the phone number primary?                            |
+| label     | Type of phone number. Options: `cell`, `home` or `work` |
 
 #### Address Parameters
 
