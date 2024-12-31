@@ -93,7 +93,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
 | per_page       | 25      | How many results per page.                                     |
 | first_name     |      | Filters by the user's first name                               |
 | last_name      |      | Filters by the user's last name                                |
-| phone_number   |      | Filters by any of the user's phone numbers, ex: `+15044791643` |
+| phone_number   |      | Filters by any of the user's phone numbers, e.g. `+15044791643` |
 | date_of_birth  |      | Filters by the user's date of birth. Format: `mm/dd/yyyy`      |
 | address_county |      | Filters by the user's county                                   |
 | social_security_number_last_4 |      | Filters by the last 4 digits of the user's SSN                 |
