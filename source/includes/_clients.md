@@ -94,7 +94,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
 | first_name     |      | Filters by the user's first name                               |
 | last_name      |      | Filters by the user's last name                                |
 | phone_number   |      | Filters by any of the user's phone numbers, e.g. `+15044791643` |
-| date_of_birth  |      | Filters by the user's date of birth. Format: `mm/dd/yyyy`      |
+| date_of_birth  |      | Filters by the user's date of birth. Format: `YYYY-MM-DD`      |
 | address_county |      | Filters by the user's county                                   |
 | social_security_number_last_4 |      | Filters by the last 4 digits of the user's SSN                 |
 | status |      | Filters by the user's status                                   |
@@ -265,19 +265,19 @@ This endpoint returns the newly created client.
 | first_name     | Client's first name                                                                                                                                                                                     |
 | preferred_name | Client's preferred name                                                                                                                                                                                 |
 | last_name      | Client's last name                                                                                                                                                                                      |
-| date_of_birth  | Client's birthdate eg.: `YYYY-MM-DD`                                                                                                                                                                    |
+| date_of_birth  | Client's birthdate, e.g. `YYYY-MM-DD`                                                                                                                                                                    |
 | email          | Client's email address                                                                                                                                                                                  |
 | gender         | Client's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
 | languages      | Array of Language Object type labels                                                                                                                                                                    |
-| phone_numbers  | Array of Phone Numbers parameters                                                                                                                                                                                 |
+| phone_numbers  | Array of Phone Number parameters                                                                                                                                                                                 |
 
 #### Phone Number Parameters
 
 | Parameter | Description                                                          |
 |-----------|----------------------------------------------------------------------|
-| number    | Phone Number's number. ex: +17075518391                              |
-| primary   | Is the phone number primary?                                         |
-| label     | Label or Type of phone number. Options are: `cell`, `home` or `work` |
+| number    | Phone number including area code, e.g. '+17075518391'                              |
+| primary   | Options: `true` or `false`                                        |
+| label     | Type of phone number. Options: `cell`, `home` or `work` |
 
 #### Address Parameters
 
@@ -456,7 +456,7 @@ This endpoint returns the updated client.
 | email          | Client's email address                                                                                                                                                                                 |
 | gender         | Client's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
 | languages      | Array of Language Object type labels                                                                                                                                                                   |
-| phone_numbers  | Array of Phone Numbers                                                                                                                                                                                 |
+| phone_numbers  | Array of Phone Number parameters                                                                                                                                                                                  |
 
 #### Phone Number Parameters
 
