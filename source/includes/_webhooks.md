@@ -25,7 +25,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/webhooks
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -80,7 +80,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET -d '{ "topic": "client.created", "webhook_
   )
 ```
 
-> A sucessful request returns HTTP Status `201 Created` and a JSON object representing the webhook:
+> A successful request returns HTTP Status `201 Created` and a JSON object representing the webhook:
 
 ```json
 {
@@ -127,7 +127,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET  -H 'Content-Type: application/json' -X 'D
   )
 ```
 
-> A sucessful request returns HTTP Status `204 No Content`:
+> A successful request returns HTTP Status `204 No Content`:
 
 ## Implementing an HTTP Handler for the webhook
 

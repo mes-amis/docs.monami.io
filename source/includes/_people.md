@@ -21,7 +21,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/people?page=2&p
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -99,7 +99,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people/6
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -118,7 +118,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people/6
         "number": "+15044791643",
         "primary": true,
         "label": "home"
-      },
+      }
     ],
     "primary_language": "english",
     "languages": ["spanish"]
@@ -155,7 +155,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_emai
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -176,7 +176,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_emai
                 "number": "+15044791643",
                 "primary": true,
                 "label": "home"
-              },
+              }
             ],
             "primary_language": "english",
             "languages": ["spanish"]
@@ -223,7 +223,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_volu
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -244,7 +244,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_volu
                 "number": "+15044791643",
                 "primary": true,
                 "label": "home"
-              },
+              }
             ],
             "primary_language": "english",
             "languages": ["german"]
@@ -291,7 +291,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_clie
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -312,7 +312,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_clie
                 "number": "+15044791643",
                 "primary": true,
                 "label": "home"
-              },
+              }
             ],
             "primary_language": "english",
             "languages": ["german"]
@@ -366,7 +366,7 @@ response = Excon.put('https://app.monami.io/api/people/6',
 )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -385,7 +385,7 @@ response = Excon.put('https://app.monami.io/api/people/6',
         "number": "+15044791643",
         "primary": true,
         "label": "home"
-      },
+      }
     ],
     "primary_language": "english",
     "languages": ["spanish", "italian"]
