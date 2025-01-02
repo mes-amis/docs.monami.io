@@ -265,19 +265,19 @@ This endpoint returns the newly created client.
 | first_name     | Client's first name                                                                                                                                                                                     |
 | preferred_name | Client's preferred name                                                                                                                                                                                 |
 | last_name      | Client's last name                                                                                                                                                                                      |
-| date_of_birth  | Client's birthdate, e.g. `YYYY-MM-DD`                                                                                                                                                                    |
+| date_of_birth  | Client's birthdate, e.g. `YYYY-MM-DD`                                                                                                                                                                   |
 | email          | Client's email address                                                                                                                                                                                  |
 | gender         | Client's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
 | languages      | Array of Language Object type labels                                                                                                                                                                    |
-| phone_numbers  | Array of Phone Number parameters                                                                                                                                                                                 |
+| phone_numbers  | Array of Phone Number parameters                                                                                                                                                                        |
 
 #### Phone Number Parameters
 
-| Parameter | Description                                                          |
-|-----------|----------------------------------------------------------------------|
-| number    | Phone number including area code, e.g. '+17075518391'                              |
-| primary   | Options: `true` or `false`                                        |
-| label     | Type of phone number. Options: `cell`, `home` or `work` |
+| Parameter | Description                                                                                    |
+|-----------|------------------------------------------------------------------------------------------------|
+| number    | Phone number including area code, e.g. '+17075518391'                                          |
+| primary   | Whether or not phone is primary. Only one primary phone per person. Options: `true` or `false` |
+| label     | Type of phone number. Options: `cell`, `home` or `work`                                        |
 
 #### Address Parameters
 
@@ -460,11 +460,11 @@ This endpoint returns the updated client.
 
 #### Phone Number Parameters
 
-| Parameter | Description                                             |
-|-----------|---------------------------------------------------------|
-| number    | Phone Number's number. ex: +17075518391                 |
-| primary   | Is the phone number primary?                            |
-| label     | Type of phone number. Options: `cell`, `home` or `work` |
+| Parameter | Description                                                                                    |
+|-----------|------------------------------------------------------------------------------------------------|
+| number    | Phone number including area code, e.g. '+17075518391'                                          |
+| primary   | Whether or not phone is primary. Only one primary phone per person. Options: `true` or `false` |
+| label     | Type of phone number. Options: `cell`, `home` or `work`                                        |
 
 #### Address Parameters
 
