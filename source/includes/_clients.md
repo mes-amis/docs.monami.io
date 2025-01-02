@@ -52,6 +52,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
         "created_at": "2024-03-12T14:19:02.091Z",
         "updated_at": "2024-03-12T14:19:02.115Z",
         "gender": "prefer_not_to_say",
+        "primary_language": "english",
+        "languages": null,
         "phone_numbers": [
           {
             "number": "+15044791643",
@@ -59,8 +61,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
             "label": "home"
           }
         ],
-        "primary_language": "english",
-        "languages": null
+        "sites": []
       }
     }
   ],
@@ -151,6 +152,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients/12
     "created_at": "2024-03-12T14:19:02.091Z",
     "updated_at": "2024-03-12T14:19:02.115Z",
     "gender": "prefer_not_to_say",
+    "primary_language": "english",
+    "languages": null,
     "phone_numbers": [
       {
         "number": "+15044791643",
@@ -158,8 +161,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients/12
         "label": "home"
       }
     ],
-    "primary_language": "english",
-    "languages": null
+    "sites": []
   }
 }
 ```
@@ -233,6 +235,8 @@ puts response.read_body
     "created_at": "2024-03-13T16:04:33.256Z",
     "updated_at": "2024-03-13T16:04:33.399Z",
     "gender": "female",
+    "primary_language": null,
+    "languages": ["english", "portuguese"],
     "phone_numbers": [
       {
         "number": "+17075518391",
@@ -240,8 +244,7 @@ puts response.read_body
         "label": "home"
       }
     ],
-    "primary_language": null,
-    "languages": ["english", "portuguese"]
+    "sites": []
   }
 }
 ```
@@ -338,6 +341,8 @@ puts response.read_body
     "created_at": "2024-03-13T16:04:33.256Z",
     "updated_at": "2024-03-13T16:04:33.399Z",
     "gender": "female",
+    "primary_language": null,
+    "languages": ["english", "portuguese"],
     "phone_numbers": [
       {
         "number": "+17075518391",
@@ -345,8 +350,7 @@ puts response.read_body
         "label": "home"
       }
     ],
-    "primary_language": null,
-    "languages": ["english", "portuguese"]
+    "sites": []
   }
 }
 ```
@@ -421,6 +425,8 @@ response = Excon.put('https://app.monami.io/api/clients/22',
     "created_at": "2024-03-13T16:04:33.256Z",
     "updated_at": "2024-03-13T16:04:33.399Z",
     "gender": "female",
+    "primary_language": null,
+    "languages": ["english", "portuguese"],
     "phone_numbers": [
       {
         "number": "+17075518391",
@@ -428,8 +434,7 @@ response = Excon.put('https://app.monami.io/api/clients/22',
         "label": "home"
       }
     ],
-    "primary_language": null,
-    "languages": ["english", "portuguese"]
+    "sites": []
   }
 }
 ```
@@ -474,6 +479,108 @@ This endpoint returns the updated client.
 | city          | Client's city                                    |
 | state         | Client's state. 2-letter abbreviation e.g.: `CA` |
 | zip           | 5 digits zip code                                |
+
+## Adopt a Client
+
+> PATCH /api/clients/:client_label/adopt
+
+```shell
+curl -i -u $MONAMI_UID:$MONAMI_SECRET \
+-X PATCH https://app.monami.io/api/clients/ami-c090e55c/adopt \
+-H 'Content-Type: application/json'
+```
+
+```ruby
+credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
+
+response = Excon.put('https://app.monami.io/api/clients/ami-c090e55c/adopt',
+  headers: {
+    'Content-Type' => 'application/json',
+    'Authorization' => "Basic #{credential}"
+  }
+)
+```
+
+> An adoptable client response contains JSON structured like this:
+
+```json
+{
+  "label": "ami-c090e55c",
+  "person": {
+    "id": 78,
+    "first_name": "Jane",
+    "preferred_name": "Client",
+    "middle_name": null,
+    "last_name": "Doe",
+    "email": "new_email@monami.io",
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "home"
+      }
+    ],
+    "sites": []
+  }
+}
+```
+
+> A sucessful adoption request returns JSON structured like this:
+
+```json
+{
+  "id": 22,
+  "status": "active",
+  "created_at": "2024-03-13T09:04:33.346-07:00",
+  "updated_at": "2024-03-13T09:04:33.346-07:00",
+  "external_id": null,
+  "label": "ami-c090e55c",
+  "custom_fields": {
+    "pronouns": "custom_value2",
+    "gender_identity": "custom_value"
+  },
+  "address": {
+    "address_line1": "X Random St",
+    "address_line2": "Apt 2B",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip": "94117"
+  },
+  "person": {
+    "id": 78,
+    "first_name": "Jane",
+    "preferred_name": "Client",
+    "middle_name": null,
+    "last_name": "Doe",
+    "date_of_birth": "1940-05-30",
+    "email": "new_email@monami.io",
+    "created_at": "2024-03-13T16:04:33.256Z",
+    "updated_at": "2024-03-13T16:04:33.399Z",
+    "gender": "female",
+    "primary_language": null,
+    "languages": ["english", "portuguese"],
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "home"
+      }
+    ],
+    "sites": ["my_credential_site"]
+  }
+}
+```
+
+This endpoint adds a specific client to a site credential's site, and returns the full client response.
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+
+### URL Parameters
+
+| Parameter    | Description                         |
+| ------------ | ----------------------------------- |
+| client_label | The label of the client to adopt |
+
 
 ## List Documents for a Client
 
