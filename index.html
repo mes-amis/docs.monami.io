@@ -651,7 +651,7 @@ The errors will sometimes have links with more details that will be helpful when
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"client_calls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -843,7 +843,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
@@ -994,7 +994,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"client_calls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1159,7 +1159,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"client_calls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1324,7 +1324,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"client_calls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1495,7 +1495,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"clients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1599,12 +1599,12 @@ Remember — the info!
 <tr>
 <td>phone_number</td>
 <td></td>
-<td>Filters by any of the user&#39;s phone numbers</td>
+<td>Filters by any of the user&#39;s phone numbers, e.g. <code>+15044791643</code></td>
 </tr>
 <tr>
 <td>date_of_birth</td>
 <td></td>
-<td>Filters by the user&#39;s date of birth</td>
+<td>Filters by the user&#39;s date of birth. Format: <code>YYYY-MM-DD</code></td>
 </tr>
 <tr>
 <td>address_county</td>
@@ -1641,7 +1641,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
@@ -1701,7 +1701,7 @@ Remember — the info!
 <p>POST /api/clients/</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/clients/ <span class="se">\</span>
-<span class="nt">--form</span> <span class="s1">'person="{\"first_name\": \"John\",\"preferred_name\": \"Client\",\"last_name\": \"Doe\",\"date_of_birth\": \"1940-05-30\",\"email\": \"test@monami.io\",\"gender\": \"female\",\"primary_phone_number\": \"+17075518391\", \"languages\": \"english,portuguese\"}"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'person="{\"first_name\": \"John\",\"preferred_name\": \"Client\",\"last_name\": \"Doe\",\"date_of_birth\": \"1940-05-30\",\"email\": \"test@monami.io\",\"gender\": \"female\",\"phone_numbers\": [{\"number\": \"+17075518391\", \"primary\": true}],\"languages\": \"english,portuguese\"}"'</span> <span class="se">\</span>
 <span class="nt">--form</span> <span class="s1">'address="{\"address_line1\": \"X Random St\", \"city\": \"San Francisco\", \"state\": \"CA\", \"zip\": \"94117\"}"'</span> <span class="se">\</span>
 <span class="nt">--form</span> <span class="s1">'custom_fields="{\"gender_identity\": \"custom_value\", \"pronouns\": \"custom_value2\"}"'</span>
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
@@ -1713,13 +1713,13 @@ Remember — the info!
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
 <span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
-<span class="n">form_data</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">'person'</span><span class="p">,</span> <span class="s1">'{"first_name": "Jane","preferred_name": "Client","last_name": "Doe","date_of_birth": "1940-05-30","test": "test@monami.io","gender": "female","primary_phone_number": "+17075518391", "languages": "english,portuguese"}'</span><span class="p">],[</span><span class="s1">'address'</span><span class="p">,</span> <span class="s1">'{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'</span><span class="p">],[</span><span class="s1">'custom_fields'</span><span class="p">,</span> <span class="s1">'{"gender_identity": "custom_value", "pronouns": "custom_value2"}'</span><span class="p">]]</span>
+<span class="n">form_data</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">'person'</span><span class="p">,</span> <span class="s1">'{"first_name": "Jane","preferred_name": "Client","last_name": "Doe","date_of_birth": "1940-05-30","test": "test@monami.io","gender": "female","phone_numbers": [{"primary": "+17075518391"}],"languages": "english,portuguese"}'</span><span class="p">],[</span><span class="s1">'address'</span><span class="p">,</span> <span class="s1">'{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'</span><span class="p">],[</span><span class="s1">'custom_fields'</span><span class="p">,</span> <span class="s1">'{"gender_identity": "custom_value", "pronouns": "custom_value2"}'</span><span class="p">]]</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">set_form</span> <span class="n">form_data</span><span class="p">,</span> <span class="s1">'multipart/form-data'</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
@@ -1806,7 +1806,7 @@ Remember — the info!
 </tr>
 <tr>
 <td>date_of_birth</td>
-<td>Client&#39;s birthdate eg.: <code>YYYY-MM-DD</code></td>
+<td>Client&#39;s birthdate, e.g. <code>YYYY-MM-DD</code></td>
 </tr>
 <tr>
 <td>email</td>
@@ -1819,6 +1819,30 @@ Remember — the info!
 <tr>
 <td>languages</td>
 <td>Array of Language Object type labels</td>
+</tr>
+<tr>
+<td>phone_numbers</td>
+<td>Array of Phone Number parameters</td>
+</tr>
+</tbody></table>
+<h4 id='phone-number-parameters'>Phone Number Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>Phone number including area code, e.g. &#39;+17075518391&#39;</td>
+</tr>
+<tr>
+<td>primary</td>
+<td>Whether or not phone is primary. Only one primary phone per person. Options: <code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>Type of phone number. Options: <code>cell</code>, <code>home</code> or <code>work</code></td>
 </tr>
 </tbody></table>
 <h4 id='address-parameters'>Address Parameters</h4>
@@ -1866,7 +1890,7 @@ Remember — the info!
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
@@ -1947,7 +1971,7 @@ Remember — the info!
 <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
@@ -2048,6 +2072,30 @@ Remember — the info!
 <td>languages</td>
 <td>Array of Language Object type labels</td>
 </tr>
+<tr>
+<td>phone_numbers</td>
+<td>Array of Phone Number parameters</td>
+</tr>
+</tbody></table>
+<h4 id='phone-number-parameters-2'>Phone Number Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>Phone number including area code, e.g. &#39;+17075518391&#39;</td>
+</tr>
+<tr>
+<td>primary</td>
+<td>Whether or not phone is primary. Only one primary phone per person. Options: <code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>Type of phone number. Options: <code>cell</code>, <code>home</code> or <code>work</code></td>
+</tr>
 </tbody></table>
 <h4 id='address-parameters-2'>Address Parameters</h4>
 <table><thead>
@@ -2090,7 +2138,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2184,7 +2232,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"templates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2306,7 +2354,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns an HTTP 201 Created status and JSON structured like this:</p>
+<p>A successful request returns an HTTP 201 Created status and JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -2358,7 +2406,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"requests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2454,7 +2502,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
@@ -2533,7 +2581,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2612,7 +2660,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w">
@@ -2652,7 +2700,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"people"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2747,7 +2795,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
@@ -2765,7 +2813,7 @@ Remember — the info!
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+15044791643"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"spanish"</span><span class="p">]</span><span class="w">
@@ -2801,7 +2849,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"people"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2821,7 +2869,7 @@ Remember — the info!
                 </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+15044791643"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="w">
-              </span><span class="p">},</span><span class="w">
+              </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
             </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"spanish"</span><span class="p">]</span><span class="w">
@@ -2868,7 +2916,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"people"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2888,7 +2936,7 @@ Remember — the info!
                 </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+15044791643"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="w">
-              </span><span class="p">},</span><span class="w">
+              </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
             </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"german"</span><span class="p">]</span><span class="w">
@@ -2935,7 +2983,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"people"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2955,7 +3003,7 @@ Remember — the info!
                 </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+15044791643"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="w">
-              </span><span class="p">},</span><span class="w">
+              </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
             </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"german"</span><span class="p">]</span><span class="w">
@@ -3009,7 +3057,7 @@ Remember — the info!
 <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
@@ -3027,7 +3075,7 @@ Remember — the info!
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+15044791643"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"spanish"</span><span class="p">,</span><span class="w"> </span><span class="s2">"italian"</span><span class="p">]</span><span class="w">
@@ -3093,7 +3141,7 @@ Remember — the info!
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -3265,7 +3313,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"service_records"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -3422,7 +3470,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -3480,7 +3528,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"service_definitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -3575,7 +3623,7 @@ curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MON
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
@@ -3640,7 +3688,7 @@ curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MON
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"service_rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -3724,7 +3772,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
@@ -3794,7 +3842,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"funding_sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -3891,7 +3939,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">122</span><span class="p">,</span><span class="w">
@@ -3946,7 +3994,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"programs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4070,7 +4118,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">208</span><span class="p">,</span><span class="w">
@@ -4158,7 +4206,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"visits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4350,7 +4398,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">126</span><span class="p">,</span><span class="w">
@@ -4501,7 +4549,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"visits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4672,7 +4720,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"volunteers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4702,13 +4750,6 @@ Remember — the info!
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:27.096Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-12T14:17:29.037Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefer_not_to_say"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+15044791643"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
         </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"spanish"</span><span class="p">],</span><span class="w">
         </span><span class="nl">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4790,7 +4831,7 @@ Remember — the info!
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -4850,7 +4891,7 @@ Remember — the info!
 <p>POST /api/volunteer/</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-i</span> <span class="nt">-u</span> <span class="nv">$MONAMI_UID</span>:<span class="nv">$MONAMI_SECRET</span> https://app.monami.io/api/volunteers/ <span class="se">\</span>
-<span class="nt">--form</span> <span class="s1">'person="{\"first_name\": \"John\",\"preferred_name\": \"Volunteer\",\"last_name\": \"Doe\",\"date_of_birth\": \"1940-05-30\",\"email\": \"volunteer@monami.io\",\"gender\": \"male\",\"primary_phone_number\": \"+17075518391\", \"languages\": \"english,portuguese\"}"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'person="{\"first_name\": \"John\",\"preferred_name\": \"Volunteer\",\"last_name\": \"Doe\",\"date_of_birth\": \"1940-05-30\",\"email\": \"volunteer@monami.io\",\"gender\": \"male\",\"phone_numbers\": [{\"number\": \"+17075518391\", \"primary\": true}], \"languages\": \"english,portuguese\"}"'</span> <span class="se">\</span>
 <span class="nt">--form</span> <span class="s1">'address="{\"address_line1\": \"X Random St\", \"city\": \"San Francisco\", \"state\": \"CA\", \"zip\": \"94117\"}"'</span> <span class="se">\</span>
 <span class="nt">--form</span> <span class="s1">'custom_fields="{\"gender_identity\": \"custom_value\", \"pronouns\": \"custom_value2\"}"'</span>
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
@@ -4862,13 +4903,13 @@ Remember — the info!
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">);</span>
 <span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Basic </span><span class="si">#{</span><span class="n">credential</span><span class="si">}</span><span class="s2">"</span>
-<span class="n">form_data</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">'person'</span><span class="p">,</span> <span class="s1">'{"first_name": "John","preferred_name": "Volunteer","last_name": "Doe","date_of_birth": "1940-05-30","email": "volunteer@monami.io","gender": "male","primary_phone_number": "+17075518391", "languages": "english,portuguese"}'</span><span class="p">],[</span><span class="s1">'address'</span><span class="p">,</span> <span class="s1">'{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'</span><span class="p">],[</span><span class="s1">'custom_fields'</span><span class="p">,</span> <span class="s1">'{"gender_identity": "custom_value", "pronouns": "custom_value2"}'</span><span class="p">]]</span>
+<span class="n">form_data</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">'person'</span><span class="p">,</span> <span class="s1">'{"first_name": "John","preferred_name": "Volunteer","last_name": "Doe","date_of_birth": "1940-05-30","email": "volunteer@monami.io","gender": "male","phone_numbers": [{"primary": "+17075518391"}],"languages": "english,portuguese"}'</span><span class="p">],[</span><span class="s1">'address'</span><span class="p">,</span> <span class="s1">'{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'</span><span class="p">],[</span><span class="s1">'custom_fields'</span><span class="p">,</span> <span class="s1">'{"gender_identity": "custom_value", "pronouns": "custom_value2"}'</span><span class="p">]]</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">set_form</span> <span class="n">form_data</span><span class="p">,</span> <span class="s1">'multipart/form-data'</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -4899,13 +4940,6 @@ Remember — the info!
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-13T18:38:00.777Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-13T18:38:00.931Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075518391"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"english"</span><span class="p">,</span><span class="w"> </span><span class="s2">"portuguese"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4976,6 +5010,30 @@ Remember — the info!
 <td>languages</td>
 <td>Array of Language Object type labels</td>
 </tr>
+<tr>
+<td>phone_numbers</td>
+<td>Array of Phone Number parameters</td>
+</tr>
+</tbody></table>
+<h4 id='phone-number-parameters'>Phone Number Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>Phone number including area code, e.g. &#39;+17075518391&#39;</td>
+</tr>
+<tr>
+<td>primary</td>
+<td>Whether or not phone is primary. Only one primary phone per person. Options: <code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>Type of phone number. Options: <code>cell</code>, <code>home</code> or <code>work</code></td>
+</tr>
 </tbody></table>
 <h4 id='address-parameters'>Address Parameters</h4>
 <table><thead>
@@ -5023,7 +5081,7 @@ Remember — the info!
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
@@ -5054,13 +5112,6 @@ Remember — the info!
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-13T18:38:00.777Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-13T18:42:32.777Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075518391"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"english"</span><span class="p">,</span><span class="w"> </span><span class="s2">"portuguese"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -5142,7 +5193,7 @@ Remember — the info!
 <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -5173,13 +5224,6 @@ Remember — the info!
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-13T18:38:00.777Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-13T18:38:00.931Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+17075518391"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"primary_language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"english"</span><span class="p">,</span><span class="w"> </span><span class="s2">"portuguese"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -5250,6 +5294,30 @@ Remember — the info!
 <td>languages</td>
 <td>Array of Language Object type labels</td>
 </tr>
+<tr>
+<td>phone_numbers</td>
+<td>Array of Phone Number parameters</td>
+</tr>
+</tbody></table>
+<h4 id='phone-number-parameters-2'>Phone Number Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>Phone number including area code, e.g. &#39;+17075518391&#39;</td>
+</tr>
+<tr>
+<td>primary</td>
+<td>Whether or not phone is primary. Only one primary phone per person. Options: <code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>Type of phone number. Options: <code>cell</code>, <code>home</code> or <code>work</code></td>
+</tr>
 </tbody></table>
 <h4 id='address-parameters-3'>Address Parameters</h4>
 <table><thead>
@@ -5296,7 +5364,7 @@ a secure and reliable system integration.</p>
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns JSON structured like this:</p>
+<p>A successful request returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -5356,7 +5424,7 @@ or wildcard topics, ex: <code>client.*</code>.</p>
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns HTTP Status <code>201 Created</code> and a JSON object representing the webhook:</p>
+<p>A successful request returns HTTP Status <code>201 Created</code> and a JSON object representing the webhook:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
@@ -5417,7 +5485,7 @@ or wildcard topics, ex: <code>client.*</code>.</p>
   <span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>A sucessful request returns HTTP Status <code>204 No Content</code>:</p>
+<p>A successful request returns HTTP Status <code>204 No Content</code>:</p>
 </blockquote>
 <h2 id='implementing-an-http-handler-for-the-webhook'>Implementing an HTTP Handler for the webhook</h2>
 <blockquote>
