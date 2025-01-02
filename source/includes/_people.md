@@ -37,6 +37,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/people?page=2&p
             "created_at": "2024-01-25T15:56:29.766Z",
             "updated_at": "2024-01-25T15:56:29.766Z",
             "gender": "Female",
+            "primary_language": "english",
+            "languages": ["spanish"],
             "phone_numbers": [
               {
                 "number": "+15044791643",
@@ -44,8 +46,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/people?page=2&p
                 "label": "home"
               }
             ],
-            "primary_language": "english",
-            "languages": ["spanish"]
+            "sites": []
         }
     ],
     "links": {
@@ -113,6 +114,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people/6
     "created_at": "2024-01-25T15:56:29.766Z",
     "updated_at": "2024-02-16T20:33:51.338Z",
     "gender": "Female",
+    "primary_language": "english",
+    "languages": ["spanish"],
     "phone_numbers": [
       {
         "number": "+15044791643",
@@ -120,8 +123,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people/6
         "label": "home"
       },
     ],
-    "primary_language": "english",
-    "languages": ["spanish"]
+    "sites": []
 }
 ```
 
@@ -171,6 +173,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_emai
             "created_at": "2024-01-25T15:56:29.766Z",
             "updated_at": "2024-02-16T20:33:51.338Z",
             "gender": "Female",
+            "primary_language": "english",
+            "languages": ["spanish"],
             "phone_numbers": [
               {
                 "number": "+15044791643",
@@ -178,8 +182,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_emai
                 "label": "home"
               },
             ],
-            "primary_language": "english",
-            "languages": ["spanish"]
+            "sites": []
         }
     ],
     "links": {
@@ -239,6 +242,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_volu
             "created_at": "2024-01-25T15:56:30.555Z",
             "updated_at": "2024-01-25T15:56:30.959Z",
             "gender": "Prefer not to say",
+            "primary_language": "english",
+            "languages": ["german"],
             "phone_numbers": [
               {
                 "number": "+15044791643",
@@ -246,8 +251,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_volu
                 "label": "home"
               },
             ],
-            "primary_language": "english",
-            "languages": ["german"]
+            "sites": []
         }
     ],
     "links": {
@@ -307,6 +311,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_clie
             "created_at": "2024-01-25T15:56:30.555Z",
             "updated_at": "2024-01-25T15:56:30.959Z",
             "gender": "Prefer not to say",
+            "primary_language": "english",
+            "languages": ["german"],
             "phone_numbers": [
               {
                 "number": "+15044791643",
@@ -314,8 +320,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/people?q[by_clie
                 "label": "home"
               },
             ],
-            "primary_language": "english",
-            "languages": ["german"]
+            "sites": []
         }
     ],
     "links": {
@@ -380,6 +385,8 @@ response = Excon.put('https://app.monami.io/api/people/6',
     "created_at": "2024-01-25T15:56:29.766Z",
     "updated_at": "2024-02-16T20:33:51.338Z",
     "gender": "Female",
+    "primary_language": "english",
+    "languages": ["spanish", "italian"],
     "phone_numbers": [
       {
         "number": "+15044791643",
@@ -387,8 +394,7 @@ response = Excon.put('https://app.monami.io/api/people/6',
         "label": "home"
       },
     ],
-    "primary_language": "english",
-    "languages": ["spanish", "italian"]
+    "sites": []
 }
 ```
 This endpoint returns the updated person.
@@ -463,6 +469,8 @@ response = Excon.put('https://app.monami.io/api/people/78/adopt',
   "created_at": "2024-03-13T16:04:33.256Z",
   "updated_at": "2024-03-13T16:04:33.399Z",
   "gender": "female",
+  "primary_language": null,
+  "languages": ["english", "portuguese"],
   "phone_numbers": [
     {
       "number": "+17075518391",
@@ -470,8 +478,6 @@ response = Excon.put('https://app.monami.io/api/people/78/adopt',
       "label": "home"
     }
   ],
-  "primary_language": null,
-  "languages": ["english", "portuguese"],
   "sites": ["my_credential_site"]
 }
 ```

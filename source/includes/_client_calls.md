@@ -101,7 +101,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?pa
                             "primary": true,
                             "label": "cell"
                         }
-                    ]
+                    ],
+                    "sites": []
                 }
             },
             "volunteer": {
@@ -140,7 +141,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?pa
                             "primary": true,
                             "label": "cell"
                         }
-                    ]
+                    ],
+                    "sites": []
                 }
             }
         }
@@ -274,7 +276,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls/11
                     "primary": true,
                     "label": "cell"
                 }
-            ]
+            ],
+            "sites": []
         }
     },
     "volunteer": {
@@ -313,7 +316,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls/11
                     "primary": true,
                     "label": "cell"
                 }
-            ]
+            ],
+            "sites": []
         }
     }
 }
@@ -429,7 +433,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
                             "primary": true,
                             "label": "cell"
                         }
-                    ]
+                    ],
+                    "sites": []
                 }
             },
             "volunteer": {
@@ -468,7 +473,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
                             "primary": true,
                             "label": "cell"
                         }
-                    ]
+                    ],
+                    "sites": []
                 }
             }
         }
@@ -595,7 +601,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
                             "primary": true,
                             "label": "cell"
                         }
-                    ]
+                    ],
+                    "sites": []
                 }
             },
             "volunteer": {
@@ -634,7 +641,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
                             "primary": true,
                             "label": "cell"
                         }
-                    ]
+                    ],
+                    "sites": []
                 }
             }
         }
@@ -761,7 +769,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[c
                             "primary": true,
                             "label": "cell"
                         }
-                    ]
+                    ],
+                    "sites": []
                 }
             },
             "volunteer": {
@@ -800,7 +809,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[c
                             "primary": true,
                             "label": "cell"
                         }
-                    ]
+                    ],
+                    "sites": []
                 }
             }
         }

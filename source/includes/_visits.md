@@ -102,7 +102,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/visits?page=1&p
               "primary": true,
               "label": "cell"
             }
-          ]
+          ],
+          "sites": []
         }
       },
       "volunteer": {
@@ -139,7 +140,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/visits?page=1&p
               "primary": true,
               "label": "cell"
             }
-          ]
+          ],
+          "sites": []
         }
       },
       "visit_coding": null
@@ -275,7 +277,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/visits/126
           "primary": true,
           "label": "cell"
         }
-      ]
+      ],
+      "sites": []
     }
   },
   "volunteer": {
@@ -312,7 +315,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/visits/126
           "primary": true,
           "label": "cell"
         }
-      ]
+      ],
+      "sites": []
     }
   },
   "visit_coding": null
@@ -429,7 +433,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/visits?q[start_a
               "primary": true,
               "label": "cell"
             }
-          ]
+          ],
+          "sites": []
         }
       },
       "volunteer": {
@@ -466,7 +471,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/visits?q[start_a
               "primary": true,
               "label": "cell"
             }
-          ]
+          ],
+          "sites": []
         }
       },
       "visit_coding": null

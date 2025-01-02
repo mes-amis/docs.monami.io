@@ -52,6 +52,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
         "created_at": "2024-03-12T14:19:02.091Z",
         "updated_at": "2024-03-12T14:19:02.115Z",
         "gender": "prefer_not_to_say",
+        "primary_language": "english",
+        "languages": null,
         "phone_numbers": [
           {
             "number": "+15044791643",
@@ -59,8 +61,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
             "label": "home"
           }
         ],
-        "primary_language": "english",
-        "languages": null
+        "sites": []
       }
     }
   ],
@@ -151,6 +152,8 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients/12
     "created_at": "2024-03-12T14:19:02.091Z",
     "updated_at": "2024-03-12T14:19:02.115Z",
     "gender": "prefer_not_to_say",
+    "primary_language": "english",
+    "languages": null,
     "phone_numbers": [
       {
         "number": "+15044791643",
@@ -158,8 +161,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients/12
         "label": "home"
       }
     ],
-    "primary_language": "english",
-    "languages": null
+    "sites": []
   }
 }
 ```
@@ -233,6 +235,8 @@ puts response.read_body
     "created_at": "2024-03-13T16:04:33.256Z",
     "updated_at": "2024-03-13T16:04:33.399Z",
     "gender": "female",
+    "primary_language": null,
+    "languages": ["english", "portuguese"],
     "phone_numbers": [
       {
         "number": "+17075518391",
@@ -240,8 +244,7 @@ puts response.read_body
         "label": "home"
       }
     ],
-    "primary_language": null,
-    "languages": ["english", "portuguese"]
+    "sites": []
   }
 }
 ```
@@ -329,6 +332,8 @@ puts response.read_body
     "created_at": "2024-03-13T16:04:33.256Z",
     "updated_at": "2024-03-13T16:04:33.399Z",
     "gender": "female",
+    "primary_language": null,
+    "languages": ["english", "portuguese"],
     "phone_numbers": [
       {
         "number": "+17075518391",
@@ -336,8 +341,7 @@ puts response.read_body
         "label": "home"
       }
     ],
-    "primary_language": null,
-    "languages": ["english", "portuguese"]
+    "sites": []
   }
 }
 ```
@@ -412,6 +416,8 @@ response = Excon.put('https://app.monami.io/api/clients/22',
     "created_at": "2024-03-13T16:04:33.256Z",
     "updated_at": "2024-03-13T16:04:33.399Z",
     "gender": "female",
+    "primary_language": null,
+    "languages": ["english", "portuguese"],
     "phone_numbers": [
       {
         "number": "+17075518391",
@@ -419,8 +425,7 @@ response = Excon.put('https://app.monami.io/api/clients/22',
         "label": "home"
       }
     ],
-    "primary_language": null,
-    "languages": ["english", "portuguese"]
+    "sites": []
   }
 }
 ```
@@ -534,6 +539,8 @@ response = Excon.put('https://app.monami.io/api/clients/ami-c090e55c/adopt',
     "created_at": "2024-03-13T16:04:33.256Z",
     "updated_at": "2024-03-13T16:04:33.399Z",
     "gender": "female",
+    "primary_language": null,
+    "languages": ["english", "portuguese"],
     "phone_numbers": [
       {
         "number": "+17075518391",
@@ -541,8 +548,6 @@ response = Excon.put('https://app.monami.io/api/clients/ami-c090e55c/adopt',
         "label": "home"
       }
     ],
-    "primary_language": null,
-    "languages": ["english", "portuguese"],
     "sites": ["my_credential_site"]
   }
 }
