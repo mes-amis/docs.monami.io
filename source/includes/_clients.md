@@ -21,7 +21,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -88,17 +88,17 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
 
 ### Query Parameters
 
-| Parameter      | Default | Description                                    |
-|----------------|---------|------------------------------------------------|
-| page           | 1       | Select the page of results.                    |
-| per_page       | 25      | How many results per page.                     |
-| first_name     |      | Filters by the user's first name               |
-| last_name      |      | Filters by the user's last name                |
-| phone_number   |      | Filters by any of the user's phone numbers     |
-| date_of_birth  |      | Filters by the user's date of birth            |
-| address_county |      | Filters by the user's county                   |
-| social_security_number_last_4 |      | Filters by the last 4 digits of the user's SSN |
-| status |      | Filters by the user's status                   |
+| Parameter      | Default | Description                                                    |
+|----------------|---------|----------------------------------------------------------------|
+| page           | 1       | Select the page of results.                                    |
+| per_page       | 25      | How many results per page.                                     |
+| first_name     |      | Filters by the user's first name                               |
+| last_name      |      | Filters by the user's last name                                |
+| phone_number   |      | Filters by any of the user's phone numbers, e.g. `+15044791643` |
+| date_of_birth  |      | Filters by the user's date of birth. Format: `YYYY-MM-DD`      |
+| address_county |      | Filters by the user's county                                   |
+| social_security_number_last_4 |      | Filters by the last 4 digits of the user's SSN                 |
+| status |      | Filters by the user's status                                   |
 
 <!-- <aside class="success">
 Remember — the info!
@@ -123,7 +123,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients/12
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -182,7 +182,7 @@ This endpoint retrieves a specific client.
 
 ```shell
 curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/clients/ \
---form 'person="{\"first_name\": \"John\",\"preferred_name\": \"Client\",\"last_name\": \"Doe\",\"date_of_birth\": \"1940-05-30\",\"email\": \"test@monami.io\",\"gender\": \"female\",\"primary_phone_number\": \"+17075518391\", \"languages\": \"english,portuguese\"}"' \
+--form 'person="{\"first_name\": \"John\",\"preferred_name\": \"Client\",\"last_name\": \"Doe\",\"date_of_birth\": \"1940-05-30\",\"email\": \"test@monami.io\",\"gender\": \"female\",\"phone_numbers\": [{\"number\": \"+17075518391\", \"primary\": true}],\"languages\": \"english,portuguese\"}"' \
 --form 'address="{\"address_line1\": \"X Random St\", \"city\": \"San Francisco\", \"state\": \"CA\", \"zip\": \"94117\"}"' \
 --form 'custom_fields="{\"gender_identity\": \"custom_value\", \"pronouns\": \"custom_value2\"}"'
 ```
@@ -197,13 +197,13 @@ url = URI("http://app.monami.io/api/clients/")
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = "Basic #{credential}"
-form_data = [['person', '{"first_name": "Jane","preferred_name": "Client","last_name": "Doe","date_of_birth": "1940-05-30","test": "test@monami.io","gender": "female","primary_phone_number": "+17075518391", "languages": "english,portuguese"}'],['address', '{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
+form_data = [['person', '{"first_name": "Jane","preferred_name": "Client","last_name": "Doe","date_of_birth": "1940-05-30","test": "test@monami.io","gender": "female","phone_numbers": [{"primary": "+17075518391"}],"languages": "english,portuguese"}'],['address', '{"address_line1": "X Random St", "city": "San Francisco", "state": "CA", "zip": "94117"}'],['custom_fields', '{"gender_identity": "custom_value", "pronouns": "custom_value2"}']]
 request.set_form form_data, 'multipart/form-data'
 response = http.request(request)
 puts response.read_body
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -264,14 +264,23 @@ This endpoint returns the newly created client.
 #### Person Parameters
 
 | Parameter      | Description                                                                                                                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -------------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | first_name     | Client's first name                                                                                                                                                                                     |
 | preferred_name | Client's preferred name                                                                                                                                                                                 |
 | last_name      | Client's last name                                                                                                                                                                                      |
-| date_of_birth  | Client's birthdate eg.: `YYYY-MM-DD`                                                                                                                                                                         |
+| date_of_birth  | Client's birthdate, e.g. `YYYY-MM-DD`                                                                                                                                                                   |
 | email          | Client's email address                                                                                                                                                                                  |
 | gender         | Client's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
-| languages      | Array of Language Object type labels                                                                                                                                                     |
+| languages      | Array of Language Object type labels                                                                                                                                                                    |
+| phone_numbers  | Array of Phone Number parameters                                                                                                                                                                        |
+
+#### Phone Number Parameters
+
+| Parameter | Description                                                                                    |
+|-----------|------------------------------------------------------------------------------------------------|
+| number    | Phone number including area code, e.g. '+17075518391'                                          |
+| primary   | Whether or not phone is primary. Only one primary phone per person. Options: `true` or `false` |
+| label     | Type of phone number. Options: `cell`, `home` or `work`                                        |
 
 #### Address Parameters
 
@@ -307,7 +316,7 @@ response = http.request(request)
 puts response.read_body
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -384,7 +393,7 @@ response = Excon.put('https://app.monami.io/api/clients/22',
 )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -443,15 +452,24 @@ This endpoint returns the updated client.
 
 #### Person Parameters
 
-| Parameter      | Description                                                                                                                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| first_name     | Client's first name                                                                                                                                                                                     |
-| preferred_name | Client's preferred name                                                                                                                                                                                 |
-| last_name      | Client's last name                                                                                                                                                                                      |
-| date_of_birth  | Client's birthdate eg.: `YYYY-MM-DD`                                                                                                                                                                         |
-| email          | Client's email address                                                                                                                                                                                  |
+| Parameter      | Description                                                                                                                                                                                            |
+|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| first_name     | Client's first name                                                                                                                                                                                    |
+| preferred_name | Client's preferred name                                                                                                                                                                                |
+| last_name      | Client's last name                                                                                                                                                                                     |
+| date_of_birth  | Client's birthdate eg.: `YYYY-MM-DD`                                                                                                                                                                   |
+| email          | Client's email address                                                                                                                                                                                 |
 | gender         | Client's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
-| languages      | Array of Language Object type labels                                                                                                                                                     |
+| languages      | Array of Language Object type labels                                                                                                                                                                   |
+| phone_numbers  | Array of Phone Number parameters                                                                                                                                                                                  |
+
+#### Phone Number Parameters
+
+| Parameter | Description                                                                                    |
+|-----------|------------------------------------------------------------------------------------------------|
+| number    | Phone number including area code, e.g. '+17075518391'                                          |
+| primary   | Whether or not phone is primary. Only one primary phone per person. Options: `true` or `false` |
+| label     | Type of phone number. Options: `cell`, `home` or `work`                                        |
 
 #### Address Parameters
 
@@ -585,7 +603,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients/ami-abc
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {

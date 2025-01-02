@@ -21,7 +21,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/client_calls?pa
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -198,7 +198,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls/11
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -353,7 +353,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -521,7 +521,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[b
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -689,7 +689,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/client_calls?q[c
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {

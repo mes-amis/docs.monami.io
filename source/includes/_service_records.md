@@ -25,7 +25,7 @@ response = http.request(request)
 puts response.read_body
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -114,7 +114,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET "https://app.monami.io/api/clients?page=1&
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
@@ -242,7 +242,7 @@ curl -i -u $MONAMI_UID:$MONAMI_SECRET https://app.monami.io/api/service_records/
   )
 ```
 
-> A sucessful request returns JSON structured like this:
+> A successful request returns JSON structured like this:
 
 ```json
 {
