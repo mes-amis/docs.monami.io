@@ -494,3 +494,105 @@ This endpoint returns the updated volunteer.
 | city          | Volunteer's city                                    |
 | state         | Volunteer's state. 2 letter abbreviation e.g.: `CA` |
 | zip           | 5 digit zip code                                    |
+
+
+## Adopt a Volunteer
+
+> PATCH /api/volunteers/:volunteer_label/adopt
+
+```shell
+curl -i -u $MONAMI_UID:$MONAMI_SECRET \
+-X PATCH https://app.monami.io/api/volunteers/volunteer-d/adopt \
+-H 'Content-Type: application/json'
+```
+
+```ruby
+credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
+
+response = Excon.put('https://app.monami.io/api/volunteers/volunteer-d/adopt',
+  headers: {
+    'Content-Type' => 'application/json',
+    'Authorization' => "Basic #{credential}"
+  }
+)
+```
+
+> An adoptable client response contains JSON structured like this:
+
+```json
+{
+  "label": "volunteer-d",
+  "person": {
+    "id": 79,
+    "first_name": "John",
+    "preferred_name": "Volunteer",
+    "middle_name": null,
+    "last_name": "Doe",
+    "email": "new_email@monami.io",
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "home"
+      }
+    ],
+    "sites": []
+  }
+}
+```
+
+> A sucessful adoption request returns JSON structured like this:
+
+```json
+{
+  "id": 3,
+  "status": "applied",
+  "created_at": "2024-03-13T11:38:00.900-07:00",
+  "updated_at": "2024-03-13T11:38:00.900-07:00",
+  "external_id": null,
+  "label": "volunteer-d",
+  "custom_fields": {
+    "pronouns": "custom_value2",
+    "gender_identity": "custom_value"
+  },
+  "address": {
+    "address_line1": "X Random St",
+    "address_line2": "Apt 2B",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip": "94117"
+  },
+  "person": {
+    "id": 79,
+    "first_name": "John",
+    "preferred_name": "Volunteer",
+    "middle_name": null,
+    "last_name": "Doe",
+    "date_of_birth": "1940-05-30",
+    "email": "new_email@monami.io",
+    "created_at": "2024-03-13T18:38:00.777Z",
+    "updated_at": "2024-03-13T18:38:00.931Z",
+    "gender": "male",
+    "primary_language": null,
+    "languages": ["english", "portuguese"],
+    "phone_numbers": [
+      {
+        "number": "+17075518391",
+        "primary": true,
+        "label": "cell"
+      }
+    ],
+    "sites": ["my_credential_site"]
+  }
+}
+```
+
+This endpoint adds a specific volunteer to a site credential's site, and returns the full volunteer response.
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+
+### URL Parameters
+
+| Parameter       | Description                            |
+| --------------- | -------------------------------------- |
+| volunteer_label | The label of the volunteer to adopt |

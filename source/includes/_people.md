@@ -406,3 +406,82 @@ This endpoint returns the updated person.
 | email          | Person's email address                                                                                                                                                                                  |
 | gender         | Person's gender. Options are: `female`, `male`, `trans_female`, `trans_male`, `non_binary`, `trans_non_binary`, `gender_queer`, `two_spirit`, `questioning_not_sure`, `not_listed`, `prefer_not_to_say` |
 | languages      | Array of Language Object type labels                                                                                                                                                     |
+
+## Adopt a Person
+
+> PATCH /api/people/:id/adopt
+
+```shell
+curl -i -u $MONAMI_UID:$MONAMI_SECRET \
+-X PATCH https://app.monami.io/api/people/78/adopt \
+-H 'Content-Type: application/json'
+```
+
+```ruby
+credential = Base64.strict_encode64 ENV.values_at('MONAMI_UID', 'MONAMI_SECRET').join(':')
+
+response = Excon.put('https://app.monami.io/api/people/78/adopt',
+  headers: {
+    'Content-Type' => 'application/json',
+    'Authorization' => "Basic #{credential}"
+  }
+)
+```
+
+> An adoptable person response contains JSON structured like this:
+
+```json
+{
+  "id": 78,
+  "first_name": "Jane",
+  "preferred_name": "Client",
+  "middle_name": null,
+  "last_name": "Doe",
+  "email": "new_email@monami.io",
+  "phone_numbers": [
+    {
+      "number": "+17075518391",
+      "primary": true,
+      "label": "home"
+    }
+  ],
+  "sites": []
+}
+```
+
+> A sucessful adoption request returns JSON structured like this:
+
+```json
+{
+  "id": 78,
+  "first_name": "Jane",
+  "preferred_name": "Client",
+  "middle_name": null,
+  "last_name": "Doe",
+  "date_of_birth": "1940-05-30",
+  "email": "new_email@monami.io",
+  "created_at": "2024-03-13T16:04:33.256Z",
+  "updated_at": "2024-03-13T16:04:33.399Z",
+  "gender": "female",
+  "phone_numbers": [
+    {
+      "number": "+17075518391",
+      "primary": true,
+      "label": "home"
+    }
+  ],
+  "primary_language": null,
+  "languages": ["english", "portuguese"],
+  "sites": ["my_credential_site"]
+}
+```
+
+This endpoint adds a specific person to a site credential's site, and returns the full person response.
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+
+### URL Parameters
+
+| Parameter    | Description                         |
+| ------------ | ----------------------------------- |
+| id           | The id of the person to adopt       |
